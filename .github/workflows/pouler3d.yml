@@ -1,0 +1,108 @@
+name: Mirroring repository
+
+on:
+  push:
+    branches-ignore:
+      - 'ga-ignore-*'
+  pull_request:
+    branches-ignore:
+      - 'ga-ignore-*'
+
+env:
+  MIRROR_URL: git@github.com:EpitechPGEPromo2029/G-ING-210-LIL-2-1-wolf3d-guillaume.matton.git
+  EXECUTABLES: "wolf3d"
+
+jobs:
+  check_coding_style:
+    runs-on: ubuntu-latest
+    container: ghcr.io/epitech/coding-style-checker:latest
+    timeout-minutes: 5
+    if: ${{ github.repository != 'EpitechPGEPromo2029/B-ING-210-LIL-2-1-wolf3d-guillaume.matton' }}
+    steps:
+      - name: getting_latest_changes
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Create log
+        run: check.sh $(pwd) $(pwd)
+      - name: verify coding style
+        shell: bash
+        run: |
+          has_errors=0
+          while IFS= read -r line; do
+            if [[ "$line" =~ ^([^:]+):([0-9]+):\ (MAJOR|MINOR|INFO):([A-Z0-9-]+) ]]; then
+              file="${BASH_REMATCH[1]}"
+              line="${BASH_REMATCH[2]}"
+              severity="${BASH_REMATCH[3]}"
+              rule="${BASH_REMATCH[4]}"
+              level="error"
+              has_errors=1
+              echo "::${level} ::$severity coding style error :$file#L$line : $rule"
+            fi
+          done < coding-style-reports.log
+          if [[ "$has_errors" -eq 1 ]]; then
+            exit 1
+          fi
+
+  check_program_compilation:
+    needs: check_coding_style
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker:latest
+    timeout-minutes: 5
+    steps:
+      - name: getting_latest_changes
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: verifying make integrity
+        timeout-minutes: 2
+        run: make
+      - run: make clean
+      - name: verify executables
+        shell: bash
+        run: |
+          has_errors=0
+          IFS=',' read -r -a FILE_ARRAY <<< ${{ env.EXECUTABLES }}
+          for file in "${FILE_ARRAY[@]}"; do
+            if [ ! -x "$file" ]; then
+              echo "::error::$file does not exist or is not executable"
+              has_errors=1
+            fi
+          done
+          if [[ "$has_errors" -eq 1 ]]; then
+            exit 1
+          fi
+
+  run_tests:
+    needs: check_program_compilation
+    runs-on: ubuntu-latest
+    container: epitechcontent/epitest-docker:latest
+    timeout-minutes: 5
+    steps:
+      - name: getting_latest_changes
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: running unit and functional tests
+        timeout-minutes: 2
+        run: make tests_run
+
+  push_to_mirror:
+    needs: run_tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - name: getting_latest_changes
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: mirroring repository
+        uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
+            ${{ secrets.GIT_SSH_PRIVATE_KEY_BAPT }}
+            ${{ secrets.GIT_SSH_PRIVATE_KEY_SIMON }}
