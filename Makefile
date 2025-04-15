@@ -42,6 +42,8 @@ fclean: clean
 
 re: fclean all
 
+tests_run: all
+
 run: all
 	./$(NAME)
 
