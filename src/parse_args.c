@@ -7,6 +7,8 @@
 
 #include "wolf3d.h"
 
+//parses a "--text" argument
+//returns true if error
 static bool parse_string_arg(data_t *data, char *arg)
 {
     if (my_strcmp(arg, "--help") == 0) {
@@ -17,6 +19,8 @@ static bool parse_string_arg(data_t *data, char *arg)
     return true;
 }
 
+//parses a "-****" series of options
+//returns true if error
 static bool parse_letter_arg(data_t *data, char *arg)
 {
     for (int i = 1; arg[i] != '\0'; i++) {
@@ -32,6 +36,8 @@ static bool parse_letter_arg(data_t *data, char *arg)
     return false;
 }
 
+//parses the program arguments
+//returns true if error
 bool parse_args(data_t *data, char **av)
 {
     bool status = false;
