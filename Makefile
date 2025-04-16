@@ -8,6 +8,8 @@
 NAME	= wolf3d
 
 SRC	= src/main.c\
+	  src/check_if_in_gui.c\
+	  src/parse_args.c\
 
 OBJ	= $(SRC:.c=.o)
 
@@ -55,4 +57,4 @@ libmy_debug:
 
 test: fclean debug
 	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all\
- ./$(NAME)_debug
+ ./$(NAME)_debug --aa
