@@ -56,6 +56,7 @@ SRC     = my_putchar.c\
 	  my_strreplace.c\
 	  my_wordlen.c\
 	  my_wordleninv.c\
+	  my_isadir.c\
 
 CC	= gcc
 
