@@ -42,6 +42,15 @@ typedef struct map {
 } map_t;
 
 typedef struct weapon {
+    sfTexture *texture;
+    sfSprite *sprite;
+    sfMusic *music;
+    float damage;
+    int ammo;
+    int max_ammo;
+    float firerate;
+    bool explosive;
+    bool melee;
     struct weapon *next;
 } weapon_t;
 

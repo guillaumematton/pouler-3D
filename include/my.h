@@ -19,6 +19,7 @@
 
     #define UNUSED __attribute__ ((unused))
 
+void free_array(char **array);
 void my_putchar(char const c);
 void my_putcharerr(char const c);
 void my_putstr(char const *str);

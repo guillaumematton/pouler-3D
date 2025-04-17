@@ -1,7 +1,34 @@
 # Le jeu de le pouler 3(D)
 
-write txt here
+## Modding support
 
+### Correct map format :
+file ending with .lvl  
+first line : int int -> define the width and the height  
+then:  
+#### all map characters:  
+    - A = solid wall  
+    - C = contact (A.K.A poulers)
+    - 1 = loot, weapons group
+    - 2 = solid wall, destructible group
+    - 3 = standard door or destructible wall
+    - L = locked door
+    - K = key for the door
+    - M = magazines (A.K.A ammunitions)
+    - D = destructible walls
+    - P = player
+
+### Correct weapon file format:
+texture : texture file  
+sound : sound file  
+damage : float  
+ammo : int  
+max_ammo : int > ammo  
+firerate : float (delay in seconds between each shot)  
+explosive : 0 or 1 (not explosive or explosive)  
+melee : 0 or 1 (not melee or melee)
+
+project just started development so give it some time
 
 ___
 ## Subjet's Features
@@ -9,7 +36,7 @@ ___
 ## MUST
 
 ### General
-- [ ] The window may be closed using events.
+- [x] The window may be closed using events.
 - [ ] The windows may have differents mode:
   - Window mode
   - Full - screen mode

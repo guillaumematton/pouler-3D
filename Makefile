@@ -19,7 +19,8 @@ CC	= gcc
 
 WFLAGS  = -Wall -Wextra -fanalyzer
 
-CFLAGS	= -I include -L lib -l my
+CFLAGS	= -I include -L lib -l my -lm -l csfml-graphics\
+	-l csfml-audio -l csfml-system -lm
 
 ifeq ($(MAKECMDGOALS),debug)
     CFLAGS += -g
