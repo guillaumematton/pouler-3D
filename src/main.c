@@ -7,34 +7,18 @@
 
 #include "wolf3d.h"
 
-int main_loop(sfRenderWindow *window, data_t *data)
+int main_loop(data_t *data)
 {
     sfEvent event;
 
-    while (sfRenderWindow_isOpen(window)) {
-        sfRenderWindow_clear(window, sfGreen);
-        while (sfRenderWindow_pollEvent(window, &event) == 0)
+    while (sfRenderWindow_isOpen(data->window)) {
+        sfRenderWindow_clear(data->window, sfBlack);
+        while (sfRenderWindow_pollEvent(data->window, &event) == 0)
             continue;
         if (event.type == sfEvtClosed)
             break;
     }
-    sfRenderWindow_close(window);
     return 0;
-}
-
-int set_window(data_t *data)
-{
-    sfVideoMode mode = {800, 600, 32};
-    sfRenderWindow *window = sfRenderWindow_create(mode, "wolf3D",
-        sfClose | sfResize, NULL);
-    int err = 0;
-
-    if (!window)
-        return 84;
-    sfRenderWindow_setVerticalSyncEnabled(window, sfTrue);
-    err = main_loop(window, data);
-    sfRenderWindow_destroy(window);
-    return err;
 }
 
 int main(UNUSED int ac, char **av, char **env)
@@ -46,6 +30,6 @@ int main(UNUSED int ac, char **av, char **env)
     if (parse_args(&data, av))
         return 84;
     initialize_game(&data);
-    set_window(&data);
+    main_loop(&data);
     //terminate_game(&data);
 }
