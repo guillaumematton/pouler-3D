@@ -12,7 +12,11 @@
 static bool parse_string_arg(data_t *data, char *arg)
 {
     if (my_strcmp(arg, "--help") == 0) {
-        //TODO call help thingy
+        data->arguments.help = true;
+        return false;
+    }
+    if (my_strcmp(arg, "--full_screen") == 0) {
+        data->arguments.full_screen = true;
         return false;
     }
     mini_printf("wolf3d: unrecognized option '%s'\n", arg);
@@ -26,7 +30,10 @@ static bool parse_letter_arg(data_t *data, char *arg)
     for (int i = 1; arg[i] != '\0'; i++) {
         switch (arg[i]) {
         case 'h':
-            //TODO call help thingy
+            data->arguments.help = true;
+            break;
+        case 'f':
+            data->arguments.full_screen = true;
             break;
         default:
             mini_printf("wolf3d: invalid option -- '%c'\n", arg[i]);
@@ -40,23 +47,22 @@ static bool parse_letter_arg(data_t *data, char *arg)
 //returns true if error
 bool parse_args(data_t *data, char **av)
 {
-    bool status = false;
+    bool err = false;
 
-    for (int i = 1; av[i] != NULL; i++) {
-        if (status) {
-            mini_printf("Try 'amazed -h' for more information.\n");
-            return true;
-        }
+    for (int i = 1; av[i] != NULL && !err; i++) {
         if (av[i][0] == '-' && av[i][1] == '-') {
-            status = parse_string_arg(data, av[i]);
+            err = parse_string_arg(data, av[i]);
             continue;
         }
         if (av[i][0] == '-') {
-            status = parse_letter_arg(data, av[i]);
+            err = parse_letter_arg(data, av[i]);
             continue;
         }
         mini_printf("wolf3d: invalid argument -- '%s'\n", av[i]);
-        mini_printf("Try 'amazed -h' for more information.\n");
+        err = true;
+    }
+    if (err) {
+        mini_printf("Try 'wolf3d -h' for more information.\n");
         return true;
     }
     return false;

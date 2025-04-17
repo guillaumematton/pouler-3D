@@ -21,13 +21,11 @@
 
     #include "my.h"
     #include "assets.h"
-    #include "weapons.h"
 
-typedef struct data {
-    assets_t *assets;
-} data_t;
-
-#define TILE_SIZE 64
+typedef	struct arguments {
+    bool help;
+    bool full_screen;
+} arguments_t;
 
 typedef struct Player_s {
     float health;
@@ -36,13 +34,23 @@ typedef struct Player_s {
     float angle;
 } Player_t;
 
+typedef struct data {
+    arguments_t arguments;
+    assets_t *assets;
+    sfRenderWindow *window;
+} data_t;
+
+#define TILE_SIZE 64
+
 void load_map(char *filename);
 void init_player(Player_t *player);
 int is_wall(int x, int y);
 void print_help(void);
+
 int main(int ac, char **av, char **env);
 bool check_if_in_gui(char **env);
 bool parse_args(data_t *data, char **av);
+bool display_help(data_t *data);
 bool initialize_game(data_t *data);
 bool load_data(data_t *data);
 
