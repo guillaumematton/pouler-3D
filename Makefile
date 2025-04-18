@@ -7,14 +7,15 @@
 
 NAME	= wolf3d
 
+## the sources files should be ordered by order of use in the program
 SRC	= src/main.c\
-	  src/check_if_in_gui.c\
-	  src/parse_args.c\
-	  src/display_help.c\
-	  src/initialize_game.c\
-	  src/load_data.c\
-	  src/end_functions/free_assets.c\
-	  src/end_functions/terminate_game.c\
+	  src/miscellaneous/check_if_in_gui.c\
+	  src/initialization/parse_args.c\
+	  src/miscellaneous/display_help.c\
+	  src/initialization/initialize_game.c\
+	  src/initialization/load_assets.c\
+	  src/termination/terminate_game.c\
+	  src/termination/free_assets.c\
 
 OBJ	= $(SRC:.c=.o)
 

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2025
 ** wolf3d
 ** File description:
-** load_data
+** load_assets
 */
 
 #include "wolf3d.h"
