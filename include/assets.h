@@ -10,27 +10,36 @@
 
     #include "wolf3d.h"
 
+typedef struct effect_s {
+    sfMusic *effect; //we may change sfMusic for sfSound or else
+    struct effect_s *next;
+} effect_t;
+
 typedef struct music_s {
     sfMusic *music;
     struct music_s *next;
 } music_t;
 
-typedef struct effect {
-    sfMusic *effect;
-    struct effect *next;
-} effect_t;
-
-typedef struct enemy_type {
-    struct enemy_type *next;
+typedef struct enemy_type_s {
+    //TODO add all the neccessary data;
+    //char *name
+    //int *healh
+    //(thoses are examples, i doubt we'll need enemy type names)
+    //..............
+    struct enemy_type_s *next;
 } enemy_type_t;
 
-typedef struct map {
+typedef struct map_s {
     u_int x_size;
     u_int y_size;
-    struct map *next;
+    //TODO add all the neccessary data;
+    //char **arr;
+    //char *name;
+    //..........
+    struct map_s *next;
 } map_t;
 
-typedef struct weapon {
+typedef struct weapon_s {
     sfTexture *texture;
     sfSprite *sprite;
     sfMusic *music;
@@ -40,25 +49,25 @@ typedef struct weapon {
     float firerate;
     bool explosive;
     bool melee;
-    struct weapon *next;
+    struct weapon_s *next;
 } weapon_t;
 
-typedef struct entities_texture {
+typedef struct entities_texture_s {
     sfTexture *texture;
-    struct entities_textures *next;
+    struct entities_textures_s *next;
 } entities_texture_t;
 
-typedef struct environment_texture {
+typedef struct environment_texture_s {
     sfTexture *texture;
-    struct environment_texture *next;
+    struct environment_texture_s *next;
 } environment_texture_t;
 
-typedef struct gui_texture {
+typedef struct gui_texture_s {
     sfTexture *texture;
-    struct gui_texture *next;
+    struct gui_texture_s *next;
 } gui_texture_t;
 
-typedef struct assets {
+typedef struct assets_s {
     effect_t *effects;
     music_t *musics;
     enemy_type_t *enemy_types;
