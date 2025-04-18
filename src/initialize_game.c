@@ -28,7 +28,7 @@ bool set_window(data_t *data)
     return false;
 }
 
-//does all the neccessary work to start the game (which you just lost)         
+//does all the neccessary work to start the game (which you just lost)
 //returns true if error
 bool initialize_game(data_t *data)
 {

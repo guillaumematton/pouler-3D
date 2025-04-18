@@ -30,8 +30,8 @@ typedef struct enemy_type_s {
 } enemy_type_t;
 
 typedef struct map_s {
-    u_int x_size;
-    u_int y_size;
+    unsigned int x_size;
+    unsigned int y_size;
     //TODO add all the neccessary data;
     //char **arr;
     //char *name;
@@ -68,14 +68,14 @@ typedef struct gui_texture_s {
 } gui_texture_t;
 
 typedef struct assets_s {
-    effect_t *effects;
-    music_t *musics;
-    enemy_type_t *enemy_types;
+    effect_t *effects; //
+    music_t *musics; //
+    enemy_type_t *enemy_types; //
     map_t *maps;
     weapon_t *weapons;
-    entities_texture_t *entities_textures;
-    environment_texture_t *environment_textures;
-    gui_texture_t *gui_textures;
+    entities_texture_t *entities_textures; //
+    environment_texture_t *environment_textures; //
+    gui_texture_t *gui_textures; //
 } assets_t;
 
 #endif

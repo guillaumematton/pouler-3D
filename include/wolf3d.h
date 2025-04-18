@@ -22,7 +22,7 @@
     #include "my.h"
     #include "assets.h"
 
-typedef	struct arguments {
+typedef struct argument_s {
     bool help;
     bool full_screen;
 } arguments_t;
@@ -40,7 +40,7 @@ typedef struct data {
     sfRenderWindow *window;
 } data_t;
 
-#define TILE_SIZE 64
+    #define TILE_SIZE 64
 
 void load_map(char *filename);
 void init_player(Player_t *player);
@@ -53,5 +53,11 @@ bool parse_args(data_t *data, char **av);
 bool display_help(data_t *data);
 bool initialize_game(data_t *data);
 bool load_data(data_t *data);
+void terminate_game(data_t *data);
+void free_map_and_weapons(data_t *data);
+void free_enemy_types(data_t *data);
+void free_effects_and_entities(data_t *data);
+void free_gui_and_environment_texture(data_t *data);
+void destroy_window_and_music(data_t *data);
 
 #endif
