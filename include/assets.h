@@ -10,26 +10,15 @@
 
     #include "wolf3d.h"
 
-typedef struct assets {
-    struct effect_t *effects;
-    struct music_t *musics;
-    struct enemy_type *enemy_types;
-    struct map *maps;
-    struct weapons *weapons;
-    struct entities_texture *entities_textures;
-    struct environment_texture *environment_textures;
-    struct gui_texture *gui_textures;
-} assets_t;
+typedef struct music_s {
+    sfMusic *music;
+    struct music_s *next;
+} music_t;
 
 typedef struct effect {
     sfMusic *effect;
     struct effect *next;
 } effect_t;
-
-typedef struct music {
-    sfMusic *music;
-    struct music *next;
-} music_t;
 
 typedef struct enemy_type {
     struct enemy_type *next;
@@ -68,5 +57,16 @@ typedef struct gui_texture {
     sfTexture *texture;
     struct gui_texture *next;
 } gui_texture_t;
+
+typedef struct assets {
+    effect_t *effects;
+    music_t *musics;
+    enemy_type_t *enemy_types;
+    map_t *maps;
+    weapon_t *weapons;
+    entities_texture_t *entities_textures;
+    environment_texture_t *environment_textures;
+    gui_texture_t *gui_textures;
+} assets_t;
 
 #endif
