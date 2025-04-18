@@ -7,15 +7,14 @@
 
 #include "wolf3d.h"
 
-//does all the neccessary work to start the game (which you just lost)
 //returns true if error
-bool set_window(data_t *data, arguments_t *arguments)
+bool set_window(data_t *data)
 {
     sfVideoMode mode = {800, 600, 32};
     sfRenderWindow *window = NULL;
     int arg = sfClose;
 
-    if (arguments->full_screen) {
+    if (data->arguments.full_screen) {
         arg = sfClose | sfFullscreen;
         mode.width = 1920;
         mode.height = 1080;
@@ -29,11 +28,13 @@ bool set_window(data_t *data, arguments_t *arguments)
     return false;
 }
 
-bool initialize_game(data_t *data, arguments_t *arguments)
+//does all the neccessary work to start the game (which you just lost)         
+//returns true if error
+bool initialize_game(data_t *data)
 {
     if (load_data(data))
         return true;
-    if (set_window(data, arguments))
+    if (set_window(data))
         return true;
     return false;
 }

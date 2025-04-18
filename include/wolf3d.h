@@ -36,7 +36,7 @@ typedef struct Player_s {
 
 typedef struct data {
     arguments_t arguments;
-    assets_t *assets;
+    assets_t assets;
     sfRenderWindow *window;
 } data_t;
 

@@ -25,8 +25,9 @@ int main_loop(data_t *data)
 
 static data_t initialize_data(void)
 {
-    data_t data = {{false, false, NULL},
-    {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}};
+    data_t data = {{false, false},
+    {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
+    NULL};
 
     return data;
 }
