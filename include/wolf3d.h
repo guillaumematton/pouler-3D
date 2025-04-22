@@ -62,7 +62,8 @@ void load_enemy_type(data_t *data, char *folder_path, char *asset_name);
 void load_map(data_t *data, char *folder_path, char *asset_name);
 void load_weapon(data_t *data, char *folder_path, char *asset_name);
 void load_entity_texture(data_t *data, char *folder_path, char *asset_name);
-void load_environment_texture(data_t *data, char *folder_path, char *asset_name);
+void load_environment_texture(data_t *data, char *folder_path,
+    char *asset_name);
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 void terminate_game(data_t *data);
 
