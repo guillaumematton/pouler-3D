@@ -58,11 +58,11 @@ typedef struct weapon_s {
     struct weapon_s *next;
 } weapon_t;
 
-typedef struct entities_texture_s {
+typedef struct entity_texture_s {
     char *name;
     sfTexture *texture;
     struct entities_textures_s *next;
-} entities_texture_t;
+} entity_texture_t;
 
 typedef struct environment_texture_s {
     char *name;
@@ -82,7 +82,7 @@ typedef struct assets_s {
     enemy_type_t *enemy_types; //
     map_t *maps;
     weapon_t *weapons;
-    entities_texture_t *entities_textures; //
+    entity_texture_t *entity_textures; //
     environment_texture_t *environment_textures; //
     gui_texture_t *gui_textures; //
 } assets_t;

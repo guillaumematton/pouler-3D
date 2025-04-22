@@ -14,6 +14,7 @@ static bool load_module(data_t *data, char *name)
     char module_path[8 + 256] = "assets/";
 
     my_strcpy(module_path + 7, name);
+    mini_printf("loading %s module.\n", name);
     load_assets_folder(data, module_path, "/audio/sounds/", &load_sound);
     load_assets_folder(data, module_path, "/audio/musics/", &load_music);
     //load_assets_folder(data, module_path, "/audio/musics/", &load_music);

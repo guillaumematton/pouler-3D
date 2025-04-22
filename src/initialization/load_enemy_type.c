@@ -2,40 +2,39 @@
 ** EPITECH PROJECT, 2025
 ** wolf3d
 ** File description:
-** load_sound
+** load_enemy_type
 */
 
 #include "wolf3d.h"
 
 static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
 {
-    sound_t *new_struct = NULL;
+    enemy_type_t *new_struct = NULL;
 
-    mini_printf("loading %s as a new sound.\n", asset_path);
-    new_struct = malloc(sizeof(sound_t));
+    mini_printf("loading %s as a new enemy type.\n", asset_path);
+    new_struct = malloc(sizeof(enemy_type_t));
     if (new_struct == NULL)
         return;
-    new_struct->next = data->assets.sounds;
-    new_struct->sound = sfSoundBuffer_createFromFile(asset_path);
+    new_struct->next = data->assets.enemy_types;
+    //TODO parser
     new_struct->name = my_strdup(asset_name);
-    data->assets.sounds = new_struct;
+    data->assets.enemy_types = new_struct;
 }
 
 static void overwrite_struct(data_t *data, char *asset_path,
-    sound_t *asset_struct)
+    enemy_type_t *asset_struct)
 {
-    mini_printf("loading %s by overwriting the previous sound.\n", asset_path);
-    sfSoundBuffer_destroy(asset_struct->sound);
-    asset_struct->sound = sfSoundBuffer_createFromFile(asset_path);
+    mini_printf("loading %s by overwriting the previous enemy type.\n", asset_path);
+    //TODO parser
 }
 
 //loads the asset by first checking for an asset with
 //the same name to overwrite it
 //if not found, creates a new asset struct
-void load_sound(data_t *data, char *folder_path, char *asset_name)
+void load_enemy_type(data_t *data, char *folder_path, char *asset_name)
 {
     char asset_path[my_strlen(folder_path) + my_strlen(asset_name)];
-    sound_t *asset_struct = data->assets.sounds;
+    enemy_type_t *asset_struct = data->assets.enemy_types;
 
     my_strcpy(asset_path, folder_path);
     my_strcpy(asset_path + my_strlen(folder_path), asset_name);

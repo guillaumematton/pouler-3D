@@ -17,6 +17,12 @@ SRC	= src/main.c\
 	  src/initialization/load_assets_folder.c\
 	  src/initialization/load_sound.c\
 	  src/initialization/load_music.c\
+	  src/initialization/load_enemy_type.c\
+	  src/initialization/load_map.c\
+	  src/initialization/load_weapon.c\
+	  src/initialization/load_entity_texture.c\
+	  src/initialization/load_environment_texture.c\
+	  src/initialization/load_gui_texture.c\
 	  src/termination/terminate_game.c\
 	  src/termination/free_assets.c\
 

@@ -11,7 +11,7 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
 {
     music_t *new_struct = NULL;
 
-    mini_printf("loading %s as a new asset.\n", asset_path);
+    mini_printf("loading %s as a new music.\n", asset_path);
     new_struct = malloc(sizeof(music_t));
     if (new_struct == NULL)
         return;
@@ -24,7 +24,7 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
 static void overwrite_struct(data_t *data, char *asset_path,
     music_t *asset_struct)
 {
-    mini_printf("loading %s by overwriting the previous asset.\n", asset_path);
+    mini_printf("loading %s by overwriting the previous music.\n", asset_path);
     sfMusic_destroy(asset_struct->music);
     asset_struct->music = sfMusic_createFromFile(asset_path);
 }
