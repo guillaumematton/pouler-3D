@@ -20,6 +20,7 @@
     #include <math.h>
 
     #include "my.h"
+
     #include "assets.h"
 
 typedef struct argument_s {
@@ -52,12 +53,18 @@ bool check_if_in_gui(char **env);
 bool parse_args(data_t *data, char **av);
 bool display_help(data_t *data);
 bool initialize_game(data_t *data);
-bool load_data(data_t *data);
+bool load_assets(data_t *data);
+void load_assets_folder(data_t *data, char *module_path, char *folder_name,
+    void (*load_asset)(data_t *data, char *folder_path, char *asset_name));
+void load_sound(data_t *data, char *folder_path, char *asset_name);
+void load_music(data_t *data, char *folder_path, char *asset_name);
 void terminate_game(data_t *data);
+
+/*
 void free_map_and_weapons(data_t *data);
 void free_enemy_types(data_t *data);
 void free_effects_and_entities(data_t *data);
 void free_gui_and_environment_texture(data_t *data);
 void destroy_window_and_music(data_t *data);
-
+*/
 #endif

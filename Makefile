@@ -14,6 +14,9 @@ SRC	= src/main.c\
 	  src/miscellaneous/display_help.c\
 	  src/initialization/initialize_game.c\
 	  src/initialization/load_assets.c\
+	  src/initialization/load_assets_folder.c\
+	  src/initialization/load_sound.c\
+	  src/initialization/load_music.c\
 	  src/termination/terminate_game.c\
 	  src/termination/free_assets.c\
 

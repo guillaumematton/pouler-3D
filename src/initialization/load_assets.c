@@ -8,16 +8,15 @@
 #include "wolf3d.h"
 
 //loads all the assets from the module
-//returns true if error
+//(TODO; will) returns true if error
 static bool load_module(data_t *data, char *name)
 {
-    char file_path[9 + 256] = "assets/";
+    char module_path[8 + 256] = "assets/";
 
-    my_strcpy(file_path + 9, name);
-    mini_printf("loading %s module.\n", name);
-    //TODO
-    //load_effects(data, file_path);
-    //load_musics(data, file_path);
+    my_strcpy(module_path + 7, name);
+    load_assets_folder(data, module_path, "/audio/sounds/", &load_sound);
+    load_assets_folder(data, module_path, "/audio/musics/", &load_music);
+    //load_assets_folder(data, module_path, "/audio/musics/", &load_music);
     //....... etc
     //(and the logic in case of loading failure)
 }
@@ -48,8 +47,9 @@ static bool load_modules(data_t *data)
 }
 
 //load all the assets, staring by the "core" module
+//then the other (if any) so they can override core's assets
 //returns true if error
-bool load_data(data_t *data)
+bool load_assets(data_t *data)
 {
     load_module(data, "core");
     load_modules(data);

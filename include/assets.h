@@ -10,17 +10,21 @@
 
     #include "wolf3d.h"
 
-typedef struct effect_s {
-    sfMusic *effect; //we may change sfMusic for sfSound or else
-    struct effect_s *next;
-} effect_t;
+//TODO: add char *name for all assets structs
+typedef struct sound_s {
+    char *name;
+    sfSoundBuffer *sound;
+    struct sound_s *next;
+} sound_t;
 
 typedef struct music_s {
+    char *name;
     sfMusic *music;
     struct music_s *next;
 } music_t;
 
 typedef struct enemy_type_s {
+    char *name;
     //TODO add all the neccessary data;
     //char *name
     //int *healh
@@ -30,6 +34,7 @@ typedef struct enemy_type_s {
 } enemy_type_t;
 
 typedef struct map_s {
+    char *name;
     unsigned int x_size;
     unsigned int y_size;
     //TODO add all the neccessary data;
@@ -40,6 +45,7 @@ typedef struct map_s {
 } map_t;
 
 typedef struct weapon_s {
+    char *name;
     sfTexture *texture;
     sfSprite *sprite;
     sfMusic *music;
@@ -53,22 +59,25 @@ typedef struct weapon_s {
 } weapon_t;
 
 typedef struct entities_texture_s {
+    char *name;
     sfTexture *texture;
     struct entities_textures_s *next;
 } entities_texture_t;
 
 typedef struct environment_texture_s {
+    char *name;
     sfTexture *texture;
     struct environment_texture_s *next;
 } environment_texture_t;
 
 typedef struct gui_texture_s {
+    char *name;
     sfTexture *texture;
     struct gui_texture_s *next;
 } gui_texture_t;
 
 typedef struct assets_s {
-    effect_t *effects; //
+    sound_t *sounds; //
     music_t *musics; //
     enemy_type_t *enemy_types; //
     map_t *maps;

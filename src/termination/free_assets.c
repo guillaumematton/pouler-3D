@@ -7,7 +7,7 @@
 
 #include "wolf3d.h"
 
-void destroy_window_and_music(data_t *data)
+/*void destroy_window_and_music(data_t *data)
 {
     music_t *next_music = NULL;
 
@@ -95,3 +95,4 @@ void free_map_and_weapons(data_t *data)
         free(data->assets.weapons);
     }
 }
+*/
