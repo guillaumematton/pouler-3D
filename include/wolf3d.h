@@ -52,6 +52,7 @@ int main(int ac, char **av, char **env);
 bool check_if_in_gui(char **env);
 bool parse_args(data_t *data, char **av);
 bool display_help(data_t *data);
+
 bool initialize_game(data_t *data);
 bool load_assets(data_t *data);
 void load_assets_folder(data_t *data, char *module_path, char *folder_name,
@@ -65,6 +66,9 @@ void load_entity_texture(data_t *data, char *folder_path, char *asset_name);
 void load_environment_texture(data_t *data, char *folder_path,
     char *asset_name);
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
+
+void run_loop(data_t *data);
+
 void terminate_game(data_t *data);
 
 /*

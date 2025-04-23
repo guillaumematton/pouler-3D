@@ -7,22 +7,6 @@
 
 #include "wolf3d.h"
 
-//temp code vvv
-int main_loop(data_t *data)
-{
-    sfEvent event;
-
-    while (sfRenderWindow_isOpen(data->window)) {
-        sfRenderWindow_clear(data->window, sfBlack);
-        while (sfRenderWindow_pollEvent(data->window, &event) == 0)
-            continue;
-        if (event.type == sfEvtClosed)
-            break;
-    }
-    return 0;
-}
-///temp code ^^^
-
 static data_t initialize_data(void)
 {
     data_t data = {{false, false},
@@ -43,6 +27,6 @@ int main(UNUSED int ac, char **av, char **env)
     if (display_help(&data))
         return 0;
     initialize_game(&data);
-    main_loop(&data);
+    run_loop(&data);
     //terminate_game(&data);
 }

@@ -23,6 +23,7 @@ SRC	= src/main.c\
 	  src/initialization/load_entity_texture.c\
 	  src/initialization/load_environment_texture.c\
 	  src/initialization/load_gui_texture.c\
+	  src/main_loop/run_loop.c\
 	  src/termination/terminate_game.c\
 	  src/termination/free_assets.c\
 
