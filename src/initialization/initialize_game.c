@@ -34,7 +34,6 @@ bool initialize_game(data_t *data)
 {
     if (load_assets(data))
         return true;
-    exit(0);
     if (set_window(data))
         return true;
     return false;

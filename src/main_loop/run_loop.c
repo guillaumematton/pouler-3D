@@ -15,7 +15,7 @@ void run_loop(data_t *data)
         sfRenderWindow_clear(data->window, sfBlack);
         while (sfRenderWindow_pollEvent(data->window, &event) == 0)
             continue;
-	if (event.type == sfEvtClosed)
+        if (event.type == sfEvtClosed)
             break;
     }
     return;

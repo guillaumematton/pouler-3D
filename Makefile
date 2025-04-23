@@ -25,7 +25,7 @@ SRC	= src/main.c\
 	  src/initialization/load_gui_texture.c\
 	  src/main_loop/run_loop.c\
 	  src/termination/terminate_game.c\
-	  src/termination/free_assets.c\
+	  src/termination/destroy_assets.c\
 
 OBJ	= $(SRC:.c=.o)
 

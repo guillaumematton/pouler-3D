@@ -21,7 +21,7 @@ static bool load_module(data_t *data, char *name)
         &load_enemy_type);
     load_assets_folder(data, module_path, "/data/maps/", &load_map);
     load_assets_folder(data, module_path, "/data/weapons/", &load_weapon);
-    load_assets_folder(data, module_path, "/textures/entity/",
+    load_assets_folder(data, module_path, "/textures/entities/",
         &load_entity_texture);
     load_assets_folder(data, module_path, "/textures/environment/",
         &load_environment_texture);

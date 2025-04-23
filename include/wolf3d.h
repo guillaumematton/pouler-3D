@@ -44,9 +44,9 @@ typedef struct data {
     #define TILE_SIZE 64
 
 //void load_map(char *filename); //name conflict
-void init_player(Player_t *player);
-int is_wall(int x, int y);
-void print_help(void);
+//void init_player(Player_t *player);
+//int is_wall(int x, int y);
+//void print_help(void);
 
 int main(int ac, char **av, char **env);
 bool check_if_in_gui(char **env);
@@ -70,6 +70,7 @@ void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 void run_loop(data_t *data);
 
 void terminate_game(data_t *data);
+void destroy_assets(data_t *data);
 
 /*
 void free_map_and_weapons(data_t *data);

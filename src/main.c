@@ -27,6 +27,6 @@ int main(UNUSED int ac, char **av, char **env)
     if (display_help(&data))
         return 0;
     initialize_game(&data);
-    run_loop(&data);
-    //terminate_game(&data);
+    //run_loop(&data);
+    terminate_game(&data);
 }
