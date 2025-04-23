@@ -14,10 +14,12 @@ bool set_window(data_t *data)
     sfRenderWindow *window = NULL;
     int arg = sfClose;
 
+    data->sprites.in_full_screen = false;
     if (data->arguments.full_screen) {
         arg = sfClose | sfFullscreen;
         mode.width = 1920;
         mode.height = 1080;
+        data->sprites.in_full_screen = true;
     }
     window = sfRenderWindow_create(mode, "wolf3D",
         arg, NULL);
@@ -32,9 +34,9 @@ bool set_window(data_t *data)
 //returns true if error
 bool initialize_game(data_t *data)
 {
-    if (load_assets(data))
-        return true;
     if (set_window(data))
+        return true;
+    if (load_assets(data))
         return true;
     return false;
 }

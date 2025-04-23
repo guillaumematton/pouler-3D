@@ -17,6 +17,7 @@ then:
     - M = magazines (A.K.A ammunitions)
     - D = destructible walls
     - P = player
+    - N = next floor trigger (stairway)
 
 ### Correct weapon file format:
 texture : texture file  
