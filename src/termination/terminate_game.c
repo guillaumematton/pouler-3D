@@ -9,5 +9,6 @@
 
 void terminate_game(data_t *data)
 {
+    sfRenderWindow_destroy(data->window);
     destroy_assets(data);
 }

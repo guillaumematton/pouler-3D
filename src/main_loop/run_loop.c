@@ -10,13 +10,11 @@
 void run_loop(data_t *data)
 {
     sfEvent event;
-    int nb_music = search_nb_music(data->assets.musics);
-    sfMusic *music = pick_random_music(data->assets.musics, nb_music);
 
     while (sfRenderWindow_isOpen(data->window)) {
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
-        manage_music(&music, data, nb_music);
+        manage_music(data);
         in_menu(data);
         while (sfRenderWindow_pollEvent(data->window, &event) == 0)
             continue;

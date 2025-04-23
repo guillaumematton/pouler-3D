@@ -41,6 +41,7 @@ typedef struct data {
     assets_t assets;
     sprite_t sprites;
     sfRenderWindow *window;
+    sfMusic *current_music; //will have to be migrated someday
 } data_t;
 
     #define TILE_SIZE 64
@@ -70,15 +71,13 @@ void load_environment_texture(data_t *data, char *folder_path,
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 
 void run_loop(data_t *data);
+void manage_music(data_t *data);
 
 void terminate_game(data_t *data);
 void destroy_assets(data_t *data);
+
 bool in_menu(data_t *data);
 bool create_menu_background(data_t *data);
-
-int search_nb_music(music_t *pl);
-sfMusic *pick_random_music(music_t *pl, int nb_music);
-void manage_music(sfMusic **music, data_t *data, int nb_music);
 
 /*
 void free_map_and_weapons(data_t *data);
