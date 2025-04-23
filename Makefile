@@ -67,7 +67,7 @@ re: fclean all
 tests_run: all
 
 run: all
-	./$(NAME)
+	./$(NAME) -d
 
 libmy:
 	@cd lib/my ; make -s
@@ -77,4 +77,4 @@ libmy_debug:
 
 test: fclean debug
 	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all\
- ./$(NAME)_debug
+ ./$(NAME)_debug -d

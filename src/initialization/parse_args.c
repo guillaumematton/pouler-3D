@@ -19,6 +19,10 @@ static bool parse_string_arg(data_t *data, char *arg)
         data->arguments.full_screen = true;
         return false;
     }
+    if (my_strcmp(arg, "--debug") == 0) {
+        data->arguments.full_screen = true;
+        return false;
+    }
     mini_printf("wolf3d: unrecognized option '%s'\n", arg);
     return true;
 }
@@ -34,6 +38,9 @@ static bool parse_letter_arg(data_t *data, char *arg)
             break;
         case 'f':
             data->arguments.full_screen = true;
+            break;
+        case 'd':
+            data->arguments.debug = true;
             break;
         default:
             mini_printf("wolf3d: invalid option -- '%c'\n", arg[i]);

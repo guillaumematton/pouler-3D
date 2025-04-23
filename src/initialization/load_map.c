@@ -11,7 +11,8 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
 {
     map_t *new_struct = NULL;
 
-    mini_printf("    loading %s as a new map.\n", asset_path);
+    if (data->arguments.debug)
+        mini_printf("    loading %s as a new map.\n", asset_path);
     new_struct = malloc(sizeof(map_t));
     if (new_struct == NULL)
         return;
@@ -24,7 +25,8 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
 static void overwrite_struct(data_t *data, char *asset_path,
     map_t *asset_struct)
 {
-    mini_printf("    loading %s by overwriting the previous map.\n",
+    if (data->arguments.debug)
+        mini_printf("    loading %s by overwriting the previous map.\n",
         asset_path);
     //TODO parser
 }

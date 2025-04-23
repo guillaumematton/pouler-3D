@@ -27,6 +27,7 @@
 typedef struct argument_s {
     bool help;
     bool full_screen;
+    bool debug;
 } arguments_t;
 
 typedef struct Player_s {

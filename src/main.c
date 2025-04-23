@@ -9,7 +9,7 @@
 
 static data_t initialize_data(void)
 {
-    data_t data = {{false, false},
+    data_t data = {{false, false, false},
     {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
     NULL, NULL};
 
@@ -27,6 +27,8 @@ int main(UNUSED int ac, char **av, char **env)
         return 84;
     if (display_help(&data))
         return 0;
+    if (data.arguments.debug)
+        my_putstr("debug mode enabled.\n");
     initialize_game(&data);
     run_loop(&data);
     terminate_game(&data);

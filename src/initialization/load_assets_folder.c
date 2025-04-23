@@ -16,7 +16,8 @@ void load_assets_folder(data_t *data, char *module_path, char *folder_name,
 
     my_strcpy(folder_path, module_path);
     my_strcpy(folder_path + my_strlen(module_path), folder_name);
-    mini_printf("  loading %s\n", folder_name + 1);
+    if (data->arguments.debug)
+        mini_printf("  loading %s\n", folder_name + 1);
     dir = opendir(folder_path);
     if (dir == NULL)
         return;
