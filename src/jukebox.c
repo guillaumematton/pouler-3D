@@ -44,3 +44,10 @@ sfMusic *pick_random_music(music_t *pl, int nb_music)
         temp = temp->next;
     return add_music_no_loop(temp->music);
 }
+
+void manage_music(sfMusic **music, data_t *data, int nb_music)
+{
+    if (sfMusic_getStatus(*music) == sfStopped)
+        *music = pick_random_music(data->assets.musics, nb_music);
+    return;
+}

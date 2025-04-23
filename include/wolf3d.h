@@ -78,6 +78,7 @@ bool create_menu_background(data_t *data);
 
 int search_nb_music(music_t *pl);
 sfMusic *pick_random_music(music_t *pl, int nb_music);
+void manage_music(sfMusic **music, data_t *data, int nb_music);
 
 /*
 void free_map_and_weapons(data_t *data);

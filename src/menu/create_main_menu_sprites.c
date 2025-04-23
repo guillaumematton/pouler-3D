@@ -21,7 +21,6 @@ bool create_menu_background(data_t *data)
         sfSprite_destroy(data->sprites.menu->background);
         return true;
     }
-    printf("Sprite exist\n");
     sfSprite_setTexture(data->sprites.menu->background, gui->texture, sfTrue);
     sfSprite_setScale(data->sprites.menu->background, (sfVector2f){1.379310345, 1.392111369});
     sfSprite_setPosition(data->sprites.menu->background, (sfVector2f){0, 0});

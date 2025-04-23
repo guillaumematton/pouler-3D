@@ -14,9 +14,9 @@ void run_loop(data_t *data)
     sfMusic *music = pick_random_music(data->assets.musics, nb_music);
 
     while (sfRenderWindow_isOpen(data->window)) {
+        sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
-        if (sfMusic_getStatus(music) == sfStopped)
-            music = pick_random_music(data->assets.musics, nb_music);
+        manage_music(&music, data, nb_music);
         in_menu(data);
         while (sfRenderWindow_pollEvent(data->window, &event) == 0)
             continue;
