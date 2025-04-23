@@ -26,6 +26,7 @@ SRC	= src/main.c\
 	  src/main_loop/run_loop.c\
 	  src/termination/terminate_game.c\
 	  src/termination/destroy_assets.c\
+	  src/jukebox.c\
 
 OBJ	= $(SRC:.c=.o)
 

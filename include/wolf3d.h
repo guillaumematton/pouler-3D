@@ -18,6 +18,7 @@
     #include <SFML/Window/Event.h>
     #include <SFML/Audio.h>
     #include <math.h>
+    #include <time.h>
 
     #include "my.h"
 
@@ -71,6 +72,9 @@ void run_loop(data_t *data);
 
 void terminate_game(data_t *data);
 void destroy_assets(data_t *data);
+
+int search_nb_music(music_t *pl);
+sfMusic *pick_random_music(music_t *pl, int nb_music);
 
 /*
 void free_map_and_weapons(data_t *data);

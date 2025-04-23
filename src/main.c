@@ -20,6 +20,7 @@ int main(UNUSED int ac, char **av, char **env)
 {
     data_t data = initialize_data();
 
+    srand(time(NULL));
     if (check_if_in_gui(env) == false)
         return 84;
     if (parse_args(&data, av))
@@ -27,6 +28,6 @@ int main(UNUSED int ac, char **av, char **env)
     if (display_help(&data))
         return 0;
     initialize_game(&data);
-    //run_loop(&data);
+    run_loop(&data);
     terminate_game(&data);
 }
