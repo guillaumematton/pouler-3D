@@ -44,8 +44,8 @@ static sfMusic *pick_random_music(data_t *data)
 
 void manage_music(data_t *data)
 {
-    if (sfMusic_getStatus(data->current_music) == sfStopped ||
-        data->current_music == NULL) {
+    if (data->current_music == NULL ||
+        sfMusic_getStatus(data->current_music) == sfStopped) {
         data->current_music = pick_random_music(data);
         sfMusic_play(data->current_music);
         }

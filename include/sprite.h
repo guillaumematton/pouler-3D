@@ -33,8 +33,8 @@ typedef struct enemy_sprite_s {
 
 typedef struct sprite_s {
     bool in_full_screen;
-    menu_t *menu;
-    env_t *environment;
+    menu_t menu;
+    env_t environment;
     enemy_sprite_t *enemies;
 } sprite_t;
 
