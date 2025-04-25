@@ -9,15 +9,21 @@
     #define SPRITE_H_
     #include "wolf3d.h"
 
+typedef struct option_s {
+    sfSprite *full_screen;
+    sfSprite *empty_box;
+    sfSprite *full_box;
+    sfSprite *back;
+} option_t;
+
 typedef struct menu_s {
     sfSprite *background;
     sfSprite *start_game;
     sfSprite *continue_game;
     sfSprite *options;
     sfSprite *exit_game;
-    sfSprite *full_screen;
-    sfSprite *empty_box;
-    sfSprite *full_box;
+    sfSprite *lore;
+    option_t options_sprites;
 } menu_t;
 
 typedef struct env_s {
