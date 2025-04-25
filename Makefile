@@ -30,6 +30,8 @@ SRC	= src/main.c\
 	  src/menu/in_menu.c\
 	  src/menu/create_main_menu_sprites.c\
 
+LIB	= lib/libmy.a\
+
 OBJ	= $(SRC:.c=.o)
 
 CC	= gcc
@@ -47,34 +49,34 @@ ifeq ($(MAKECMDGOALS),test)
 endif
 
 
-all: libmy $(OBJ)
+all: $(NAME)
+
+debug: $(NAME)_debug
+
+$(NAME): $(LIB) $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(WFLAGS)
 
-debug: libmy_debug $(OBJ)
-	$(CC) -o $(NAME)_debug $(OBJ) $(CFLAGS) -g $(WFLAGS)
+$(NAME)_debug: $(LIB) $(OBJ)
+	$(CC) -o $(NAME)_debug $(OBJ) $(CFLAGS) $(WFLAGS)
 
 clean:
+	@$(MAKE) clean -sC lib/my
 	@cd lib/my ; make clean -s
 	@rm -f $(OBJ)
 
 fclean: clean
-	@cd lib/my ; make fclean -s
+	@$(MAKE) fclean -sC lib/my
 	@rm -f $(NAME)
 	@rm -f $(NAME)_debug
 
 re: fclean all
 
-tests_run: all
-
 run: all
-	./$(NAME) -d
+	./$(NAME)
 
-libmy:
-	@cd lib/my ; make -s
+$(LIB):
+	@$(MAKE) -sC lib/my
 
-libmy_debug:
-	@cd lib/my ; make debug -s
-
-test: fclean debug
+test: debug
 	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all\
- ./$(NAME)_debug -d
+ ./$(NAME)_debug
