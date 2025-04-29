@@ -30,6 +30,17 @@ bool set_window(data_t *data)
     return false;
 }
 
+void initialize_player(data_t *data)
+{
+    data->player.health = 100;
+    data->player.x = 0;
+    data->player.y = 0;
+    data->player.dirX = -1;
+    data->player.dirY = 0;
+    data->player.planeX = 0;
+    data->player.planeY = 0.90; // 90 ° FOV
+}
+
 //does all the neccessary work to start the game (which you just lost)
 //returns true if error
 bool initialize_game(data_t *data)

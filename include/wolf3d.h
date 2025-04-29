@@ -34,11 +34,15 @@ typedef struct Player_s {
     float health;
     float x;
     float y;
-    float angle;
+    float dirX;
+    float dirY;
+    float planeX;
+    float planeY;
 } Player_t;
 
 typedef struct data {
     arguments_t arguments;
+    Player_t player;
     assets_t assets;
     sprite_t sprites;
     sfRenderWindow *window;
@@ -50,7 +54,6 @@ typedef struct data {
 //void load_map(char *filename); //name conflict
 //void init_player(Player_t *player);
 //int is_wall(int x, int y);
-//void print_help(void);
 
 int main(int ac, char **av, char **env);
 bool check_if_in_gui(char **env);
