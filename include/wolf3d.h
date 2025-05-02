@@ -32,6 +32,7 @@ typedef struct argument_s {
 
 typedef struct Player_s {
     float health;
+
     float x;
     float y;
     float dirX;
@@ -43,6 +44,7 @@ typedef struct Player_s {
 typedef struct data {
     arguments_t arguments;
     Player_t player;
+    sfClock *clock;
     assets_t assets;
     sprite_t sprites;
     sfRenderWindow *window;
