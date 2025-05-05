@@ -12,7 +12,7 @@ static data_t initialize_data(void)
     data_t data = {{false, false, false},
     {100, 0, 0, 0, 0, 0, 90}, NULL,
     {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-    {false, {NULL, NULL, NULL, NULL, NULL, NULL,
+    {false, {NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     {NULL, NULL, NULL, NULL}}, {NULL, NULL, NULL}, NULL},
     NULL, NULL};
 

@@ -17,8 +17,9 @@ typedef struct option_s {
 } option_t;
 
 typedef struct menu_s {
+    sfSprite *title;
     sfSprite *background;
-    sfSprite *start_game;
+    sfSprite *new_game;
     sfSprite *continue_game;
     sfSprite *options;
     sfSprite *exit_game;
