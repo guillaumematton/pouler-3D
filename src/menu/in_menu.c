@@ -14,5 +14,7 @@ bool in_settings(data_t *data)
 
 bool in_menu(data_t *data)
 {
+    if (data->sprites.menu.background != NULL)
+        sfRenderWindow_drawSprite(data->window, data->sprites.menu.background, NULL);
     return false;
 }

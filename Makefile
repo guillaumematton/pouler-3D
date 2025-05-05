@@ -28,7 +28,7 @@ SRC	= src/main.c\
 	  src/termination/terminate_game.c\
 	  src/termination/destroy_assets.c\
 	  src/menu/in_menu.c\
-	  src/menu/create_main_menu_sprites.c\
+	  src/initialization/create_menu_sprites.c\
 
 LIB	= lib/libmy.a\
 

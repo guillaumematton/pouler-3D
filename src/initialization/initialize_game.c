@@ -49,5 +49,7 @@ bool initialize_game(data_t *data)
         return true;
     if (load_assets(data))
         return true;
+    if (create_menu_sprites(data))
+        return true;
     return false;
 }
