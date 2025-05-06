@@ -16,7 +16,7 @@ bool create_gui_sprite(data_t *data, const char *filename, sfSprite **adress_spr
     if (!sprite)
         return true;
     for (; gui != NULL && my_strcmp(gui->name, filename) != 0;
-        gui = gui->next)
+         gui = gui->next);
     if (gui == NULL) {
         if (data->arguments.debug)
             printf("Failed to load %s sprite. Aborting\n", filename);
@@ -55,7 +55,7 @@ bool create_menu_sprites(data_t *data)
     if (create_gui_sprite(data, "new_game.png",
         &data->sprites.menu.new_game))
         return true;
-    if (create_gui_sprite(data, "continue.png",
+    if (create_gui_sprite(data, "continue_game.png",
         &data->sprites.menu.continue_game))
         return true;
     if (create_gui_sprite(data, "lore.png", &data->sprites.menu.lore))
@@ -63,6 +63,8 @@ bool create_menu_sprites(data_t *data)
     if (create_gui_sprite(data, "exit.png", &data->sprites.menu.exit_game))
         return true;
     if (create_gui_sprite(data, "option.png", &data->sprites.menu.options))
+        return true;
+    if (create_gui_sprite(data, "title.png", &data->sprites.menu.title))
         return true;
     if (create_options_sprite(data))
         return true;

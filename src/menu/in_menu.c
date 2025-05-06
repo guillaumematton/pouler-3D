@@ -15,5 +15,11 @@ bool in_settings(data_t *data)
 bool in_menu(data_t *data)
 {
     sfRenderWindow_drawSprite(data->window, data->sprites.menu.background, NULL);
+    sfRenderWindow_drawSprite(data->window, data->sprites.menu.continue_game, NULL);
+    sfRenderWindow_drawSprite(data->window, data->sprites.menu.new_game, NULL);
+    sfRenderWindow_drawSprite(data->window, data->sprites.menu.options, NULL);
+    sfRenderWindow_drawSprite(data->window, data->sprites.menu.lore, NULL);
+    sfRenderWindow_drawSprite(data->window, data->sprites.menu.exit_game, NULL);
+    sfRenderWindow_drawSprite(data->window, data->sprites.menu.title, NULL);
     return false;
 }
