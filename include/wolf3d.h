@@ -50,6 +50,14 @@ typedef struct data {
     sfMusic *current_music; //will have to be migrated someday
 } data_t;
 
+typedef struct ray_s {
+    float rayDirX0;
+    float rayDirY0;
+    float rayDirX1;
+    float rayDirY1;
+    float rowDistance;
+} ray_t;
+
     #define TILE_SIZE 64
 
 //void load_map(char *filename); //name conflict
