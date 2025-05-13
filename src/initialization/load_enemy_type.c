@@ -12,7 +12,9 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     enemy_type_t *new_struct = NULL;
 
     if (data->arguments.debug)
-        mini_printf("    loading %s as a new enemy type.\n", asset_path);
+        mini_printf(
+        "\tloading %s as a new enemy type.\n",
+        asset_path);
     new_struct = malloc(sizeof(enemy_type_t));
     if (new_struct == NULL)
         return;
@@ -26,8 +28,9 @@ static void overwrite_struct(data_t *data, char *asset_path,
     enemy_type_t *asset_struct)
 {
     if (data->arguments.debug)
-        mini_printf("    loading %s by overwriting the previous enemy type.\n",
-        asset_path);
+        mini_printf(
+       "\tloading %s by overwriting the previous enemy type.\n",
+ asset_path);
     //TODO parser
 }
 

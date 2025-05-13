@@ -15,7 +15,7 @@ static bool load_module(data_t *data, char *name)
 
     my_strcpy(module_path + 7, name);
     if (data->arguments.debug)
-        mini_printf("loading %s module.\n", name);
+        mini_printf("    loading %s module.\n", name);
     load_assets_folder(data, module_path, "/audio/sounds/", &load_sound);
     load_assets_folder(data, module_path, "/audio/musics/", &load_music);
     load_assets_folder(data, module_path, "/data/enemy_types/",
@@ -61,6 +61,8 @@ static bool load_modules(data_t *data)
 //returns true if error
 bool load_assets(data_t *data)
 {
+    if (data->arguments.debug)
+        mini_printf("  loading assets.\n");
     load_module(data, "core");
     load_modules(data);
 }

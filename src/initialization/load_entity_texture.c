@@ -12,7 +12,9 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     entity_texture_t *new_struct = NULL;
 
     if (data->arguments.debug)
-        mini_printf("    loading %s as a new entity_texture.\n", asset_path);
+        mini_printf(
+        "\tloading %s as a new entity_texture.\n",
+        asset_path);
     new_struct = malloc(sizeof(entity_texture_t));
     if (new_struct == NULL)
         return;
@@ -27,7 +29,7 @@ static void overwrite_struct(data_t *data, char *asset_path,
 {
     if (data->arguments.debug)
         mini_printf(
-        "    loading %s by overwriting the previous entity_texture.\n",
+        "\tloading %s by overwriting the previous entity_texture.\n",
         asset_path);
     sfTexture_destroy(asset_struct->texture);
     asset_struct->texture = sfTexture_createFromFile(asset_path, NULL);

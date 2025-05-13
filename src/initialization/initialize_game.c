@@ -45,6 +45,8 @@ void initialize_player(data_t *data)
 //returns true if error
 bool initialize_game(data_t *data)
 {
+    if (data->arguments.debug)
+        mini_printf("starting game initialization.\n");
     if (set_window(data))
         return true;
     if (load_assets(data))
