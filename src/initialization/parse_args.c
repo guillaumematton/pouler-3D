@@ -20,7 +20,7 @@ static bool parse_string_arg(data_t *data, char *arg)
         return false;
     }
     if (my_strcmp(arg, "--debug") == 0) {
-        data->arguments.full_screen = true;
+        data->arguments.debug = true;
         return false;
     }
     mini_printf("wolf3d: unrecognized option '%s'\n", arg);
