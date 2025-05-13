@@ -39,25 +39,22 @@ CC	= gcc
 WFLAGS  = -Wall -Wextra -fanalyzer
 
 CFLAGS	= -I include -L lib -l my -lm -l csfml-graphics\
-	-l csfml-audio -l csfml-system -lm
-
-ifeq ($(MAKECMDGOALS),debug)
-    CFLAGS += -g
-endif
-ifeq ($(MAKECMDGOALS),test)
-    CFLAGS += -g
-endif
+	-l csfml-audio -l csfml-system
 
 
 all: $(NAME)
 
-debug: $(NAME)_debug
-
 $(NAME): $(LIB) $(OBJ)
 	$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(WFLAGS)
 
+debug: CFLAGS += -g
+debug: $(NAME)_debug
+
 $(NAME)_debug: $(LIB) $(OBJ)
 	$(CC) -o $(NAME)_debug $(OBJ) $(CFLAGS) $(WFLAGS)
+
+$(LIB):
+	@$(MAKE) -sC lib/my
 
 clean:
 	@$(MAKE) clean -sC lib/my
@@ -72,11 +69,8 @@ fclean: clean
 re: fclean all
 
 run: all
-	./$(NAME)
-
-$(LIB):
-	@$(MAKE) -sC lib/my
+	./$(NAME) -d
 
 test: debug
 	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all\
- ./$(NAME)_debug
+ ./$(NAME)_debug -d
