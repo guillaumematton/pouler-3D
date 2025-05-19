@@ -66,6 +66,27 @@ typedef struct ray_s {
     float rowDistance;
 } ray_t;
 
+typedef struct dist_info_s {
+    int mapX;
+    int mapY;
+    int stepX;
+    int stepY;
+    float deltaDistX;
+    float deltaDistY;
+    float perpWallDist;
+    float sideDistX;
+    float sideDistY;
+    int side;
+    int hit;
+} dist_info_t;
+
+typedef struct draw_info_s {
+    int texX;
+    int line_height;
+    int draw_start;
+    float wallX;
+} draw_info_t;
+
     #define TILE_SIZE 64
 
 //void load_map(char *filename); //name conflict
@@ -97,6 +118,8 @@ void terminate_game(data_t *data);
 void destroy_assets(data_t *data);
 
 void in_menu(data_t *data, char game_state);
+void floor_and_ceiling_casting(data_t *data,
+    int screen_width, int screen_height);
 
 /*
 void free_map_and_weapons(data_t *data);
