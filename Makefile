@@ -72,5 +72,9 @@ run: all
 	./$(NAME) -d
 
 test: debug
-	valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all\
- ./$(NAME)_debug -d
+	valgrind \
+--track-origins=yes \
+--leak-check=full \
+--show-leak-kinds=all \
+--suppressions=valgrind_suppression \
+./$(NAME)_debug -d

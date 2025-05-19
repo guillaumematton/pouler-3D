@@ -1,0 +1,79 @@
+{
+   name
+   Memcheck:Cond
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.550.144.03
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-audio.so.2.6.1
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.550.144.03
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libpipewire-0.3.so.0.1005.0
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:/usr/lib/x86_64-linux-gnu/libcsfml-graphics.so.2.6.0
+   ...
+}
+
+{
+   name
+   Memcheck:Leak
+   fun:*alloc
+   ...
+   obj:
+   ...
+}
