@@ -49,7 +49,7 @@ void manage_music(data_t *data, char game_state)
     if (data->current_music == NULL ||
         data->current_music_name == NULL ||
         sfMusic_getStatus(data->current_music) == sfStopped ||
-        my_strcmp(data->current_music_name, "menu.ogg" == 0)) {
+        my_strcmp(data->current_music_name, "menu.ogg") == 0) {
         data->current_music = pick_random_music(data);
         sfMusic_play(data->current_music);
     }

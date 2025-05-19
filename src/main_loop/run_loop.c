@@ -34,8 +34,11 @@ void run_loop(data_t *data)
 {
     sfEvent event;
     char game_state = MENU;
+    sfVector2i mouse_pos = {0};
+    sfVector2f newgame_pos = {0};
 
     set_all(data);
+    newgame_pos = sfSprite_getPosition(data->sprites.menu.new_game);
     while (sfRenderWindow_isOpen(data->window)) {
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
@@ -45,6 +48,13 @@ void run_loop(data_t *data)
             continue;
         if (event.type == sfEvtClosed)
             break;
+        if (event.mouseButton.button == sfMouseLeft) {
+            mouse_pos = sfMouse_getPositionRenderWindow(data->window);
+            if (mouse_pos.x >= newgame_pos.x && mouse_pos.x <=
+                newgame_pos.x + 266 && mouse_pos.y >= newgame_pos.y + 85 &&
+                mouse_pos.y <= newgame_pos.y + 116) {
+                printf("newgame\n");
+            }
+        }
     }
-    return;
 }

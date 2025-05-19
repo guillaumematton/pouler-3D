@@ -96,7 +96,7 @@ void manage_music(data_t *data, char game_state);
 void terminate_game(data_t *data);
 void destroy_assets(data_t *data);
 
-bool in_menu(data_t *data, char game_state);
+void in_menu(data_t *data, char game_state);
 
 /*
 void free_map_and_weapons(data_t *data);
