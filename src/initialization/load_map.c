@@ -33,14 +33,13 @@ static void parse_size(char *line, map_t *asset_struct)
     my_freestrarray(arr);
 }
 
-static void map_parser(char *asset_path, map_t *asset_struct, char *asset_name)
+static void map_parser(char *asset_path, map_t *asset_struct)
 {
     char *buffer = my_readfile(asset_path);
     char **lines = my_strsplit(buffer, "\n", false);
 
     if (buffer == NULL || lines == NULL)
         return;
-    asset_struct->name = my_strdup(asset_name);
     parse_size(lines[1], asset_struct);
     parse_array(lines + 2, &asset_struct->walls, asset_struct);
     parse_array(lines + 2 + asset_struct->y_size,
@@ -65,23 +64,22 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     if (new_struct == NULL)
         return;
     new_struct->next = data->assets.maps;
-    map_parser(asset_path, new_struct, asset_name);
+    map_parser(asset_path, new_struct);
     new_struct->name = my_strdup(asset_name);
     data->assets.maps = new_struct;
 }
 
 static void overwrite_struct(data_t *data, char *asset_path,
-    map_t *asset_struct, char *asset_name)
+    map_t *asset_struct)
 {
     if (data->arguments.debug)
         mini_printf(
         "\tloading %s by overwriting the previous map.\n",
         asset_path);
-    my_free(asset_struct->name);
     my_freestrarray(asset_struct->walls);
     my_freestrarray(asset_struct->floor);
     my_freestrarray(asset_struct->ceiling);
-    map_parser(asset_path, asset_struct, asset_name);
+    map_parser(asset_path, asset_struct);
 }
 
 //loads the asset by first checking for an asset with
@@ -96,7 +94,7 @@ void load_map(data_t *data, char *folder_path, char *asset_name)
     my_strcpy(asset_path + my_strlen(folder_path), asset_name);
     while (asset_struct != NULL) {
         if (my_strcmp(asset_struct->name, asset_name) == 0) {
-            overwrite_struct(data, asset_path, asset_struct, asset_name);
+            overwrite_struct(data, asset_path, asset_struct);
             return;
         }
         asset_struct = asset_struct->next;
