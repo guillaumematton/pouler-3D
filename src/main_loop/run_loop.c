@@ -44,6 +44,7 @@ void run_loop(data_t *data)
         sfRenderWindow_clear(data->window, sfBlack);
         manage_music(data, game_state);
         in_menu(data, game_state);
+        render_in_map(data, game_state);
         while (sfRenderWindow_pollEvent(data->window, &event) == 0)
             continue;
         if (event.type == sfEvtClosed)
@@ -53,7 +54,7 @@ void run_loop(data_t *data)
             if (mouse_pos.x >= newgame_pos.x && mouse_pos.x <=
                 newgame_pos.x + 266 && mouse_pos.y >= newgame_pos.y + 85 &&
                 mouse_pos.y <= newgame_pos.y + 116) {
-                printf("newgame\n");
+                game_state = GAME;
             }
         }
     }

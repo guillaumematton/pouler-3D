@@ -63,7 +63,7 @@ static void colisions(data_t *data, dist_info_t *dists, ray_t *rays)
             dists->mapY += dists->stepY;
             dists->side = 1;
         }
-        if (map[dists->mapX][dists->mapY] == 'A')
+        if (data->assets.maps->walls[dists->mapX][dists->mapY] == 'A')
             dists->hit = 1;
     }
     if (dists->side == 0)
@@ -102,16 +102,18 @@ static void draw_walls(data_t *data, draw_info_t draw, int x)
 {
     sfIntRect texRect = {draw.texX, 0, 1, TILE_SIZE};
 
+    printf("Before Sprites\n");
     sfSprite_setTextureRect(data->sprites.environment.walls, texRect);
     sfSprite_setScale(data->sprites.environment.walls,
-            (sfVector2f){1.0f, (float)draw.line_height / TILE_SIZE});
+        (sfVector2f){1.0f, (float)draw.line_height / TILE_SIZE});
     sfSprite_setPosition(data->sprites.environment.walls,
-            (sfVector2f){(float)x, (float)draw.draw_start});
+        (sfVector2f){(float)x, (float)draw.draw_start});
     sfRenderWindow_drawSprite(data->window,
-            data->sprites.environment.walls, NULL);
+        data->sprites.environment.walls, NULL);
+    printf("After Sprites\n");
 }
 
-void render_in_map(data_t *data, char **map)
+void render_in_map(data_t *data, char game_state)
 {
     int screen_height = sfRenderWindow_getSize(data->window).y;
     int screen_width = sfRenderWindow_getSize(data->window).x;
@@ -119,6 +121,8 @@ void render_in_map(data_t *data, char **map)
     ray_t rays = {0, 0, 0, 0, 0};
     draw_info_t draw = {0, 0, 0, 0};
 
+    if (game_state != GAME)
+        return;
     for (int x = 0; x < screen_width; x++) {
         fill_rays(data, &rays, x, screen_width);
         fill_dists(data, &rays, &dists, x);

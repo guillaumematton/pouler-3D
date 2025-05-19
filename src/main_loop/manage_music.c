@@ -39,6 +39,7 @@ static sfMusic *pick_random_music(data_t *data)
         music = music->next;
     if (data->arguments.debug)
         mini_printf("playing %s\n", music->name);
+    data->current_music_name = music->name;
     return music->music;
 }
 

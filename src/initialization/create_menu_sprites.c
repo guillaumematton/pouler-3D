@@ -17,7 +17,7 @@ bool create_gui_sprite(data_t *data, const char *filename,
     if (!sprite)
         return true;
     for (; gui != NULL && my_strcmp(gui->name, filename) != 0;
-            gui = gui->next);
+         gui = gui->next);
     if (gui == NULL) {
         if (data->arguments.debug)
             printf("Failed to load %s sprite. Aborting\n", filename);

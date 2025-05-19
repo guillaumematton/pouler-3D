@@ -29,6 +29,10 @@ SRC	= src/main.c\
 	  src/termination/destroy_assets.c\
 	  src/menu/in_menu.c\
 	  src/initialization/create_menu_sprites.c\
+	  src/initialization/create_environment_sprites.c\
+	  src/main_loop/renderer.c\
+	  src/main_loop/floor_casting.c\
+	  src/main_loop/player_movement.c\
 
 LIB	= lib/libmy.a\
 
@@ -39,7 +43,7 @@ CC	= gcc
 WFLAGS  = -Wall -Wextra -fanalyzer
 
 CFLAGS	= -I include -L lib -l my -lm -l csfml-graphics\
-	-l csfml-audio -l csfml-system
+	-l csfml-audio -l csfml-system -l csfml-window
 
 
 all: $(NAME)
