@@ -42,11 +42,15 @@ static sfMusic *pick_random_music(data_t *data)
     return music->music;
 }
 
-void manage_music(data_t *data)
+void manage_music(data_t *data, char game_state)
 {
+    if (game_state == MENU)
+        return;
     if (data->current_music == NULL ||
-        sfMusic_getStatus(data->current_music) == sfStopped) {
+        data->current_music_name == NULL ||
+        sfMusic_getStatus(data->current_music) == sfStopped ||
+        my_strcmp(data->current_music_name, "menu.ogg" == 0)) {
         data->current_music = pick_random_music(data);
         sfMusic_play(data->current_music);
-        }
+    }
 }

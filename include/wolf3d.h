@@ -30,6 +30,13 @@ typedef struct argument_s {
     bool debug;
 } arguments_t;
 
+enum game_state {
+    MENU,
+    OPTIONS,
+    GAME,
+    PAUSE
+};
+
 typedef struct Player_s {
     float health;
     float x;
@@ -48,6 +55,7 @@ typedef struct data {
     sprite_t sprites;
     sfRenderWindow *window;
     sfMusic *current_music; //will have to be migrated someday
+    char *current_music_name;
 } data_t;
 
 typedef struct ray_s {
@@ -64,7 +72,6 @@ typedef struct ray_s {
 //void init_player(Player_t *player);
 //int is_wall(int x, int y);
 
-int main(int ac, char **av, char **env);
 bool check_if_in_gui(char **env);
 bool parse_args(data_t *data, char **av);
 bool display_help(data_t *data);
@@ -84,12 +91,12 @@ void load_environment_texture(data_t *data, char *folder_path,
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 
 void run_loop(data_t *data);
-void manage_music(data_t *data);
+void manage_music(data_t *data, char game_state);
 
 void terminate_game(data_t *data);
 void destroy_assets(data_t *data);
 
-bool in_menu(data_t *data);
+bool in_menu(data_t *data, char game_state);
 
 /*
 void free_map_and_weapons(data_t *data);

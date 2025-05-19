@@ -7,7 +7,8 @@
 
 #include "wolf3d.h"
 
-bool create_gui_sprite(data_t *data, const char *filename, sfSprite **adress_sprite)
+bool create_gui_sprite(data_t *data, const char *filename,
+    sfSprite **adress_sprite)
 {
     gui_texture_t **gui_txt = &data->assets.gui_textures;
     gui_texture_t *gui = *gui_txt;
@@ -16,7 +17,7 @@ bool create_gui_sprite(data_t *data, const char *filename, sfSprite **adress_spr
     if (!sprite)
         return true;
     for (; gui != NULL && my_strcmp(gui->name, filename) != 0;
-         gui = gui->next);
+            gui = gui->next);
     if (gui == NULL) {
         if (data->arguments.debug)
             printf("Failed to load %s sprite. Aborting\n", filename);

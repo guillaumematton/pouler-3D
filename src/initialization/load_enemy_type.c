@@ -29,8 +29,8 @@ static void overwrite_struct(data_t *data, char *asset_path,
 {
     if (data->arguments.debug)
         mini_printf(
-       "\tloading %s by overwriting the previous enemy type.\n",
- asset_path);
+            "\tloading %s by overwriting the previous enemy type.\n",
+            asset_path);
     //TODO parser
 }
 

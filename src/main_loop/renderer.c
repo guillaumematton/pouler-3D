@@ -90,6 +90,4 @@ void render_in_map(data_t *data, char **map)
         sfSprite_setPosition(data->sprites.environment.walls, (sfVector2f){(float)x, (float)drawStart});
         sfRenderWindow_drawSprite(data->window, data->sprites.environment.walls, NULL);
     }
-    
-    
 }

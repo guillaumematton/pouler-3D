@@ -7,7 +7,8 @@
 
 #include "wolf3d.h"
 
-void set_position_scale(float scale_value, float positionx, float positiony, sfSprite *sprite)
+void set_position_scale(float scale_value, float positionx,
+    float positiony, sfSprite *sprite)
 {
     sfVector2f scale = {scale_value, scale_value};
     sfVector2f position = {positionx, positiony};
@@ -32,13 +33,14 @@ void set_all(data_t *data)
 void run_loop(data_t *data)
 {
     sfEvent event;
+    char game_state = MENU;
 
     set_all(data);
     while (sfRenderWindow_isOpen(data->window)) {
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
-        manage_music(data);
-        in_menu(data);
+        manage_music(data, game_state);
+        in_menu(data, game_state);
         while (sfRenderWindow_pollEvent(data->window, &event) == 0)
             continue;
         if (event.type == sfEvtClosed)
