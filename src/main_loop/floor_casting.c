@@ -20,14 +20,14 @@ sfIntRect get_texture_rect(data_t *data, float worldX, float worldY)
 {
     int texX = 0;
     int texY = 0;
-    gui_texture_t **gui_txt = &data->assets.gui_textures;
-    gui_texture_t *gui = *gui_txt;
+    environment_texture_t **env_txt = &data->assets.environment_textures;
+    environment_texture_t *env = *env_txt;
     sfIntRect rect;
     sfVector2u texSize;
 
-    for (; gui != NULL && my_strcmp(gui->name, "floor.png") != 0;
-        gui = gui->next);
-    texSize = sfTexture_getSize(gui->texture);
+    for (; env != NULL && my_strcmp(env->name, "J") != 0;
+        env = env->next);
+    texSize = sfTexture_getSize(env->texture);
     texX = (int)(texSize.x * (worldX - (int)worldX)) & (texSize.x - 1);
     texY = (int)(texSize.y * (worldY - (int)worldY)) & (texSize.y - 1);
     rect = (sfIntRect){texX, texY, 1, 1};

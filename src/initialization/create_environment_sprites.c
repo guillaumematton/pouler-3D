@@ -33,13 +33,13 @@ bool create_env_sprite(data_t *data, const char *filename,
 
 bool create_room_sprites(data_t *data)
 {
-    if (create_env_sprite(data, "ceiling.png",
+    if (create_env_sprite(data, "J",
         &data->sprites.environment.ceiling))
         return true;
-    if (create_env_sprite(data, "floor.png",
+    if (create_env_sprite(data, "J",
         &data->sprites.environment.floor))
         return true;
-    if (create_env_sprite(data, "A_wall.png",
+    if (create_env_sprite(data, "J",
         &data->sprites.environment.walls))
         return true;
     return false;
