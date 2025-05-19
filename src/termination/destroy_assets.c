@@ -63,8 +63,11 @@ static void destroy_maps(data_t *data)
     while (asset_struct != NULL) {
         if (data->arguments.debug)
             mini_printf("    destroying %s.\n", asset_struct->name);
-        //TODO free stuff
         my_free(asset_struct->name);
+	my_freestrarray(asset_struct->walls);
+	my_freestrarray(asset_struct->floor);
+	my_freestrarray(asset_struct->ceiling);
+	my_freestrarray(asset_struct->special);
         struct_to_free = asset_struct;
         asset_struct = asset_struct->next;
         free(struct_to_free);

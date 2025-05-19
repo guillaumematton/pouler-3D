@@ -58,6 +58,7 @@ SRC	= free_array.c\
 	  my_wordlen.c\
 	  my_wordleninv.c\
 	  my_isadir.c\
+	  my_readfile.c\
 
 CC	= gcc
 

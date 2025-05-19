@@ -37,10 +37,10 @@ typedef struct map_s {
     char *name;
     unsigned int x_size;
     unsigned int y_size;
-    //TODO add all the neccessary data;
-    //char **arr;
-    //char *name;
-    //..........
+    char **walls;
+    char **floor;
+    char **ceiling;
+    char **special;
     struct map_s *next;
 } map_t;
 
