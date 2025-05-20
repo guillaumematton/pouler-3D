@@ -46,6 +46,10 @@ void initialize_player(data_t *data)
 //returns true if error
 bool initialize_game(data_t *data)
 {
+    data->game_vertex = sfVertexArray_create();
+    if (!data->game_vertex)
+        return true;
+    sfVertexArray_setPrimitiveType(data->game_vertex, sfPoints);
     if (data->arguments.debug)
         mini_printf("starting game initialization.\n");
     if (set_window(data))

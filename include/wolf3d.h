@@ -57,6 +57,7 @@ typedef struct data {
     sfMusic *current_music;
     char *current_music_name;
     enum scene scene;
+    sfVertexArray *game_vertex;
     bool exit;
     sfEvent event;
 } data_t;
@@ -67,6 +68,10 @@ typedef struct ray_s {
     float rayDirX1;
     float rayDirY1;
     float rowDistance;
+    float stepX;
+    float stepY;
+    float floorX;
+    float floorY;
 } ray_t;
 
 typedef struct dist_info_s {
@@ -91,6 +96,9 @@ typedef struct draw_info_s {
 } draw_info_t;
 
     #define TILE_SIZE 64
+    #define SCREEN_WIDTH 800
+    #define SCREEN_HEIGHT 600
+    #define TEX_SIZE 48
 
 //init
 bool check_if_in_gui(char **env);

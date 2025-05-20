@@ -75,9 +75,12 @@ static void handle_camera_movement(data_t *data,
     if (sfKeyboard_isKeyPressed(sfKeyE))
         deltaX -= 20;
     rot = rotSpeed * deltaX;
-    data->player.dirX = data->player.dirX * cos(-rot) - data->player.dirY * sin(-rot);
-    data->player.dirY = oldDirX * sin(-rot) + data->player.dirY * cos(-rot);
-    data->player.planeX = data->player.planeX * cos(-rot) - data->player.planeY * sin(-rot);
+    data->player.dirX = data->player.dirX * cos(-rot)
+        - data->player.dirY * sin(-rot);
+    data->player.dirY = oldDirX * sin(-rot) +
+        data->player.dirY * cos(-rot);
+    data->player.planeX = data->player.planeX *
+        cos(-rot) - data->player.planeY * sin(-rot);
     data->player.planeY = oldPlaneX * sin(-rot) + data->player.planeY * cos(-rot);
 }
 
@@ -86,7 +89,7 @@ void handle_movement(char **map,
 {
     sfTime elapsed = sfClock_getElapsedTime(data->clock);
     float delta_time = sfTime_asSeconds(elapsed);
-    float moveSpeed = 2.0f * delta_time; // basic movement speed = 5.0f
+    float moveSpeed = 2.0f * delta_time; // basic movement speed = 2.0f
     float rotSpeed = 0.1f * delta_time; // basic sensitivity = 0.1f
     sfVector2i mousePos = sfMouse_getPositionRenderWindow(data->window);
     sfVector2u screen = sfRenderWindow_getSize(data->window);
