@@ -57,6 +57,7 @@ typedef struct data {
     sfMusic *current_music;
     char *current_music_name;
     enum scene scene;
+    bool exit;
     sfEvent event;
 } data_t;
 

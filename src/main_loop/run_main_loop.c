@@ -12,7 +12,7 @@ void run_main_loop(data_t *data)
     sfVector2i mouse_pos = {0}; //temp
 
     set_sprite_positions(data);
-    while (sfRenderWindow_isOpen(data->window)) {
+    while (sfRenderWindow_isOpen(data->window) && data->exit == false) {
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
         manage_music(data);

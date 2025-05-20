@@ -23,7 +23,7 @@ static void detect_button_mouse_click(data_t *data, menu_infos_t *menu_infos)
         printf("lore\n");
     if (sfFloatRect_contains(&menu_infos->exit_infos,
     menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        printf("exit\n");
+        data->exit = true;
 }
 
 static void handle_button_clicks(data_t *data)
