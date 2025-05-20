@@ -118,10 +118,11 @@ void terminate_game(data_t *data);
 void destroy_assets(data_t *data);
 
 void in_menu(data_t *data, char game_state);
-void floor_and_ceiling_casting(data_t *data,
-    int screen_width, int screen_height);
 
 void render_in_map(data_t *data, char game_state);
+
+void handle_movement(char **map,
+    data_t *data, char game_state);
 
 /*
 void free_map_and_weapons(data_t *data);

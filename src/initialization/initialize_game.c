@@ -14,6 +14,9 @@ bool set_window(data_t *data)
     sfRenderWindow *window = NULL;
     int arg = sfClose;
 
+    data->clock = sfClock_create();
+    if (!data->clock)
+        return true;
     if (data->arguments.full_screen) {
         arg = sfClose | sfFullscreen;
         mode.width = 1920;
@@ -23,7 +26,7 @@ bool set_window(data_t *data)
         arg, NULL);
     if (!window)
         return true;
-    sfRenderWindow_setVerticalSyncEnabled(window, sfTrue);
+    sfRenderWindow_setFramerateLimit(window, 60);
     data->window = window;
     return false;
 }

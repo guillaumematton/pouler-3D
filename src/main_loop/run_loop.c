@@ -20,6 +20,7 @@ void run_loop(data_t *data)
         sfRenderWindow_clear(data->window, sfBlack);
         manage_music(data, game_state);
         in_menu(data, game_state);
+        handle_movement(data->assets.maps->walls, data, game_state);
         render_in_map(data, game_state);
         while (sfRenderWindow_pollEvent(data->window, &event) == 0)
             continue;
