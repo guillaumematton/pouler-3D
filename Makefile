@@ -28,7 +28,8 @@ SRC	= src/main.c\
 	  src/main_loop/run_main_loop.c\
 	  src/main_loop/manage_music.c\
 	  src/main_loop/menu/run_menu_scene.c\
-	  src/main_loop/menu/in_menu.c\
+	  src/main_loop/menu/render_menu.c\
+	  src/main_loop/menu/handle_menu_interactions.c\
 	  src/main_loop/options/run_options_scene.c\
 	  src/main_loop/game/run_game_scene.c\
 	  src/main_loop/game/renderer.c\

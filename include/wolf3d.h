@@ -54,7 +54,7 @@ typedef struct data {
     assets_t assets;
     sprite_t sprites;
     sfRenderWindow *window;
-    sfMusic *current_music; //will have to be migrated someday
+    sfMusic *current_music;
     char *current_music_name;
     enum scene scene;
     sfEvent event;
@@ -116,7 +116,8 @@ void manage_music(data_t *data);
 
 //menu
 void run_menu_scene(data_t *data);
-void in_menu(data_t *data, char game_state);
+void render_menu(data_t *data);
+void handle_menu_interactions(data_t *data);
 
 //options
 void run_options_scene(data_t *data);

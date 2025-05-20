@@ -16,6 +16,10 @@ void run_main_loop(data_t *data)
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
         manage_music(data);
+        while (sfRenderWindow_pollEvent(data->window, &data->event) == 0)
+            continue;
+        if (data->event.type == sfEvtClosed)
+            break;
         if (data->scene == MENU)
             run_menu_scene(data);
         if (data->scene == OPTIONS)
@@ -24,9 +28,5 @@ void run_main_loop(data_t *data)
             run_game_scene(data);
         if (data->scene == PAUSE)
             run_pause_scene(data);
-        while (sfRenderWindow_pollEvent(data->window, &data->event) == 0)
-            continue;
-        if (data->event.type == sfEvtClosed)
-            break;
     }
 }

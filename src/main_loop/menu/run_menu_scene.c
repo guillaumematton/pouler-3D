@@ -7,46 +7,8 @@
 
 #include "wolf3d.h"
 
-static void detect_button_mouse_click(data_t *data, menu_infos_t *menu_infos)
-{
-    if (sfFloatRect_contains(&menu_infos->newgame_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        data->scene = GAME;
-    if (sfFloatRect_contains(&menu_infos->continuegame_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        printf("continuegame\n");
-    if (sfFloatRect_contains(&menu_infos->options_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        printf("options\n");
-    if (sfFloatRect_contains(&menu_infos->lore_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        printf("lore\n");
-    if (sfFloatRect_contains(&menu_infos->exit_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        printf("exit\n");
-}
-
-static void handle_button_clicks(data_t *data)
-{
-    menu_infos_t menu_infos = {{0}, {0}, {0}, {0}, {0}, {0}};
-
-    menu_infos.mouse_pos =
-    sfMouse_getPositionRenderWindow(data->window);
-    menu_infos.newgame_infos =
-    sfSprite_getGlobalBounds(data->sprites.menu.new_game);
-    menu_infos.continuegame_infos = sfSprite_getGlobalBounds(
-    data->sprites.menu.continue_game);
-    menu_infos.options_infos =
-    sfSprite_getGlobalBounds(data->sprites.menu.options);
-    menu_infos.lore_infos = sfSprite_getGlobalBounds(data->sprites.menu.lore);
-    menu_infos.exit_infos =
-    sfSprite_getGlobalBounds(data->sprites.menu.exit_game);
-    detect_button_mouse_click(data, &menu_infos);
-}
-
 void run_menu_scene(data_t *data)
 {
-    in_menu(data, data->scene); //this is temp and should be renamed
-    if (data->event.mouseButton.button == sfMouseLeft)
-            handle_button_clicks(data);
+    render_menu(data);
+    handle_menu_interactions(data);
 }
