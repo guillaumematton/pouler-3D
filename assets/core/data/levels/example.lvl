@@ -1,0 +1,71 @@
+EXAMPLE MAP NAME
+16 16 //will use the two first space separated words (in this case 8 and 8) for map size definiton
+
+AAAAAAAAAAAAAAAA //will copy the first 8 chars,
+A      AA      A //meaning you can write comments here
+A              A //the '//' are useless and only used 
+A  AA      AA  A //for comment marking clarity
+A  AA      AA  A
+A              A
+A              A
+AA     AA     AA
+AA     AA     AA
+A              A
+A              A
+A  AA      AA  A
+A  AA      AA  A
+A              A
+A      AA      A
+AAAAAAAAAAAAAAAA //wall map, spaces are empty
+
+
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB
+BCBCBCBCBCBCBCBC
+CBCBCBCBCBCBCBCB //floor map
+
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD
+DDDDDDDDDDDDDDDD //ceiling map, spaces are empty (you see the sky box/ a default color)
+
+                
+                
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+               
+                //special map (ex spawn and enemy)
