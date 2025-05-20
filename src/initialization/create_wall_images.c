@@ -48,7 +48,7 @@ bool create_wall_images(data_t *data)
         &data->sprites.environment.H) ||
         create_env_images(data, "I.png",
         &data->sprites.environment.I)
-    )
-        return true;
+   )
+ return true;
     return false;
 }

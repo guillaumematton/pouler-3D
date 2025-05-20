@@ -30,7 +30,7 @@ typedef struct argument_s {
     bool debug;
 } arguments_t;
 
-enum game_state {
+enum scene {
     MENU,
     OPTIONS,
     GAME,
@@ -56,6 +56,8 @@ typedef struct data {
     sfRenderWindow *window;
     sfMusic *current_music; //will have to be migrated someday
     char *current_music_name;
+    enum scene scene;
+    sfEvent event;
 } data_t;
 
 typedef struct ray_s {
@@ -110,14 +112,17 @@ void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 
 //main_loop
 void run_main_loop(data_t *data);
-void manage_music(data_t *data, char game_state);
-
-//options
+void manage_music(data_t *data);
 
 //menu
+void run_menu_scene(data_t *data);
 void in_menu(data_t *data, char game_state);
 
+//options
+void run_options_scene(data_t *data);
+
 //game
+void run_game_scene(data_t *data);
 void render_in_map(data_t *data, char game_state);
 void handle_movement(char **map,
     data_t *data, char game_state);
@@ -125,6 +130,7 @@ bool create_wall_images(data_t *data);
 void set_sprite_positions(data_t *data);
 
 //pause
+void run_pause_scene(data_t *data);
 
 //term
 void terminate_game(data_t *data);

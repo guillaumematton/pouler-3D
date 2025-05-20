@@ -27,9 +27,13 @@ SRC	= src/main.c\
 	  src/initialization/create_menu_sprites.c\
 	  src/main_loop/run_main_loop.c\
 	  src/main_loop/manage_music.c\
+	  src/main_loop/menu/run_menu_scene.c\
 	  src/main_loop/menu/in_menu.c\
+	  src/main_loop/options/run_options_scene.c\
+	  src/main_loop/game/run_game_scene.c\
 	  src/main_loop/game/renderer.c\
 	  src/main_loop/game/player_movement.c\
+	  src/main_loop/pause/run_pause_scene.c\
 	  src/termination/terminate_game.c\
 	  src/termination/destroy_assets.c\
 

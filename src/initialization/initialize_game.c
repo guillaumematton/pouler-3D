@@ -35,9 +35,9 @@ void initialize_player(data_t *data)
 {
     data->player.health = 100;
     data->player.x = 2;
-    data->player.y = 2;  // Player position
+    data->player.y = 2; // Player position
     data->player.dirX = 1;
-    data->player.dirY = 0;   // Initial direction
+    data->player.dirY = 0; // Initial direction
     data->player.planeX = 0;
     data->player.planeY = 0.9; // Camera plane
 }

@@ -43,10 +43,30 @@ static sfMusic *pick_random_music(data_t *data)
     return music->music;
 }
 
-void manage_music(data_t *data, char game_state)
+static void run_menu_music(data_t *data)
 {
-    if (game_state == MENU)
+    music_t *music = data->assets.musics;
+
+    if (data->current_music == NULL ||
+        data->current_music_name == NULL ||
+        sfMusic_getStatus(data->current_music) == sfStopped ||
+        my_strcmp(data->current_music_name, "music.ogg") != 0) {
+        for (; music != NULL && my_strcmp("menu.ogg", music->name) != 0;
+            music = music->next);
+        if (music == NULL)
+            return;
+        data->current_music = music->music;
+        data->current_music_name = music->name;
+        sfMusic_play(data->current_music);
+    }
+}
+
+void manage_music(data_t *data)
+{
+    if (data->scene == MENU) {
+        run_menu_music(data);
         return;
+    }
     if (data->current_music == NULL ||
         data->current_music_name == NULL ||
         sfMusic_getStatus(data->current_music) == sfStopped ||
