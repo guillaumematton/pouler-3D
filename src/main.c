@@ -33,6 +33,6 @@ int main(UNUSED int ac, char **av, char **env)
     if (data.arguments.debug)
         my_putstr("debug mode enabled.\n");
     if (!initialize_game(&data))
-        run_loop(&data);
+        run_main_loop(&data);
     terminate_game(&data);
 }

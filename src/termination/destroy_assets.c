@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2025
 ** wolf3D
 ** File description:
-** stop_csfml_simple
+** destroy_assets
 */
 
 #include "wolf3d.h"

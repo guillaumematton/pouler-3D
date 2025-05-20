@@ -24,14 +24,14 @@ SRC	= src/main.c\
 	  src/initialization/load_entity_texture.c\
 	  src/initialization/load_environment_texture.c\
 	  src/initialization/load_gui_texture.c\
-	  src/main_loop/run_loop.c\
+	  src/initialization/create_menu_sprites.c\
+	  src/main_loop/run_main_loop.c\
 	  src/main_loop/manage_music.c\
+	  src/main_loop/menu/in_menu.c\
+	  src/main_loop/game/renderer.c\
+	  src/main_loop/game/player_movement.c\
 	  src/termination/terminate_game.c\
 	  src/termination/destroy_assets.c\
-	  src/menu/in_menu.c\
-	  src/initialization/create_menu_sprites.c\
-	  src/main_loop/renderer.c\
-	  src/main_loop/player_movement.c\
 
 LIB	= lib/libmy.a\
 

@@ -89,10 +89,7 @@ typedef struct draw_info_s {
 
     #define TILE_SIZE 64
 
-//void load_map(char *filename); //name conflict
-//void init_player(Player_t *player);
-//int is_wall(int x, int y);
-
+//init
 bool check_if_in_gui(char **env);
 bool parse_args(data_t *data, char **av);
 bool display_help(data_t *data);
@@ -111,25 +108,25 @@ void load_environment_texture(data_t *data, char *folder_path,
     char *asset_name);
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 
-void run_loop(data_t *data);
+//main_loop
+void run_main_loop(data_t *data);
 void manage_music(data_t *data, char game_state);
 
-void terminate_game(data_t *data);
-void destroy_assets(data_t *data);
+//options
 
+//menu
 void in_menu(data_t *data, char game_state);
 
+//game
 void render_in_map(data_t *data, char game_state);
-
 void handle_movement(char **map,
     data_t *data, char game_state);
 bool create_wall_images(data_t *data);
 
-/*
-void free_map_and_weapons(data_t *data);
-void free_enemy_types(data_t *data);
-void free_effects_and_entities(data_t *data);
-void free_gui_and_environment_texture(data_t *data);
-void destroy_window_and_music(data_t *data);
-*/
+//pause
+
+//term
+void terminate_game(data_t *data);
+void destroy_assets(data_t *data);
+
 #endif
