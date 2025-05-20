@@ -20,10 +20,8 @@ void run_menu_music(data_t *data)
         data->current_music_name == NULL ||
         sfMusic_getStatus(data->current_music) == sfStopped ||
         my_strcmp(data->current_music_name, "music.ogg") != 0) {
-        printf("test\n");
         for (; music != NULL && my_strcmp("menu.ogg", music->name) != 0;
-            music = music->next)
-            printf("music name : %s\n", music->name);
+            music = music->next);
         if (music == NULL)
             return;
         data->current_music = music->music;

@@ -14,12 +14,11 @@
 void render_in_map(data_t *data, char game_state)
 {
     sfTexture* wallTex = sfTexture_createFromFile("assets/core/textures/environment/G.png", NULL);
-    sfSprite* wallSlice = sfSprite_create();
+    sfImage* wallImg = sfTexture_copyToImage(wallTex);
     sfTexture* floorTex = sfTexture_createFromFile("assets/core/textures/environment/B.png", NULL);
     sfTexture* ceilTex = sfTexture_createFromFile("assets/core/textures/environment/B.png", NULL);
     sfImage* floorImg = sfTexture_copyToImage(floorTex);
     sfImage* ceilImg = sfTexture_copyToImage(ceilTex);
-    sfSprite_setTexture(wallSlice, wallTex, sfTrue);
 
     if (game_state == MENU)
         return;
@@ -71,71 +70,112 @@ void render_in_map(data_t *data, char game_state)
     }
 }
     for (int x = 0; x < SCREEN_WIDTH; x++) {
-            float cameraX = 2 * x / (float)SCREEN_WIDTH - 1;
-            float rayDirX = data->player.dirX + data->player.planeX * cameraX;
-            float rayDirY = data->player.dirY + data->player.planeY * cameraX;
+    // --- Existing raycasting calculations ---
+    float cameraX = 2.0f * x / (float)SCREEN_WIDTH - 1.0f;
+    float rayDirX = data->player.dirX + data->player.planeX * cameraX;
+    float rayDirY = data->player.dirY + data->player.planeY * cameraX;
 
-            int mapX = (int)data->player.x;
-            int mapY = (int)data->player.y;
+    int mapX = (int)data->player.x;
+    int mapY = (int)data->player.y;
 
-            float sideDistX, sideDistY;
-            float deltaDistX = rayDirX == 0 ? 1e30 : fabs(1 / rayDirX);
-            float deltaDistY = rayDirY == 0 ? 1e30 : fabs(1 / rayDirY);
-            float perpWallDist;
+    float sideDistX;
+    float sideDistY;
 
-            int stepX, stepY, hit = 0, side;
+    float deltaDistX = (rayDirX == 0) ? 1e30 : fabs(1 / rayDirX);
+    float deltaDistY = (rayDirY == 0) ? 1e30 : fabs(1 / rayDirY);
+    float perpWallDist;
 
-            if (rayDirX < 0) {
-                stepX = -1;
-                sideDistX = (data->player.x - mapX) * deltaDistX;
-            } else {
-                stepX = 1;
-                sideDistX = (mapX + 1.0 - data->player.x) * deltaDistX;
-            }
-            if (rayDirY < 0) {
-                stepY = -1;
-                sideDistY = (data->player.y - mapY) * deltaDistY;
-            } else {
-                stepY = 1;
-                sideDistY = (mapY + 1.0 - data->player.y) * deltaDistY;
-            }
+    int stepX, stepY;
+    int hit = 0, side;
 
-            while (hit == 0) {
-                if (sideDistX < sideDistY) {
-                    sideDistX += deltaDistX;
-                    mapX += stepX;
-                    side = 0;
-                } else {
-                    sideDistY += deltaDistY;
-                    mapY += stepY;
-                    side = 1;
-                }
-                if (data->assets.maps->walls[mapX][mapY] == 'A') hit = 1;
-            }
+    // DDA setup
+    if (rayDirX < 0) {
+        stepX = -1;
+        sideDistX = (data->player.x - mapX) * deltaDistX;
+    } else {
+        stepX = 1;
+        sideDistX = (mapX + 1.0 - data->player.x) * deltaDistX;
+    }
 
-            if (side == 0)
-                perpWallDist = (mapX - data->player.x + (1 - stepX) / 2) / rayDirX;
-            else
-                perpWallDist = (mapY - data->player.y + (1 - stepY) / 2) / rayDirY;
+    if (rayDirY < 0) {
+        stepY = -1;
+        sideDistY = (data->player.y - mapY) * deltaDistY;
+    } else {
+        stepY = 1;
+        sideDistY = (mapY + 1.0 - data->player.y) * deltaDistY;
+    }
 
-            int lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
-            int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
-            int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
+    // DDA loop
+    while (hit == 0) {
+    if (sideDistX < sideDistY) {
+        sideDistX += deltaDistX;
+        mapX += stepX;
+        side = 0;
+    } else {
+        sideDistY += deltaDistY;
+        mapY += stepY;
+        side = 1;
+    }
+    if (mapX >= 0 && mapY >= 0 && mapX < data->assets.maps->x_size && mapY < data->assets.maps->y_size) {
+        if (data->assets.maps->walls[mapX][mapY] != ' ')
+            hit = 1;
+    } else {
+        break; // Avoid infinite loop
+    }
+}
+    // Calculate distance to wall
+    if (side == 0)
+        perpWallDist = (sideDistX - deltaDistX);
+    else
+        perpWallDist = (sideDistY - deltaDistY);
 
-            float wallX;
-            if (side == 0)
-                wallX = data->player.y + perpWallDist * rayDirY;
-            else
-                wallX = data->player.x + perpWallDist * rayDirX;
-            wallX -= floor(wallX);
+    // Calculate height of line to draw
+    int lineHeight = (int)(SCREEN_HEIGHT / perpWallDist);
 
-            int texX = (int)(wallX * (float)TEX_SIZE);
-            if ((side == 0 && rayDirX > 0) || (side == 1 && rayDirY < 0))
-                texX = TEX_SIZE - texX - 1;
+    int drawStart = -lineHeight / 2 + SCREEN_HEIGHT / 2;
+    if (drawStart < 0) drawStart = 0;
+    int drawEnd = lineHeight / 2 + SCREEN_HEIGHT / 2;
+    if (drawEnd >= SCREEN_HEIGHT) drawEnd = SCREEN_HEIGHT - 1;
+    // Texture X coordinate
+    float wallX;
+    if (side == 0)
+        wallX = data->player.y + perpWallDist * rayDirY;
+    else
+        wallX = data->player.x + perpWallDist * rayDirX;
+    wallX -= floor(wallX);
 
-            sfSprite_setTextureRect(wallSlice, (sfIntRect){texX, 0, 1, TEX_SIZE});
-            sfSprite_setScale(wallSlice, (sfVector2f){1.0f, (float)lineHeight / TEX_SIZE});
-            sfSprite_setPosition(wallSlice, (sfVector2f){x, (float)drawStart});
-            sfRenderWindow_drawSprite(data->window, wallSlice, NULL);
+    int texX = (int)(wallX * (float)TEX_SIZE);
+    if (side == 0 && rayDirX > 0) texX = TEX_SIZE - texX - 1;
+    if (side == 1 && rayDirY < 0) texX = TEX_SIZE - texX - 1;
+
+    // Draw each vertical pixel
+    for (int y = drawStart; y < drawEnd; y++) {
+        int d = y * 256 - SCREEN_HEIGHT * 128 + lineHeight * 128;
+        int texY = ((d * TEX_SIZE) / lineHeight) / 256;
+
+        // Clamp texY
+        if (texY < 0) texY = 0;
+        if (texY >= TEX_SIZE) texY = TEX_SIZE - 1;
+
+        sfColor color = sfImage_getPixel(wallImg, texX, texY);
+
+        // Darken the color if it's a side wall
+        if (side == 1) {
+            color.r /= 2;
+            color.g /= 2;
+            color.b /= 2;
         }
+
+        sfVertex pixel = {
+            .position = (sfVector2f){x, y},
+            .color = color
+        };
+
+        sfVertexArray* va = sfVertexArray_create();
+        sfVertexArray_setPrimitiveType(va, sfPoints);
+        sfVertexArray_append(va, pixel);
+        sfRenderWindow_drawVertexArray(data->window, va, NULL);
+        sfVertexArray_destroy(va);
+    }
+}
 }
