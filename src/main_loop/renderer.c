@@ -13,13 +13,6 @@
 
 void render_in_map(data_t *data, char game_state)
 {
-    sfTexture* wallTex = sfTexture_createFromFile("assets/core/textures/environment/G.png", NULL);
-    sfImage* wallImg = sfTexture_copyToImage(wallTex);
-    sfTexture* floorTex = sfTexture_createFromFile("assets/core/textures/environment/B.png", NULL);
-    sfTexture* ceilTex = sfTexture_createFromFile("assets/core/textures/environment/B.png", NULL);
-    sfImage* floorImg = sfTexture_copyToImage(floorTex);
-    sfImage* ceilImg = sfTexture_copyToImage(ceilTex);
-
     if (game_state == MENU)
         return;
     for (int y = SCREEN_HEIGHT / 2 + 1; y < SCREEN_HEIGHT; y++) {
@@ -46,8 +39,8 @@ void render_in_map(data_t *data, char game_state)
             int tx = (int)(TEX_SIZE * (floorX - cellX)) & (TEX_SIZE - 1);
             int ty = (int)(TEX_SIZE * (floorY - cellY)) & (TEX_SIZE - 1);
 
-            sfColor floorColor = sfImage_getPixel(floorImg, tx, ty);
-            sfColor ceilColor = sfImage_getPixel(ceilImg, tx, ty);
+            sfColor floorColor = sfImage_getPixel(data->sprites.environment.B, tx, ty);
+            sfColor ceilColor = sfImage_getPixel(data->sprites.environment.B, tx, ty);
 
             sfVertex floorPixel = {
                 .position = (sfVector2f){x, y},
@@ -157,7 +150,7 @@ void render_in_map(data_t *data, char game_state)
         if (texY < 0) texY = 0;
         if (texY >= TEX_SIZE) texY = TEX_SIZE - 1;
 
-        sfColor color = sfImage_getPixel(wallImg, texX, texY);
+        sfColor color = sfImage_getPixel(data->sprites.environment.G, texX, texY);
 
         // Darken the color if it's a side wall
         if (side == 1) {

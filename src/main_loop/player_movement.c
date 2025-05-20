@@ -70,6 +70,11 @@ static void handle_camera_movement(data_t *data,
     float oldPlaneX = data->player.planeX;
     float rot = rotSpeed * deltaX;
 
+    if (sfKeyboard_isKeyPressed(sfKeyA))
+        deltaX += 20;
+    if (sfKeyboard_isKeyPressed(sfKeyE))
+        deltaX -= 20;
+    rot = rotSpeed * deltaX;
     data->player.dirX = data->player.dirX * cos(-rot) - data->player.dirY * sin(-rot);
     data->player.dirY = oldDirX * sin(-rot) + data->player.dirY * cos(-rot);
     data->player.planeX = data->player.planeX * cos(-rot) - data->player.planeY * sin(-rot);
@@ -87,7 +92,6 @@ void handle_movement(char **map,
     sfVector2u screen = sfRenderWindow_getSize(data->window);
     int deltaX = screen.x / 2 - mousePos.x;
 
-    printf("%d, %d\n", mousePos.x, screen.x);
     sfClock_restart(data->clock);
     if (game_state != GAME)
         return;

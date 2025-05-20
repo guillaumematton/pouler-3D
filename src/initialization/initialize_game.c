@@ -53,7 +53,7 @@ bool initialize_game(data_t *data)
     initialize_player(data);
     if (load_assets(data))
         return true;
-    if (create_menu_sprites(data))
+    if (create_menu_sprites(data) || create_wall_images(data))
         return true;
     return false;
 }

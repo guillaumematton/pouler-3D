@@ -16,6 +16,7 @@ SRC	= src/main.c\
 	  src/initialization/load_assets.c\
 	  src/initialization/load_assets_folder.c\
 	  src/initialization/load_sound.c\
+	  src/initialization/create_wall_images.c\
 	  src/initialization/load_music.c\
 	  src/initialization/load_enemy_type.c\
 	  src/initialization/load_map.c\

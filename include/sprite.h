@@ -28,15 +28,15 @@ typedef struct menu_s {
 } menu_t;
 
 typedef struct env_s {
-    sfSprite *A;
-    sfSprite *B;
-    sfSprite *C;
-    sfSprite *D;
-    sfSprite *E;
-    sfSprite *F;
-    sfSprite *G;
-    sfSprite *H;
-    sfSprite *I;
+    sfImage *A;
+    sfImage *B;
+    sfImage *C;
+    sfImage *D;
+    sfImage *E;
+    sfImage *F;
+    sfImage *G;
+    sfImage *H;
+    sfImage *I;
 } env_t;
 
 typedef struct enemy_sprite_s {
