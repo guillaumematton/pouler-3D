@@ -122,6 +122,7 @@ void render_in_map(data_t *data, char game_state);
 void handle_movement(char **map,
     data_t *data, char game_state);
 bool create_wall_images(data_t *data);
+void set_sprite_positions(data_t *data);
 
 //pause
 

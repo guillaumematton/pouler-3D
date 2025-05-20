@@ -27,6 +27,15 @@ typedef struct menu_s {
     option_t options_sprites;
 } menu_t;
 
+typedef struct menu_infos_s {
+    sfFloatRect newgame_infos;
+    sfFloatRect continuegame_infos;
+    sfFloatRect options_infos;
+    sfFloatRect lore_infos;
+    sfFloatRect exit_infos;
+    sfVector2i mouse_pos;
+} menu_infos_t;
+
 typedef struct env_s {
     sfImage *A;
     sfImage *B;
