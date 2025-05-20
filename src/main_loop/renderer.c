@@ -13,10 +13,10 @@
 
 void render_in_map(data_t *data, char game_state)
 {
-    sfTexture* wallTex = sfTexture_createFromFile("assets/core/textures/environment/J", NULL);
+    sfTexture* wallTex = sfTexture_createFromFile("assets/core/textures/environment/G.png", NULL);
     sfSprite* wallSlice = sfSprite_create();
-    sfTexture* floorTex = sfTexture_createFromFile("assets/core/textures/environment/B", NULL);
-    sfTexture* ceilTex = sfTexture_createFromFile("assets/core/textures/environment/B", NULL);
+    sfTexture* floorTex = sfTexture_createFromFile("assets/core/textures/environment/B.png", NULL);
+    sfTexture* ceilTex = sfTexture_createFromFile("assets/core/textures/environment/B.png", NULL);
     sfImage* floorImg = sfTexture_copyToImage(floorTex);
     sfImage* ceilImg = sfTexture_copyToImage(ceilTex);
     sfSprite_setTexture(wallSlice, wallTex, sfTrue);

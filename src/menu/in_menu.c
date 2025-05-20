@@ -20,8 +20,10 @@ void run_menu_music(data_t *data)
         data->current_music_name == NULL ||
         sfMusic_getStatus(data->current_music) == sfStopped ||
         my_strcmp(data->current_music_name, "music.ogg") != 0) {
+        printf("test\n");
         for (; music != NULL && my_strcmp("menu.ogg", music->name) != 0;
-            music = music->next);
+            music = music->next)
+            printf("music name : %s\n", music->name);
         if (music == NULL)
             return;
         data->current_music = music->music;
@@ -32,7 +34,7 @@ void run_menu_music(data_t *data)
 
 void in_menu(data_t *data, char game_state)
 {
-    if (game_state == OPTIONS || game_state == MENU)
+    if (game_state == MENU)
         run_menu_music(data);
     if (game_state == OPTIONS)
         in_settings(data);
