@@ -29,8 +29,8 @@ typedef struct menu_s {
 
 typedef struct env_s {
     sfSprite *walls;
-    sfSprite *floor;
-    sfSprite *ceiling;
+    sfImage *floor;
+    sfImage *ceiling;
 } env_t;
 
 typedef struct enemy_sprite_s {
@@ -39,9 +39,7 @@ typedef struct enemy_sprite_s {
 } enemy_sprite_t;
 
 typedef struct sprite_s {
-    bool in_full_screen;
     menu_t menu;
-    env_t environment;
     enemy_sprite_t *enemies;
 } sprite_t;
 

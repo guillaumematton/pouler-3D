@@ -9,22 +9,67 @@
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
-#define TEX_SIZE 64
+#define TEX_SIZE 48
 
 void render_in_map(data_t *data, char game_state)
 {
     sfTexture* wallTex = sfTexture_createFromFile("assets/core/textures/environment/J", NULL);
     sfSprite* wallSlice = sfSprite_create();
+    sfTexture* floorTex = sfTexture_createFromFile("assets/core/textures/environment/B", NULL);
+    sfTexture* ceilTex = sfTexture_createFromFile("assets/core/textures/environment/B", NULL);
+    sfImage* floorImg = sfTexture_copyToImage(floorTex);
+    sfImage* ceilImg = sfTexture_copyToImage(ceilTex);
     sfSprite_setTexture(wallSlice, wallTex, sfTrue);
-    data->player.x = 2;
-    data->player.y = 1;  // Player position
-    data->player.dirX = 1;
-    data->player.dirY = 0;   // Initial direction
-    data->player.planeX = 0;
-    data->player.planeY = 0.66; // Camera plane
 
     if (game_state == MENU)
         return;
+    for (int y = SCREEN_HEIGHT / 2 + 1; y < SCREEN_HEIGHT; y++) {
+        float rayDirX0 = data->player.dirX - data->player.planeX;
+        float rayDirY0 = data->player.dirY - data->player.planeY;
+        float rayDirX1 = data->player.dirX + data->player.planeX;
+        float rayDirY1 = data->player.dirY + data->player.planeY;
+
+        int p = y - SCREEN_HEIGHT / 2;
+        float posZ = 0.5f * SCREEN_HEIGHT;
+
+        float rowDist = posZ / p;
+
+        float stepX = rowDist * (rayDirX1 - rayDirX0) / SCREEN_WIDTH;
+        float stepY = rowDist * (rayDirY1 - rayDirY0) / SCREEN_WIDTH;
+
+        float floorX = data->player.x + rowDist * rayDirX0;
+        float floorY = data->player.y + rowDist * rayDirY0;
+
+        for (int x = 0; x < SCREEN_WIDTH; ++x) {
+            int cellX = (int)(floorX);
+            int cellY = (int)(floorY);
+
+            int tx = (int)(TEX_SIZE * (floorX - cellX)) & (TEX_SIZE - 1);
+            int ty = (int)(TEX_SIZE * (floorY - cellY)) & (TEX_SIZE - 1);
+
+            sfColor floorColor = sfImage_getPixel(floorImg, tx, ty);
+            sfColor ceilColor = sfImage_getPixel(ceilImg, tx, ty);
+
+            sfVertex floorPixel = {
+                .position = (sfVector2f){x, y},
+                .color = floorColor
+            };
+            sfVertex ceilPixel = {
+                .position = (sfVector2f){x, SCREEN_HEIGHT - y},
+                .color = ceilColor
+            };
+
+            sfVertexArray* va = sfVertexArray_create();
+            sfVertexArray_setPrimitiveType(va, sfPoints);
+            sfVertexArray_append(va, floorPixel);
+            sfVertexArray_append(va, ceilPixel);
+            sfRenderWindow_drawVertexArray(data->window, va, NULL);
+            sfVertexArray_destroy(va);
+        
+            floorX += stepX;
+            floorY += stepY;
+    }
+}
     for (int x = 0; x < SCREEN_WIDTH; x++) {
             float cameraX = 2 * x / (float)SCREEN_WIDTH - 1;
             float rayDirX = data->player.dirX + data->player.planeX * cameraX;

@@ -29,9 +29,7 @@ SRC	= src/main.c\
 	  src/termination/destroy_assets.c\
 	  src/menu/in_menu.c\
 	  src/initialization/create_menu_sprites.c\
-	  src/initialization/create_environment_sprites.c\
 	  src/main_loop/renderer.c\
-	  src/main_loop/floor_casting.c\
 	  src/main_loop/player_movement.c\
 
 LIB	= lib/libmy.a\

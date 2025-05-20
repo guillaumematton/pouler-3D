@@ -14,12 +14,10 @@ bool set_window(data_t *data)
     sfRenderWindow *window = NULL;
     int arg = sfClose;
 
-    data->sprites.in_full_screen = false;
     if (data->arguments.full_screen) {
         arg = sfClose | sfFullscreen;
         mode.width = 1920;
         mode.height = 1080;
-        data->sprites.in_full_screen = true;
     }
     window = sfRenderWindow_create(mode, "wolf3D",
         arg, NULL);
@@ -33,12 +31,12 @@ bool set_window(data_t *data)
 void initialize_player(data_t *data)
 {
     data->player.health = 100;
-    data->player.x = 0;
-    data->player.y = 0;
-    data->player.dirX = -1;
-    data->player.dirY = 0;
+    data->player.x = 2;
+    data->player.y = 1;  // Player position
+    data->player.dirX = 1;
+    data->player.dirY = 0;   // Initial direction
     data->player.planeX = 0;
-    data->player.planeY = 0.90; // 90 ° FOV
+    data->player.planeY = 0.66; // Camera plane
 }
 
 //does all the neccessary work to start the game (which you just lost)
@@ -49,11 +47,10 @@ bool initialize_game(data_t *data)
         mini_printf("starting game initialization.\n");
     if (set_window(data))
         return true;
+    initialize_player(data);
     if (load_assets(data))
         return true;
     if (create_menu_sprites(data))
-        return true;
-    if (create_room_sprites(data))
         return true;
     return false;
 }

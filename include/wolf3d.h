@@ -122,7 +122,6 @@ void floor_and_ceiling_casting(data_t *data,
     int screen_width, int screen_height);
 
 void render_in_map(data_t *data, char game_state);
-bool create_room_sprites(data_t *data);
 
 /*
 void free_map_and_weapons(data_t *data);
