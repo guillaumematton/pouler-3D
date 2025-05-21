@@ -36,6 +36,7 @@ SRC	= src/main.c\
 	  src/main_loop/game/renderer.c\
 	  src/main_loop/game/player_movement.c\
 	  src/main_loop/pause/run_pause_scene.c\
+	  src/main_loop/pause/render_pause.c\
 	  src/termination/terminate_game.c\
 	  src/termination/destroy_assets.c\
 

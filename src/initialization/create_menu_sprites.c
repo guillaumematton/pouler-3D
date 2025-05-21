@@ -7,7 +7,7 @@
 
 #include "wolf3d.h"
 
-static void set_position_scale(float scale_value, float positionx,
+void set_position_scale(float scale_value, float positionx,
     float positiony, sfSprite *sprite)
 {
     sfVector2f scale = {scale_value, scale_value};
@@ -72,7 +72,9 @@ bool create_menu_sprites(data_t *data)
     create_gui_sprite(data, "full_box.png",
         &data->sprites.menu.options_sprites.full_box) ||
     create_gui_sprite(data, "back.png",
-        &data->sprites.menu.options_sprites.back))
+        &data->sprites.menu.options_sprites.back) ||
+    create_gui_sprite(data, "pause_background.jpg",
+        &data->sprites.menu.p_background))
         return true;
     set_sprite_positions(data);
     return false;

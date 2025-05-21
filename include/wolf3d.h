@@ -118,6 +118,8 @@ void load_entity_texture(data_t *data, char *folder_path, char *asset_name);
 void load_environment_texture(data_t *data, char *folder_path,
     char *asset_name);
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
+void set_position_scale(float scale_value, float positionx,
+                        float positiony, sfSprite *sprite);
 
 //main_loop
 void run_main_loop(data_t *data);
@@ -141,6 +143,7 @@ void cast_floor_and_ceiling(data_t *data);
 
 //pause
 void run_pause_scene(data_t *data);
+void render_pause(data_t *data);
 
 //term
 void terminate_game(data_t *data);
