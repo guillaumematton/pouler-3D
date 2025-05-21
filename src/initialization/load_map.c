@@ -28,7 +28,7 @@ static char *copy_line(char *trg, unsigned int len)
     for (int i = 0; i < len; i++)
         str[i] = ' ';
     str[len] = '\0';
-    my_strndup(trg, len);
+    my_strncpy(str, trg, len);
     return str;
 }
 
