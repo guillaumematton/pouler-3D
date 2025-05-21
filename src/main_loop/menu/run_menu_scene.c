@@ -9,8 +9,6 @@
 
 void run_menu_scene(data_t *data)
 {
-    if (data->scene != MENU)
-        return;
     render_menu(data);
     handle_menu_interactions(data);
 }

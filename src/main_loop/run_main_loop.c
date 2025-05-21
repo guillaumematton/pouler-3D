@@ -7,6 +7,18 @@
 
 #include "wolf3d.h"
 
+static void run_scenes(data_t *data)
+{
+    if (data->scene == MENU)
+        run_menu_scene(data);
+    if (data->scene == MENU)
+        run_options_scene(data);
+    if (data->scene == MENU)
+        run_game_scene(data);
+    if (data->scene == MENU)
+        run_pause_scene(data);
+}
+
 void run_main_loop(data_t *data)
 {
     sfVector2i mouse_pos = {0}; //temp
@@ -20,11 +32,8 @@ void run_main_loop(data_t *data)
             continue;
         if (data->event.type == sfEvtClosed ||
             (sfKeyboard_isKeyPressed(sfKeyK) &&
-            sfKeyboard_isKeyPressed(sfKeyLControl)))
+                sfKeyboard_isKeyPressed(sfKeyLControl)))
             break;
-        run_menu_scene(data);
-        run_options_scene(data);
-        run_game_scene(data);
-        run_pause_scene(data);
+        run_scenes(data);
     }
 }
