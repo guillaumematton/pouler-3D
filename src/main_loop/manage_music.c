@@ -39,6 +39,7 @@ static sfMusic *pick_random_music(data_t *data)
         music = music->next;
     if (data->arguments.debug)
         mini_printf("playing %s\n", music->name);
+    sfMusic_setLoop(data->current_music, sfFalse);
     data->current_music_name = music->name;
     return music->music;
 }
@@ -50,14 +51,16 @@ static void run_menu_music(data_t *data)
     if (data->current_music == NULL ||
         data->current_music_name == NULL ||
         sfMusic_getStatus(data->current_music) == sfStopped ||
-        my_strcmp(data->current_music_name, "music.ogg") != 0) {
+        my_strcmp(data->current_music_name, "menu.ogg") != 0) {
         for (; music != NULL && my_strcmp("menu.ogg", music->name) != 0;
             music = music->next);
         if (music == NULL)
             return;
         data->current_music = music->music;
         data->current_music_name = music->name;
+        sfMusic_setLoop(data->current_music, sfTrue);
         sfMusic_play(data->current_music);
+        //printf("%s\n", data->current_music_name);
     }
 }
 
@@ -67,6 +70,8 @@ void manage_music(data_t *data)
         run_menu_music(data);
         return;
     }
+    if (data->current_music_name && my_strcmp(data->current_music_name, "menu.ogg") == 0)
+        sfMusic_stop(data->current_music);
     if (data->current_music == NULL ||
         data->current_music_name == NULL ||
         sfMusic_getStatus(data->current_music) == sfStopped ||
