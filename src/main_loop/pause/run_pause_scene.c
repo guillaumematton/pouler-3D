@@ -9,4 +9,8 @@
 
 void run_pause_scene(data_t *data)
 {
+    if (sfKeyboard_isKeyPressed(sfKeyF1)) {
+        data->scene = GAME;
+        return;
+    }
 }
