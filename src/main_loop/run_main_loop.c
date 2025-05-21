@@ -11,19 +11,17 @@ static void run_scenes(data_t *data)
 {
     if (data->scene == MENU)
         run_menu_scene(data);
-    if (data->scene == MENU)
+    if (data->scene == OPTIONS)
         run_options_scene(data);
-    if (data->scene == MENU)
+    if (data->scene == GAME)
         run_game_scene(data);
-    if (data->scene == MENU)
+    if (data->scene == PAUSE)
         run_pause_scene(data);
 }
 
 void run_main_loop(data_t *data)
 {
-    sfVector2i mouse_pos = {0}; //temp
-
-    set_sprite_positions(data);
+    set_sprite_positions(data); //temp
     while (sfRenderWindow_isOpen(data->window) && data->exit == false) {
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
