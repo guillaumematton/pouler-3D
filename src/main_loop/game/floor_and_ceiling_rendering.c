@@ -15,11 +15,11 @@ static ray_t create_ray_struct(data_t *data, int y)
     rays.rayDirY0 = data->player.dirY - data->player.planeY;
     rays.rayDirX1 = data->player.dirX + data->player.planeX;
     rays.rayDirY1 = data->player.dirY + data->player.planeY;
-    rays.rowDistance = (0.5f * SCREEN_HEIGHT) / (y - SCREEN_HEIGHT / 2);
+    rays.rowDistance = (0.5f * data->screen_size.y) / (y - data->screen_size.y / 2);
     rays.stepX = rays.rowDistance * (rays.rayDirX1 -
-        rays.rayDirX0) / SCREEN_WIDTH;
+        rays.rayDirX0) / data->screen_size.x;
     rays.stepY = rays.rowDistance * (rays.rayDirY1 -
-        rays.rayDirY0) / SCREEN_WIDTH;
+        rays.rayDirY0) / data->screen_size.x;
     rays.floorX = data->player.x + rays.rowDistance * rays.rayDirX0;
     rays.floorY = data->player.y + rays.rowDistance * rays.rayDirY0;
     return rays;
@@ -37,23 +37,21 @@ static void create_verteces(data_t *data, ray_t rays, int x, int y)
         .color = floorColor
     };
     sfVertex ceilPixel = {
-        .position = (sfVector2f){x, SCREEN_HEIGHT - y},
+        .position = (sfVector2f){x, data->screen_size.y - y},
         .color = floorColor
     };
 
     sfVertexArray_append(data->game_vertex, floorPixel);
     sfVertexArray_append(data->game_vertex, ceilPixel);
-    sfRenderWindow_drawVertexArray(data->window, data->game_vertex, NULL);
-    sfVertexArray_clear(data->game_vertex);
 }
 
 void cast_floor_and_ceiling(data_t *data)
 {
     ray_t rays = create_ray_struct(data, 0);
 
-    for (int y = SCREEN_HEIGHT / 2 + 1; y < SCREEN_HEIGHT; y++) {
+    for (int y = data->screen_size.y / 2 + 1; y < data->screen_size.y; y++) {
         rays = create_ray_struct(data, y);
-        for (int x = 0; x < SCREEN_WIDTH; x++) {
+        for (int x = 0; x < data->screen_size.x; x++) {
             create_verteces(data, rays, x, y);
             rays.floorX += rays.stepX;
             rays.floorY += rays.stepY;

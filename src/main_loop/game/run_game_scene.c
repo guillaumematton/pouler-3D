@@ -9,6 +9,6 @@
 
 void run_game_scene(data_t *data)
 {
-    handle_movement(data->assets.maps->walls, data, data->scene);
+    handle_movement(data->assets.maps->walls, data);
     render_map(data);
 }

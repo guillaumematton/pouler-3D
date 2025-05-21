@@ -12,7 +12,7 @@ static void handle_forward_input(data_t *data, char **map, float moveSpeed)
     if (!sfKeyboard_isKeyPressed(sfKeyZ))
         return;
     if (map[(int)(data->player.x + data->player.dirX * moveSpeed)]
-        [(int)data->player.y] == ' ') // 0 = block où on peut aller
+        [(int)data->player.y] == ' ')
         data->player.x += data->player.dirX * moveSpeed;
     if (map[(int)data->player.x]
         [(int)(data->player.y + data->player.dirY * moveSpeed)] == ' ')
@@ -85,13 +85,12 @@ static void handle_camera_movement(data_t *data,
         data->player.planeY * cos(-rot);
 }
 
-void handle_movement(char **map,
-    data_t *data, char game_state)
+void handle_movement(char **map, data_t *data)
 {
     sfTime elapsed = sfClock_getElapsedTime(data->clock);
     float delta_time = sfTime_asSeconds(elapsed);
-    float moveSpeed = 2.0f * delta_time; // basic movement speed = 2.0f
-    float rotSpeed = 0.1f * delta_time; // basic sensitivity = 0.1f
+    float moveSpeed = 2.0f * delta_time;
+    float rotSpeed = 0.1f * delta_time;
     sfVector2i mousePos = sfMouse_getPositionRenderWindow(data->window);
     sfVector2u screen = sfRenderWindow_getSize(data->window);
     int deltaX = screen.x / 2 - mousePos.x;
@@ -99,8 +98,6 @@ void handle_movement(char **map,
     sfClock_restart(data->clock);
     sfMouse_setPositionRenderWindow((sfVector2i)
         {screen.x / 2, screen.y / 2}, data->window);
-    if (game_state != GAME)
-        return;
     handle_backward_input(data, map, moveSpeed);
     handle_forward_input(data, map, moveSpeed);
     handle_left_input(data, map, moveSpeed);

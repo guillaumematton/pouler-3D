@@ -9,6 +9,13 @@
 
 static void run_scenes(data_t *data)
 {
+    static int last_scene = MENU;
+
+    if (data->scene == GAME && last_scene != GAME)
+        sfRenderWindow_setMouseCursorVisible(data->window, sfFalse);
+    if (data->scene != GAME && last_scene == GAME)
+        sfRenderWindow_setMouseCursorVisible(data->window, sfTrue);
+    last_scene = data->scene;
     if (data->scene == MENU)
         run_menu_scene(data);
     if (data->scene == OPTIONS)

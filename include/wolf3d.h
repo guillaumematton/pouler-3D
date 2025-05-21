@@ -58,6 +58,7 @@ typedef struct data {
     char *current_music_name;
     enum scene scene;
     sfVertexArray *game_vertex;
+    sfVector2u screen_size;
     bool exit;
     sfEvent event;
 } data_t;
@@ -97,8 +98,6 @@ typedef struct draw_info_s {
 } draw_info_t;
 
     #define TILE_SIZE 64
-    #define SCREEN_WIDTH 800
-    #define SCREEN_HEIGHT 600
     #define TEX_SIZE 48
 
 //init
@@ -135,8 +134,7 @@ void run_options_scene(data_t *data);
 //game
 void run_game_scene(data_t *data);
 void render_map(data_t *data);
-void handle_movement(char **map,
-    data_t *data, char game_state);
+void handle_movement(char **map, data_t *data);
 bool create_wall_images(data_t *data);
 void set_sprite_positions(data_t *data);
 void cast_floor_and_ceiling(data_t *data);

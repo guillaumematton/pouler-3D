@@ -11,7 +11,6 @@
 bool set_window(data_t *data)
 {
     sfVideoMode mode = {800, 600, 32};
-    sfRenderWindow *window = NULL;
     int arg = sfClose;
 
     data->clock = sfClock_create();
@@ -22,12 +21,12 @@ bool set_window(data_t *data)
         mode.width = 1920;
         mode.height = 1080;
     }
-    window = sfRenderWindow_create(mode, "wolf3D",
+    data->window = sfRenderWindow_create(mode, "wolf3D",
         arg, NULL);
-    if (!window)
+    if (!data->window)
         return true;
-    sfRenderWindow_setFramerateLimit(window, 60);
-    data->window = window;
+    sfRenderWindow_setFramerateLimit(data->window, 60);
+    data->screen_size = sfRenderWindow_getSize(data->window);
     return false;
 }
 
@@ -35,11 +34,11 @@ void initialize_player(data_t *data)
 {
     data->player.health = 100;
     data->player.x = 2;
-    data->player.y = 2; // Player position
+    data->player.y = 2;
     data->player.dirX = 1;
-    data->player.dirY = 0; // Initial direction
+    data->player.dirY = 0;
     data->player.planeX = 0;
-    data->player.planeY = 0.9; // Camera plane
+    data->player.planeY = 0.9;
 }
 
 //does all the neccessary work to start the game (which you just lost)
