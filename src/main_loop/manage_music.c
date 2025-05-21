@@ -70,7 +70,8 @@ void manage_music(data_t *data)
         run_menu_music(data);
         return;
     }
-    if (data->current_music_name && my_strcmp(data->current_music_name, "menu.ogg") == 0)
+    if (data->current_music_name &&
+        my_strcmp(data->current_music_name, "menu.ogg") == 0)
         sfMusic_stop(data->current_music);
     if (data->current_music == NULL ||
         data->current_music_name == NULL ||

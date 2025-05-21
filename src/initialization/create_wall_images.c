@@ -28,6 +28,20 @@ static bool create_env_images(data_t *data, const char *filename,
     return false;
 }
 
+static bool create_more_wall_images(data_t *data)
+{
+    if (create_env_images(data, "F.png",
+        &data->sprites.environment.F) ||
+        create_env_images(data, "G.png",
+        &data->sprites.environment.G) ||
+        create_env_images(data, "H.png",
+        &data->sprites.environment.H) ||
+        create_env_images(data, "I.png",
+        &data->sprites.environment.I))
+        return true;
+    return false;
+}
+
 bool create_wall_images(data_t *data)
 {
     if (create_env_images(data, "A.png",
@@ -40,15 +54,7 @@ bool create_wall_images(data_t *data)
         &data->sprites.environment.D) ||
         create_env_images(data, "E.png",
         &data->sprites.environment.E) ||
-        create_env_images(data, "F.png",
-        &data->sprites.environment.F) ||
-        create_env_images(data, "G.png",
-        &data->sprites.environment.G) ||
-        create_env_images(data, "H.png",
-        &data->sprites.environment.H) ||
-        create_env_images(data, "I.png",
-        &data->sprites.environment.I)
-   )
- return true;
+        create_more_wall_images(data))
+        return true;
     return false;
 }

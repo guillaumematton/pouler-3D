@@ -77,8 +77,8 @@ typedef struct ray_s {
 typedef struct dist_info_s {
     int mapX;
     int mapY;
-    int stepX;
-    int stepY;
+    int texX;
+    int texY;
     float deltaDistX;
     float deltaDistY;
     float perpWallDist;
@@ -92,6 +92,7 @@ typedef struct draw_info_s {
     int texX;
     int line_height;
     int draw_start;
+    int draw_end;
     float wallX;
 } draw_info_t;
 
@@ -133,7 +134,7 @@ void run_options_scene(data_t *data);
 
 //game
 void run_game_scene(data_t *data);
-void render_in_map(data_t *data, char game_state);
+void render_map(data_t *data);
 void handle_movement(char **map,
     data_t *data, char game_state);
 bool create_wall_images(data_t *data);

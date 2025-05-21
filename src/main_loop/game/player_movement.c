@@ -81,7 +81,8 @@ static void handle_camera_movement(data_t *data,
         data->player.dirY * cos(-rot);
     data->player.planeX = data->player.planeX *
         cos(-rot) - data->player.planeY * sin(-rot);
-    data->player.planeY = oldPlaneX * sin(-rot) + data->player.planeY * cos(-rot);
+    data->player.planeY = oldPlaneX * sin(-rot) +
+        data->player.planeY * cos(-rot);
 }
 
 void handle_movement(char **map,
