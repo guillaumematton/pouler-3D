@@ -24,6 +24,8 @@
     #include "sprite.h"
     #include "assets.h"
 
+    #define GAME_FPS 60
+
 typedef struct argument_s {
     bool help;
     bool full_screen;
@@ -61,6 +63,8 @@ typedef struct data {
     sfVector2u screen_size;
     bool exit;
     sfEvent event;
+    double game_time;
+    float tick_duration;
 } data_t;
 
 typedef struct ray_s {
@@ -119,11 +123,12 @@ void load_environment_texture(data_t *data, char *folder_path,
     char *asset_name);
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 void set_position_scale(float scale_value, float positionx,
-                        float positiony, sfSprite *sprite);
+    float positiony, sfSprite *sprite);
 
 //main_loop
 void run_main_loop(data_t *data);
 void manage_music(data_t *data);
+void manage_time(data_t *data);
 
 //menu
 void run_menu_scene(data_t *data);

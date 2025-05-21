@@ -87,15 +87,12 @@ static void handle_camera_movement(data_t *data,
 
 void handle_movement(char **map, data_t *data)
 {
-    sfTime elapsed = sfClock_getElapsedTime(data->clock);
-    float delta_time = sfTime_asSeconds(elapsed);
-    float moveSpeed = 2.0f * delta_time;
-    float rotSpeed = 0.1f * delta_time;
+    float moveSpeed = 2.0f * data->tick_duration;
+    float rotSpeed = 0.1f * data->tick_duration;
     sfVector2i mousePos = sfMouse_getPositionRenderWindow(data->window);
     sfVector2u screen = sfRenderWindow_getSize(data->window);
     int deltaX = screen.x / 2 - mousePos.x;
 
-    sfClock_restart(data->clock);
     sfMouse_setPositionRenderWindow((sfVector2i)
         {screen.x / 2, screen.y / 2}, data->window);
     handle_backward_input(data, map, moveSpeed);

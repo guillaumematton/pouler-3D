@@ -32,6 +32,7 @@ void run_main_loop(data_t *data)
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);
         manage_music(data);
+        manage_time(data);
         while (sfRenderWindow_pollEvent(data->window, &data->event) == 0)
             continue;
         if (data->event.type == sfEvtClosed ||

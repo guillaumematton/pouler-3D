@@ -14,7 +14,7 @@ static data_t initialize_data(void)
     {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
     {false, {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     {NULL, NULL, NULL, NULL}}, {NULL, NULL, NULL}, NULL},
-    NULL, NULL, NULL, MENU, false};
+    NULL, NULL, NULL, MENU, false, 0, 0};
 
     return data;
 }
@@ -23,7 +23,6 @@ int main(UNUSED int ac, char **av, char **env)
 {
     data_t data = initialize_data();
 
-    srand(time(NULL));
     if (check_if_in_gui(env) == false)
         return 84;
     if (parse_args(&data, av))

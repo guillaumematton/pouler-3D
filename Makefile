@@ -27,6 +27,7 @@ SRC	= src/main.c\
 	  src/initialization/create_menu_sprites.c\
 	  src/main_loop/run_main_loop.c\
 	  src/main_loop/manage_music.c\
+	  src/main_loop/manage_time.c\
 	  src/main_loop/menu/run_menu_scene.c\
 	  src/main_loop/menu/render_menu.c\
 	  src/main_loop/menu/handle_menu_interactions.c\
