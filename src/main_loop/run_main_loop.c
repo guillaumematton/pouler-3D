@@ -18,15 +18,13 @@ void run_main_loop(data_t *data)
         manage_music(data);
         while (sfRenderWindow_pollEvent(data->window, &data->event) == 0)
             continue;
-        if (data->event.type == sfEvtClosed)
+        if (data->event.type == sfEvtClosed ||
+            (sfKeyboard_isKeyPressed(sfKeyK) &&
+            sfKeyboard_isKeyPressed(sfKeyLControl)))
             break;
-        if (data->scene == MENU)
-            run_menu_scene(data);
-        if (data->scene == OPTIONS)
-            run_options_scene(data);
-        if (data->scene == GAME)
-            run_game_scene(data);
-        if (data->scene == PAUSE)
-            run_pause_scene(data);
+        run_menu_scene(data);
+        run_options_scene(data);
+        run_game_scene(data);
+        run_pause_scene(data);
     }
 }

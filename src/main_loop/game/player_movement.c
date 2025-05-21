@@ -97,10 +97,10 @@ void handle_movement(char **map,
     int deltaX = screen.x / 2 - mousePos.x;
 
     sfClock_restart(data->clock);
-    if (game_state != GAME)
-        return;
     sfMouse_setPositionRenderWindow((sfVector2i)
         {screen.x / 2, screen.y / 2}, data->window);
+    if (game_state != GAME)
+        return;
     handle_backward_input(data, map, moveSpeed);
     handle_forward_input(data, map, moveSpeed);
     handle_left_input(data, map, moveSpeed);

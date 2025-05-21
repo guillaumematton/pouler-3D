@@ -139,6 +139,7 @@ void handle_movement(char **map,
     data_t *data, char game_state);
 bool create_wall_images(data_t *data);
 void set_sprite_positions(data_t *data);
+void cast_floor_and_ceiling(data_t *data);
 
 //pause
 void run_pause_scene(data_t *data);

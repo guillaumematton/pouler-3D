@@ -9,4 +9,6 @@
 
 void run_options_scene(data_t *data)
 {
+    if (data->scene != OPTIONS)
+        return;
 }

@@ -47,7 +47,7 @@ static void create_verteces(data_t *data, ray_t rays, int x, int y)
     sfVertexArray_clear(data->game_vertex);
 }
 
-static void cast_floor_and_ceiling(data_t *data)
+void cast_floor_and_ceiling(data_t *data)
 {
     ray_t rays = create_ray_struct(data, 0);
 

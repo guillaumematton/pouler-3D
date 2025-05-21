@@ -9,4 +9,6 @@
 
 void run_pause_scene(data_t *data)
 {
+    if (data->scene != PAUSE)
+        return;
 }
