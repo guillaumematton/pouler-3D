@@ -7,6 +7,31 @@
 
 #include "wolf3d.h"
 
+static char *create_empty_line(unsigned int len)
+{
+    char *str = malloc(len + 1);
+
+    if (str == NULL)
+	return NULL;
+    for (int i = 0; i < len; i++)
+	str[i] = ' ';
+    str[len] = '\0';
+    return str;
+}
+
+static char *copy_line(char *trg, unsigned int len)
+{
+    char *str = malloc(len + 1);
+
+    if (str == NULL)
+	return NULL;
+    for (int i = 0; i < len; i++)
+	str[i] = ' ';
+    str[len] = '\0';
+    my_strndup(trg, len);
+    return str;
+}
+
 static void parse_array(char **lines, char ***array, map_t *asset_struct)
 {
     *array = malloc(sizeof(char *) * (asset_struct->y_size + 1));
@@ -15,10 +40,9 @@ static void parse_array(char **lines, char ***array, map_t *asset_struct)
     (*array)[asset_struct->x_size] = NULL;
     for (int i = 0; i < asset_struct->y_size; i++) {
         if (lines[i] == NULL) {
-            (*array)[i] = NULL;
-            return;
-        }
-        (*array)[i] = my_strndup(lines[i], asset_struct->x_size);
+	    (*array)[i] = create_empty_line(asset_struct->x_size);
+        } else 
+	    (*array)[i] = copy_line(lines[i], asset_struct->x_size);
     }
 }
 
