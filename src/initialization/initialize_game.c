@@ -58,5 +58,6 @@ bool initialize_game(data_t *data)
         return true;
     if (create_menu_sprites(data) || create_wall_images(data))
         return true;
+    set_sprite_positions(data);
     return false;
 }

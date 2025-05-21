@@ -28,7 +28,6 @@ static void run_scenes(data_t *data)
 
 void run_main_loop(data_t *data)
 {
-    set_sprite_positions(data); //temp
     while (sfRenderWindow_isOpen(data->window) && data->exit == false) {
         sfRenderWindow_display(data->window);
         sfRenderWindow_clear(data->window, sfBlack);

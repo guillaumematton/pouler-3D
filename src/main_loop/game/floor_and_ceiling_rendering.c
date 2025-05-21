@@ -15,7 +15,8 @@ static ray_t create_ray_struct(data_t *data, int y)
     rays.rayDirY0 = data->player.dirY - data->player.planeY;
     rays.rayDirX1 = data->player.dirX + data->player.planeX;
     rays.rayDirY1 = data->player.dirY + data->player.planeY;
-    rays.rowDistance = (0.5f * data->screen_size.y) / (y - data->screen_size.y / 2);
+    rays.rowDistance = (0.5f * data->screen_size.y)
+        / (y - data->screen_size.y / 2);
     rays.stepX = rays.rowDistance * (rays.rayDirX1 -
         rays.rayDirX0) / data->screen_size.x;
     rays.stepY = rays.rowDistance * (rays.rayDirY1 -

@@ -56,7 +56,7 @@ static bool hit_detection(data_t *data, dist_info_t *dists)
         if (data->assets.maps->walls[dists->mapX][dists->mapY] != ' ')
             dists->hit = 1;
     } else {
-        return true; // Avoid infinite loop
+        return true;
     }
     return false;
 }
@@ -148,7 +148,8 @@ static void wall_render(data_t *data)
         finish_filling_distances(&dists, rays, draw.wallX);
         for (int y = draw.draw_start; y < draw.draw_end; y++) {
             d = y * 256 - data->screen_size.y * 128 + draw.line_height * 128;
-            dists.texY = (((d * TEX_SIZE) / draw.line_height) / 256) % TEX_SIZE;
+            dists.texY = (((d * TEX_SIZE) /
+            draw.line_height) / 256) % TEX_SIZE;
             draw_pixel(data, &dists, x, y);
         }
     }

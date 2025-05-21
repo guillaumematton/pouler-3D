@@ -63,13 +63,6 @@ typedef struct data {
     sfEvent event;
 } data_t;
 
-typedef struct current_level_s {
-    map_t *current_map;
-    sfImage *floor;
-    sfImage *ceiling;
-    sfImage *walls;
-} current_level_t;
-
 typedef struct ray_s {
     float rayDirX0;
     float rayDirY0;

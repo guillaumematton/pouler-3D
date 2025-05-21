@@ -60,7 +60,6 @@ static void run_menu_music(data_t *data)
         data->current_music_name = music->name;
         sfMusic_setLoop(data->current_music, sfTrue);
         sfMusic_play(data->current_music);
-        //printf("%s\n", data->current_music_name);
     }
 }
 
