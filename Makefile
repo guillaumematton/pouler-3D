@@ -78,6 +78,7 @@ fclean: clean
 re: fclean all
 
 run: all
+	gsettings set org.gnome.mutter check-alive-timeout 0
 	./$(NAME) -d
 
 test: debug
