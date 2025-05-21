@@ -84,14 +84,15 @@ static void ray_casting(data_t *data, dist_info_t *dists, ray_t *rays)
 
 static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
 {
-    sfColor color = sfImage_getPixel(data->sprites.environment.G,
-        dists->texX, dists->texY);
+    sfColor color;
     sfVertex pixel = {0, 0};
 
     if (dists->texY < 0)
         dists->texY = 0;
     if (dists->texY >= TEX_SIZE)
         dists->texY = TEX_SIZE - 1;
+    color = sfImage_getPixel(data->sprites.environment.G,
+        dists->texX, dists->texY);
     if (dists->side == 1) {
         color.r /= 2;
         color.g /= 2;
@@ -106,9 +107,13 @@ static void finish_filling_distances(dist_info_t *dists, ray_t rays, int wallX)
 {
     dists->texX = (int)(wallX * (float)TEX_SIZE);
     if (dists->side == 0 && rays.rayDirX0 > 0)
-        dists->texX = (TEX_SIZE - dists->texX - 1) % TEX_SIZE;
+        dists->texX = TEX_SIZE - dists->texX - 1;
     if (dists->side == 1 && rays.rayDirY0 < 0)
-        dists->texX = (TEX_SIZE - dists->texX - 1) % TEX_SIZE;
+        dists->texX = TEX_SIZE - dists->texX - 1;
+    if (dists->texX < 0)
+        dists->texX = 0;
+    if (dists->texX >= 0)
+        dists->texX = TEX_SIZE - 1;
 }
 
 static void fill_draw(data_t *data, ray_t rays,
