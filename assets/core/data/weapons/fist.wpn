@@ -1,6 +1,6 @@
-damage : 5
-max_ammo : 100
-ammo : 100
-firerate : 1
-explosive : 0
-melee : 1
+5 //damage 000
+100 //max ammo
+100 //ammo
+1 //RoF
+0 //isExplosive
+1 //melee

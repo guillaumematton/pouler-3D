@@ -28,7 +28,7 @@ static bool load_module(data_t *data, char *name)
         &load_environment_texture);
     load_assets_folder(data, module_path, "/textures/gui/",
         &load_gui_texture);
-    //(and the logic in case of loading failure)
+    return false;
 }
 
 //loads all modules execpt core

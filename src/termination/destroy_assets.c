@@ -82,7 +82,6 @@ static void destroy_weapons(data_t *data)
     while (asset_struct != NULL) {
         if (data->arguments.debug)
             mini_printf("    destroying %s.\n", asset_struct->name);
-        //TODO free stuff
         my_free(asset_struct->name);
         struct_to_free = asset_struct;
         asset_struct = asset_struct->next;

@@ -7,6 +7,25 @@
 
 #include "wolf3d.h"
 
+static void weapon_parser(char *asset_path, weapon_t *asset_struct)
+{
+    char *buffer = my_readfile(asset_path);
+    char **lines = my_strsplit(buffer, "\n", false);
+
+    if (buffer == NULL || lines == NULL)
+        return;
+    if (my_ptrarraylen((void **) lines) >= 6) {
+        asset_struct->damage = atoi(lines[0]);
+        asset_struct->max_ammo = atoi(lines[1]);
+        asset_struct->ammo = atoi(lines[2]);
+        asset_struct->firerate = atoi(lines[3]);
+        asset_struct->explosive = lines[4][0] == '1';
+        asset_struct->melee = lines[5][0] == '1';
+    }
+    free(buffer);
+    my_freestrarray(lines);
+}
+
 static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
 {
     weapon_t *new_struct = NULL;
@@ -19,7 +38,7 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     if (new_struct == NULL)
         return;
     new_struct->next = data->assets.weapons;
-    //TODO parser
+    weapon_parser(asset_path, new_struct);
     new_struct->name = my_strdup(asset_name);
     data->assets.weapons = new_struct;
 }
@@ -31,7 +50,7 @@ static void overwrite_struct(data_t *data, char *asset_path,
         mini_printf(
         "\tloading %s by overwriting the previous weapon.\n",
         asset_path);
-    //TODO parser
+    weapon_parser(asset_path, asset_struct);
 }
 
 //loads the asset by first checking for an asset with
