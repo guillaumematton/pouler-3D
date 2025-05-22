@@ -149,6 +149,7 @@ void cast_floor_and_ceiling(data_t *data);
 //pause
 void run_pause_scene(data_t *data);
 void render_pause(data_t *data);
+void handle_pause_interactions(data_t *data);
 
 //term
 void terminate_game(data_t *data);

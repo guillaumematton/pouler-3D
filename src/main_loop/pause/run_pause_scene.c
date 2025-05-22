@@ -14,7 +14,6 @@ static void set_sprite_positions_pause(data_t *data)
 
     sfSprite_setPosition(data->sprites.menu.p_background, position);
     sfSprite_setScale(data->sprites.menu.p_background, scale);
-    //set_position_scale(1, 0, 0, data->sprites.menu.p_background);
     set_position_scale(0.45, 320, 375, data->sprites.menu.options);
     set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
     return;
@@ -24,6 +23,7 @@ void run_pause_scene(data_t *data)
 {
     set_sprite_positions_pause(data);
     render_pause(data);
+    handle_pause_interactions(data);
     if (sfKeyboard_isKeyPressed(sfKeyEnter)) {
         data->scene = GAME;
         return;

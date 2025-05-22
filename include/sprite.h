@@ -37,6 +37,12 @@ typedef struct menu_infos_s {
     sfVector2i mouse_pos;
 } menu_infos_t;
 
+typedef struct pause_infos_s {
+    sfFloatRect options_infos;
+    sfFloatRect exit_infos;
+    sfVector2i mouse_pos;
+} pause_infos_t;
+
 typedef struct env_s {
     sfImage *A;
     sfImage *B;
