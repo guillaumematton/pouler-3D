@@ -14,7 +14,7 @@ static void set_sprite_positions_pause(data_t *data)
 
     sfSprite_setPosition(data->sprites.menu.p_background, position);
     sfSprite_setScale(data->sprites.menu.p_background, scale);
-    set_position_scale(0.45, 320, 375, data->sprites.menu.options);
+    set_position_scale(0.35, 330, 100, data->sprites.menu.options);
     set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
     return;
 }

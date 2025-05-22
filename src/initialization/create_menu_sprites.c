@@ -23,7 +23,7 @@ void set_sprite_positions(data_t *data)
     set_position_scale(1.38, 0, 0, data->sprites.menu.background);
     set_position_scale(0.5, 285, 255, data->sprites.menu.new_game);
     set_position_scale(0.375, 300, 320, data->sprites.menu.continue_game);
-    set_position_scale(0.45, 320, 375, data->sprites.menu.options);
+    set_position_scale(0.35, 325, 375, data->sprites.menu.options);
     set_position_scale(0.425, 340, 435, data->sprites.menu.lore);
     set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
     set_position_scale(0.8, 0, 0, data->sprites.menu.title);
@@ -78,7 +78,7 @@ bool create_menu_sprites(data_t *data)
         &data->sprites.menu.continue_game) ||
     create_gui_sprite(data, "lore.png", &data->sprites.menu.lore) ||
     create_gui_sprite(data, "exit.png", &data->sprites.menu.exit_game) ||
-    create_gui_sprite(data, "option.png", &data->sprites.menu.options) ||
+    create_gui_sprite(data, "options.png", &data->sprites.menu.options) ||
     create_gui_sprite(data, "title.png", &data->sprites.menu.title) ||
         create_options_sprites(data))
         return true;
