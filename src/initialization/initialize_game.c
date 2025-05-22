@@ -45,6 +45,7 @@ void initialize_player(data_t *data)
 //returns true if error
 bool initialize_game(data_t *data)
 {
+    srand(time(NULL));
     data->game_vertex = sfVertexArray_create();
     if (!data->game_vertex)
         return true;
