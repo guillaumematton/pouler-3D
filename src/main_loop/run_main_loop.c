@@ -19,7 +19,7 @@ static void run_scenes(data_t *data)
     if (data->scene == MENU)
         run_menu_scene(data);
     if (data->scene == OPTIONS)
-        run_options_scene(data);
+        run_moptions_scene(data);
     if (data->scene == GAME)
         run_game_scene(data);
     if (data->scene == PAUSE)

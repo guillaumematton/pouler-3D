@@ -17,7 +17,7 @@ static void detect_button_mouse_click(data_t *data, menu_infos_t *menu_infos)
         printf("continuegame\n");
     if (sfFloatRect_contains(&menu_infos->options_infos,
     menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        printf("options\n");
+        data->scene = OPTIONS;
     if (sfFloatRect_contains(&menu_infos->lore_infos,
     menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
         printf("lore\n");
@@ -47,5 +47,5 @@ static void handle_button_clicks(data_t *data)
 void handle_menu_interactions(data_t *data)
 {
     if (data->event.mouseButton.button == sfMouseLeft)
-            handle_button_clicks(data);
+        handle_button_clicks(data);
 }

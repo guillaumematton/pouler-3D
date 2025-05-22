@@ -13,6 +13,9 @@ typedef struct option_s {
     sfSprite *full_screen;
     sfSprite *empty_box;
     sfSprite *full_box;
+    sfSprite *volume_up;
+    sfSprite *volume_down;
+    sfSprite *volume;
     sfSprite *back;
 } option_t;
 
@@ -20,6 +23,7 @@ typedef struct menu_s {
     sfSprite *title;
     sfSprite *background;
     sfSprite *p_background;
+    sfSprite *o_background;
     sfSprite *new_game;
     sfSprite *continue_game;
     sfSprite *options;
@@ -42,6 +46,13 @@ typedef struct pause_infos_s {
     sfFloatRect exit_infos;
     sfVector2i mouse_pos;
 } pause_infos_t;
+
+typedef struct options_infos_s {
+    sfFloatRect fullscreen_infos;
+    sfFloatRect volume_up_infos;
+    sfFloatRect volume_down_infos;
+    sfVector2i mouse_pos;
+} options_infos_t;
 
 typedef struct env_s {
     sfImage *A;

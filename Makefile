@@ -35,7 +35,9 @@ SRC	= src/main.c\
 	  src/main_loop/menu/run_menu_scene.c\
 	  src/main_loop/menu/render_menu.c\
 	  src/main_loop/menu/handle_menu_interactions.c\
-	  src/main_loop/options/run_options_scene.c\
+	  src/main_loop/options/run_moptions_scene.c\
+	  src/main_loop/options/render_moptions.c\
+	  src/main_loop/options/handle_moptions_interactions.c\
 	  src/main_loop/game/floor_and_ceiling_rendering.c\
 	  src/main_loop/game/handle_firearms.c\
 	  src/main_loop/game/run_game_scene.c\

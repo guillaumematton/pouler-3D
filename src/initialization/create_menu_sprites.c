@@ -65,7 +65,15 @@ bool create_options_sprites(data_t *data)
     create_gui_sprite(data, "back.png",
         &data->sprites.menu.options_sprites.back) ||
     create_gui_sprite(data, "pause_background.jpg",
-    &data->sprites.menu.p_background))
+    &data->sprites.menu.p_background) ||
+    create_gui_sprite(data, "options_background.jpg",
+    &data->sprites.menu.o_background) ||
+        create_gui_sprite(data, "volume.png",
+    &data->sprites.menu.options_sprites.volume) ||
+        create_gui_sprite(data, "volume_up.png",
+    &data->sprites.menu.options_sprites.volume_up) ||
+        create_gui_sprite(data, "volume_down.png",
+    &data->sprites.menu.options_sprites.volume_down))
         return true;
 }
 

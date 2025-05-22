@@ -74,6 +74,7 @@ typedef struct data {
     double game_time;
     float tick_duration;
     sfText *hud_text;
+    float volume;
 } data_t;
 
 typedef struct ray_s {
@@ -149,7 +150,9 @@ void render_menu(data_t *data);
 void handle_menu_interactions(data_t *data);
 
 //options
-void run_options_scene(data_t *data);
+void run_moptions_scene(data_t *data);
+void render_moptions(data_t *data);
+void handle_moptions_interactions(data_t *data);
 
 //game
 void run_game_scene(data_t *data);
