@@ -73,6 +73,7 @@ typedef struct data {
     sfEvent event;
     double game_time;
     float tick_duration;
+    sfText *hud_text;
 } data_t;
 
 typedef struct ray_s {

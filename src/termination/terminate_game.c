@@ -70,6 +70,12 @@ static void destroy_miscellanous(data_t *data)
         sfVertexArray_destroy(data->game_vertex);
 }
 
+static void destroy_text(data_t *data)
+{
+    if (data->hud_text != NULL)
+        sfText_destroy(data->hud_text);
+}
+
 void terminate_game(data_t *data)
 {
     if (data->arguments.debug)
@@ -79,4 +85,5 @@ void terminate_game(data_t *data)
     destroy_wall_images(data);
     destroy_gui_sprites(data);
     destroy_miscellanous(data);
+    destroy_text(data);
 }

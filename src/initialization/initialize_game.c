@@ -8,7 +8,7 @@
 #include "wolf3d.h"
 
 //returns true if error
-bool set_window(data_t *data)
+static bool set_window(data_t *data)
 {
     sfVideoMode mode = {800, 600, 32};
     int arg = sfClose;
@@ -30,7 +30,7 @@ bool set_window(data_t *data)
     return false;
 }
 
-void initialize_player(data_t *data)
+static void initialize_player(data_t *data)
 {
     data->player.health = 100;
     data->player.x = 2;
@@ -39,6 +39,25 @@ void initialize_player(data_t *data)
     data->player.dirY = 0;
     data->player.planeX = 0;
     data->player.planeY = 0.9;
+}
+
+//returns true if error
+static bool set_text(data_t *data)
+{
+    font_t *font = data->assets.fonts;
+
+    data->hud_text = sfText_create();
+    if (data->hud_text == NULL)
+        return true;
+    for (; font != NULL; font = font->next) {
+        if (my_strncmp("hud", font->name, 3) == 0) {
+            sfText_setFont(data->hud_text, font->font);
+            sfText_setPosition(data->hud_text,
+                (sfVector2f) {10, 10});
+            return false;
+        }
+    }
+    return true;
 }
 
 //does all the neccessary work to start the game (which you just lost)
@@ -56,6 +75,8 @@ bool initialize_game(data_t *data)
         return true;
     initialize_player(data);
     if (load_assets(data))
+        return true;
+    if (set_text(data))
         return true;
     bind_assets(data);
     if (create_menu_sprites(data) || create_wall_images(data))
