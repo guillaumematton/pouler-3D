@@ -54,6 +54,21 @@ static bool create_gui_sprite(data_t *data, const char *filename,
     return false;
 }
 
+bool create_options_sprites(data_t *data)
+{
+    if (create_gui_sprite(data, "empty_box.png",
+        &data->sprites.menu.options_sprites.empty_box) ||
+    create_gui_sprite(data, "full_screen.png",
+        &data->sprites.menu.options_sprites.full_screen) ||
+    create_gui_sprite(data, "full_box.png",
+        &data->sprites.menu.options_sprites.full_box) ||
+    create_gui_sprite(data, "back.png",
+        &data->sprites.menu.options_sprites.back) ||
+    create_gui_sprite(data, "pause_background.jpg",
+    &data->sprites.menu.p_background))
+        return true;
+}
+
 bool create_menu_sprites(data_t *data)
 {
     if (create_gui_sprite(data, "menu_background.png",
@@ -65,16 +80,7 @@ bool create_menu_sprites(data_t *data)
     create_gui_sprite(data, "exit.png", &data->sprites.menu.exit_game) ||
     create_gui_sprite(data, "option.png", &data->sprites.menu.options) ||
     create_gui_sprite(data, "title.png", &data->sprites.menu.title) ||
-    create_gui_sprite(data, "empty_box.png",
-        &data->sprites.menu.options_sprites.empty_box) ||
-    create_gui_sprite(data, "full_screen.png",
-        &data->sprites.menu.options_sprites.full_screen) ||
-    create_gui_sprite(data, "full_box.png",
-        &data->sprites.menu.options_sprites.full_box) ||
-    create_gui_sprite(data, "back.png",
-        &data->sprites.menu.options_sprites.back) ||
-    create_gui_sprite(data, "pause_background.jpg",
-        &data->sprites.menu.p_background))
+        create_options_sprites(data))
         return true;
     set_sprite_positions(data);
     return false;
