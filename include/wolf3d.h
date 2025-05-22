@@ -114,6 +114,7 @@ typedef struct draw_info_s {
     #define TEX_SIZE 48
 
 //init
+data_t initialize_data(void);
 bool check_if_in_gui(char **env);
 bool parse_args(data_t *data, char **av);
 bool display_help(data_t *data);

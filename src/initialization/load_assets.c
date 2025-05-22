@@ -67,4 +67,5 @@ bool load_assets(data_t *data)
         mini_printf("  loading assets.\n");
     load_module(data, "core");
     load_modules(data);
+    return false;
 }

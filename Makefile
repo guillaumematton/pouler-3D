@@ -9,6 +9,7 @@ NAME	= wolf3d
 
 ## the sources files should be ordered by order of use in the program
 SRC	= src/main.c\
+	  src/initialize_data.c\
 	  src/miscellaneous/check_if_in_gui.c\
 	  src/initialization/parse_args.c\
 	  src/miscellaneous/display_help.c\
@@ -46,9 +47,13 @@ SRC	= src/main.c\
 	  src/termination/terminate_game.c\
 	  src/termination/destroy_assets.c\
 
-LIB	= lib/libmy.a\
-
 OBJ	= $(SRC:.c=.o)
+
+TESTS_SRC = tests/test_wolf3d.c
+
+TESTS_OBJ = $(TESTS_SRC:.c=.o)
+
+LIB	= lib/libmy.a\
 
 CC	= gcc
 
@@ -77,12 +82,26 @@ clean:
 	@cd lib/my ; make clean -s
 	@rm -f $(OBJ)
 
-fclean: clean
+fclean: clean clean_tests
 	@$(MAKE) fclean -sC lib/my
 	@rm -f $(NAME)
 	@rm -f $(NAME)_debug
 
+clean_tests:
+	@rm -f $(NAME)_test
+	@rm -f *.gcda
+	@rm -f *.gcno
+
 re: fclean all
+
+unit_tests: $(LIB)
+	$(CC) $(filter-out src/main.c,$(SRC)) $(TESTS_SRC) $(CFLAGS) \
+-o $(NAME)_test --coverage -lcriterion
+
+tests_run: clean_tests unit_tests
+	./$(NAME)_test || true
+	gcovr --exclude tests/
+	gcovr --exclude tests/ --txt-metric branch
 
 run: all
 	gsettings set org.gnome.mutter check-alive-timeout 0

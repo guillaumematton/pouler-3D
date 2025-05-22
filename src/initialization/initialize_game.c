@@ -64,13 +64,13 @@ static bool set_text(data_t *data)
 //returns true if error
 bool initialize_game(data_t *data)
 {
+    if (data->arguments.debug)
+        mini_printf("starting game initialization.\n");
     srand(time(NULL));
     data->game_vertex = sfVertexArray_create();
     if (!data->game_vertex)
         return true;
     sfVertexArray_setPrimitiveType(data->game_vertex, sfPoints);
-    if (data->arguments.debug)
-        mini_printf("starting game initialization.\n");
     if (set_window(data))
         return true;
     initialize_player(data);
