@@ -129,6 +129,8 @@ void load_weapon(data_t *data, char *folder_path, char *asset_name);
 void load_entity_texture(data_t *data, char *folder_path, char *asset_name);
 void load_environment_texture(data_t *data, char *folder_path,
     char *asset_name);
+void bind_assets(data_t *data);
+void bind_weapon_assets(data_t *data);
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 void set_position_scale(float scale_value, float positionx,
     float positiony, sfSprite *sprite);

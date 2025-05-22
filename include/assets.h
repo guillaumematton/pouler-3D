@@ -48,7 +48,7 @@ typedef struct weapon_s {
     char *name;
     sfTexture *texture;
     sfSprite *sprite;
-    sfMusic *music;
+    sfSoundBuffer *sound;
     float damage;
     int ammo;
     int max_ammo;

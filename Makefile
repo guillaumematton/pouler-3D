@@ -24,6 +24,8 @@ SRC	= src/main.c\
 	  src/initialization/load_entity_texture.c\
 	  src/initialization/load_environment_texture.c\
 	  src/initialization/load_gui_texture.c\
+          src/initialization/bind_assets.c\
+          src/initialization/bind_weapon_assets.c\
 	  src/initialization/create_menu_sprites.c\
 	  src/main_loop/run_main_loop.c\
 	  src/main_loop/manage_music.c\

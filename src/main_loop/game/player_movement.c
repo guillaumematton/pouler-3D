@@ -94,7 +94,7 @@ void handle_movement(char **map, data_t *data)
     int deltaX = screen.x / 2 - mousePos.x;
 
     if (sfKeyboard_isKeyPressed(sfKeyLShift))
-        moveSpeed *= 2;
+        moveSpeed * = 2;
     sfMouse_setPositionRenderWindow((sfVector2i)
         {screen.x / 2, screen.y / 2}, data->window);
     handle_backward_input(data, map, moveSpeed);
