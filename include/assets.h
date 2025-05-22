@@ -76,15 +76,22 @@ typedef struct gui_texture_s {
     struct gui_texture_s *next;
 } gui_texture_t;
 
+typedef struct font_s {
+    char *name;
+    sfFont *font;
+    struct font_s *next;
+} font_t;
+
 typedef struct assets_s {
-    sound_t *sounds; //
-    music_t *musics; //
-    enemy_type_t *enemy_types; //
+    sound_t *sounds;
+    music_t *musics;
+    enemy_type_t *enemy_types;
     map_t *maps;
     weapon_t *weapons;
-    entity_texture_t *entity_textures; //
-    environment_texture_t *environment_textures; //
-    gui_texture_t *gui_textures; //
+    entity_texture_t *entity_textures;
+    environment_texture_t *environment_textures;
+    gui_texture_t *gui_textures;
+    font_t *fonts;
 } assets_t;
 
 #endif

@@ -139,6 +139,22 @@ static void destroy_gui_textures(data_t *data)
     }
 }
 
+static void destroy_font(data_t *data)
+{
+    font_t *asset_struct = data->assets.fonts;
+    font_t *struct_to_free = NULL;
+
+    while (asset_struct != NULL) {
+        if (data->arguments.debug)
+            mini_printf("    destroying %s.\n", asset_struct->name);
+        sfFont_destroy(asset_struct->font);
+        my_free(asset_struct->name);
+        struct_to_free = asset_struct;
+        asset_struct = asset_struct->next;
+        free(struct_to_free);
+    }
+}
+
 void destroy_assets(data_t *data)
 {
     if (data->arguments.debug)
@@ -151,4 +167,5 @@ void destroy_assets(data_t *data)
     destroy_entity_textures(data);
     destroy_environment_textures(data);
     destroy_gui_textures(data);
+    destroy_font(data);
 }
