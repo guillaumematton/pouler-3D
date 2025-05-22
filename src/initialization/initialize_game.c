@@ -25,7 +25,7 @@ bool set_window(data_t *data)
         arg, NULL);
     if (!data->window)
         return true;
-    sfRenderWindow_setFramerateLimit(data->window, 60);
+    sfRenderWindow_setFramerateLimit(data->window, GAME_FPS);
     data->screen_size = sfRenderWindow_getSize(data->window);
     return false;
 }
