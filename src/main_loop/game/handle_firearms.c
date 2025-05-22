@@ -16,7 +16,7 @@ static void modify_sprite_for_idle(data_t *data)
     rect.width = data->current_weapon.sprite_size.x / 2;
     rect.height = data->current_weapon.sprite_size.y / 2;
     data->current_weapon.current_sprite = data->current_weapon.weapon->sprite;
-    sfSprite_set_TextureRect(data->current_weapon.current_sprite, rect);
+    sfSprite_setTextureRect(data->current_weapon.current_sprite, rect);
 }
 
 static void modify_sprite_for_firing(data_t *data)
@@ -28,7 +28,7 @@ static void modify_sprite_for_firing(data_t *data)
     rect.width = data->current_weapon.sprite_size.x;
     rect.height = data->current_weapon.sprite_size.y;
     data->current_weapon.current_sprite = data->current_weapon.weapon->sprite;
-    sfSprite_set_TextureRect(data->current_weapon.current_sprite, rect);
+    sfSprite_setTextureRect(data->current_weapon.current_sprite, rect);
 }
 
 static void change_weapon(data_t *data, int id)

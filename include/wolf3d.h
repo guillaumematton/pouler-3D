@@ -49,6 +49,13 @@ typedef struct Player_s {
     float planeY;
 } Player_t;
 
+typedef struct current_weapon_s {
+    weapon_t *weapon;
+    sfSprite *current_sprite;
+    float time_to_wait;
+    sfVector2i sprite_size;
+} current_weapon_t;
+
 typedef struct data {
     arguments_t arguments;
     Player_t player;
@@ -67,14 +74,6 @@ typedef struct data {
     double game_time;
     float tick_duration;
 } data_t;
-
-typedef struct current_weapon_s {
-    weapon_t *weapon;
-    sfSprite *current_sprite;
-    float time_to_wait;
-    sfVector2i sprite_size;
-
-} current_weapon_t;
 
 typedef struct ray_s {
     float rayDirX0;

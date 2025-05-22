@@ -86,6 +86,7 @@ static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
 {
     sfColor color;
     sfVertex pixel = {0, 0};
+    int color_diming = 1 + floor(dists->perpWallDist / 10);
 
     if (dists->texY < 0)
         dists->texY = 0;
@@ -93,11 +94,9 @@ static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
         dists->texY = TEX_SIZE - 1;
     color = sfImage_getPixel(data->sprites.environment.G,
         dists->texX, dists->texY);
-    if (dists->side == 1) {
-        color.r /= 2;
-        color.g /= 2;
-        color.b /= 2;
-    }
+    color.r /= color_diming;
+    color.g /= color_diming;
+    color.b /= color_diming;
     pixel.position = (sfVector2f){x, y};
     pixel.color = color;
     sfVertexArray_append(data->game_vertex, pixel);
