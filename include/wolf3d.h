@@ -159,6 +159,7 @@ bool create_wall_images(data_t *data);
 void set_sprite_positions(data_t *data);
 void cast_floor_and_ceiling(data_t *data);
 void handle_firearms(data_t *data);
+void render_hud_text(data_t *data);
 
 //pause
 void run_pause_scene(data_t *data);

@@ -18,4 +18,5 @@ void run_game_scene(data_t *data)
     render_map(data);
     sfRenderWindow_drawSprite(data->window,
     data->current_weapon.current_sprite, NULL);
+    render_hud_text(data);
 }
