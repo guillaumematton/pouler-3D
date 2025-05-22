@@ -2,6 +2,12 @@
 
 ## Modding support
 
+### keybindings :  
+Lshift : sprint  
+LCtrl + K : emergency close  
+escape : pause (in game)  
+enter : resume (in pause menu)  
+
 ### Correct map format :
 file ending with .lvl  
 first line : int int -> define the width and the height  

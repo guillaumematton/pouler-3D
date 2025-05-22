@@ -103,20 +103,20 @@ static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
     sfVertexArray_append(data->game_vertex, pixel);
 }
 
-static void finish_filling_distances(dist_info_t *dists, ray_t rays, int wallX)
+static void finish_filling_distances(dist_info_t *dists, ray_t rays, draw_info_t draw)
 {
-    dists->texX = (int)(wallX * (float)TEX_SIZE);
+    dists->texX = (int)((float)draw.wallX * (float)TEX_SIZE);
     if (dists->side == 0 && rays.rayDirX0 > 0)
         dists->texX = TEX_SIZE - dists->texX - 1;
     if (dists->side == 1 && rays.rayDirY0 < 0)
         dists->texX = TEX_SIZE - dists->texX - 1;
     if (dists->texX < 0)
         dists->texX = 0;
-    if (dists->texX >= 0)
+    if (dists->texX >= TEX_SIZE)
         dists->texX = TEX_SIZE - 1;
 }
 
-static void fill_draw(data_t *data, ray_t rays,
+static float fill_draw(data_t *data, ray_t rays,
     dist_info_t dists, draw_info_t *draw)
 {
     draw->line_height = (int)(data->screen_size.y / dists.perpWallDist);
@@ -131,6 +131,7 @@ static void fill_draw(data_t *data, ray_t rays,
     else
         draw->wallX = data->player.x + dists.perpWallDist * rays.rayDirX0;
     draw->wallX -= floor(draw->wallX);
+    return draw->wallX;
 }
 
 static void wall_render(data_t *data)
@@ -144,8 +145,8 @@ static void wall_render(data_t *data)
         dists = create_dist_struct(data, x, &rays);
         setup_raycasting(data, &rays, &dists);
         ray_casting(data, &dists, &rays);
-        fill_draw(data, rays, dists, &draw);
-        finish_filling_distances(&dists, rays, draw.wallX);
+        draw.wallX = fill_draw(data, rays, dists, &draw);
+        finish_filling_distances(&dists, rays, draw);
         for (int y = draw.draw_start; y < draw.draw_end; y++) {
             d = y * 256 - data->screen_size.y * 128 + draw.line_height * 128;
             dists.texY = (((d * TEX_SIZE) /
