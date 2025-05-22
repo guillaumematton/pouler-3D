@@ -13,6 +13,7 @@ void run_game_scene(data_t *data)
         data->scene = PAUSE;
         return;
     }
+    handle_firearms(data);
     handle_movement(data->assets.maps->walls, data);
     render_map(data);
 }

@@ -103,7 +103,8 @@ static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
     sfVertexArray_append(data->game_vertex, pixel);
 }
 
-static void finish_filling_distances(dist_info_t *dists, ray_t rays, draw_info_t draw)
+static void finish_filling_distances(dist_info_t *dists,
+    ray_t rays, draw_info_t draw)
 {
     dists->texX = (int)((float)draw.wallX * (float)TEX_SIZE);
     if (dists->side == 0 && rays.rayDirX0 > 0)

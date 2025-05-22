@@ -33,8 +33,6 @@ firerate : float (delay in seconds between each shot)
 explosive : 0 or 1 (not explosive or explosive)  
 melee : 0 or 1 (not melee or melee)
 
-project just started development so give it some time
-
 ___
 ## Subjet's Features
 
@@ -42,7 +40,7 @@ ___
 
 ### General
 - [x] The window may be closed using events.
-- [ ] The windows may have differents mode:
+- [x] The windows may have differents mode:
   - Window mode
   - Full - screen mode
 - [x] The game manages inputs from the mouse click and keyboard.

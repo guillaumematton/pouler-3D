@@ -14,7 +14,8 @@ static data_t initialize_data(void)
     {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
     {false, {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
     {NULL, NULL, NULL, NULL}}, {NULL, NULL, NULL}, NULL},
-    NULL, NULL, NULL, MENU, false, 0, 0};
+    NULL, NULL, NULL, MENU, NULL, {0, 0}, {NULL, NULL, 0, {0, 0}},
+    false, 0, 0};
 
     return data;
 }

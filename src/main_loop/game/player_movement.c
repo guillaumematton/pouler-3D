@@ -88,7 +88,7 @@ static void handle_camera_movement(data_t *data,
 void handle_movement(char **map, data_t *data)
 {
     float moveSpeed = 2.0f * data->tick_duration;
-    float rotSpeed = 0.1f * data->tick_duration;
+    float rotSpeed = 0.2f * data->tick_duration;
     sfVector2i mousePos = sfMouse_getPositionRenderWindow(data->window);
     sfVector2u screen = sfRenderWindow_getSize(data->window);
     int deltaX = screen.x / 2 - mousePos.x;

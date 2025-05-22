@@ -61,11 +61,20 @@ typedef struct data {
     enum scene scene;
     sfVertexArray *game_vertex;
     sfVector2u screen_size;
+    current_weapon_t current_weapon;
     bool exit;
     sfEvent event;
     double game_time;
     float tick_duration;
 } data_t;
+
+typedef struct current_weapon_s {
+    weapon_t *weapon;
+    sfSprite *current_sprite;
+    float time_to_wait;
+    sfVector2i sprite_size;
+
+} current_weapon_t;
 
 typedef struct ray_s {
     float rayDirX0;
@@ -145,6 +154,7 @@ void handle_movement(char **map, data_t *data);
 bool create_wall_images(data_t *data);
 void set_sprite_positions(data_t *data);
 void cast_floor_and_ceiling(data_t *data);
+void handle_firearms(data_t *data);
 
 //pause
 void run_pause_scene(data_t *data);
