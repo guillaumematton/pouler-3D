@@ -20,11 +20,9 @@ then:
     - N = next floor trigger (stairway)
 
 ### Correct weapon file format:
-texture : texture file  
-sound : sound file  
 damage : float  
 ammo : int  
-max_ammo : int > ammo  
+max_ammo : int >= ammo  
 firerate : float (delay in seconds between each shot)  
 explosive : 0 or 1 (not explosive or explosive)  
 melee : 0 or 1 (not melee or melee)
@@ -41,23 +39,23 @@ ___
 - [ ] The windows may have differents mode:
   - Window mode
   - Full - screen mode
-- [ ] The game manages inputs from the mouse click and keyboard.
+- [x] The game manages inputs from the mouse click and keyboard.
 - [ ] The game contains animated sprites rendered thanks to sprite sheets.
-- [ ] Animations in your program are frame rate independent.
-- [ ] Animations and movements in your program are timed by clocks.
+- [x] Animations in your program are frame rate independent.
+- [x] Animations and movements in your program are timed by clocks.
 ### Gameplay and mechanics  
-- [ ] Movement: Basic movements (forward, backward, left and right).
-- [ ] First person : First-person perspective.
-- [ ] Textures and sprites : Use of textures and sprites for objects.
-- [ ] Light (flashlight).
+- [x] Movement: Basic movements (forward, backward, left and right).
+- [x] First person : First-person perspective.
+- [x] Textures and sprites : Use of textures and sprites for objects.
+- [x] Light (flashlight).
 - [ ] A basic weapon (knife or pistol): possibility to hit the walls without enemies, enemies are NOT a MUST feature.
 - [ ] Save system.
 ### Environment
-- [ ] Environment display (floor, ceiling and walls).
-- [ ] Collision system.
+- [x] Environment display (floor, ceiling and walls).
+- [x] Collision system.
 ### Sounds and Graphics
 - [ ] At least one animation: Movement, shots, enemies etc.
-- [ ] Sound effects and music: Sounds and music to enhance the gaming experience.
+- [x] Sound effects and music: Sounds and music to enhance the gaming experience.
 - [ ] Particle effects: Use particles for explosions, shots, etc
 ### User interface
 - [ ] HUD: Interface displaying essential information such as health, ammunition, etc.
@@ -65,7 +63,7 @@ ___
 - [ ] The main menu must contain:
   - Start the game
   - Settings : volumes and windows
-- [ ] Leave the game
+- [x] Leave the game
 - [ ] Volume options: for sound and music.
 - [ ] Window resolution options: for sound and music.
 

@@ -1,0 +1,6 @@
+damage : 1
+max_ammo : 2000
+ammo : 100
+firerate : 0.5
+explosive : 0
+melee : 0
