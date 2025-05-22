@@ -16,4 +16,5 @@ void run_game_scene(data_t *data)
     handle_firearms(data);
     handle_movement(data->assets.maps->walls, data);
     render_map(data);
+    sfRenderWindow_drawSprite(data->window, data->current_weapon.current_sprite, NULL);
 }

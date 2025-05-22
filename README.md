@@ -44,7 +44,7 @@ ___
   - Window mode
   - Full - screen mode
 - [x] The game manages inputs from the mouse click and keyboard.
-- [ ] The game contains animated sprites rendered thanks to sprite sheets.
+- [x] The game contains animated sprites rendered thanks to sprite sheets.
 - [x] Animations in your program are frame rate independent.
 - [x] Animations and movements in your program are timed by clocks.
 ### Gameplay and mechanics  
@@ -52,13 +52,13 @@ ___
 - [x] First person : First-person perspective.
 - [x] Textures and sprites : Use of textures and sprites for objects.
 - [x] Light (flashlight).
-- [ ] A basic weapon (knife or pistol): possibility to hit the walls without enemies, enemies are NOT a MUST feature.
+- [x] A basic weapon (knife or pistol): possibility to hit the walls without enemies, enemies are NOT a MUST feature.
 - [ ] Save system.
 ### Environment
 - [x] Environment display (floor, ceiling and walls).
 - [x] Collision system.
 ### Sounds and Graphics
-- [ ] At least one animation: Movement, shots, enemies etc.
+- [x] At least one animation: Movement, shots, enemies etc.
 - [x] Sound effects and music: Sounds and music to enhance the gaming experience.
 - [ ] Particle effects: Use particles for explosions, shots, etc
 ### User interface
