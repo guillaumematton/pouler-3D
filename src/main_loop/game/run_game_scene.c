@@ -94,8 +94,8 @@ void run_game_scene(data_t *data)
         return;
     }
     handle_firearms(data);
-    handle_movement(data->assets.maps->map, data);
-    render_map(data);
+    handle_movement(data->map.current_map->map, data);
+    render_map(data, data->map.current_map->map);
     sfRenderWindow_drawSprite(data->window,
     data->current_weapon.current_sprite, NULL);
     render_hud_text(data);

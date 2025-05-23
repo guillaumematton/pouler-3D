@@ -15,7 +15,7 @@ data_t initialize_data(void)
         {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
         {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         {NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-        {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}},
+        {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}, NULL, NULL},
         NULL, NULL, NULL, MENU, NULL,
         {0, 0},
         {NULL, NULL, 0,

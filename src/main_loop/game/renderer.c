@@ -48,11 +48,11 @@ static void setup_raycasting(data_t *data, ray_t *rays, dist_info_t *dists)
     }
 }
 
-static bool hit_detection(data_t *data, dist_info_t *dists)
+static bool hit_detection(data_t *data, dist_info_t *dists, char **map)
 {
     if (dists->mapX < data->assets.maps->x_size &&
         dists->mapY < data->assets.maps->y_size) {
-        if (data->assets.maps->map[dists->mapX][dists->mapY] == 'X')
+        if (map[dists->mapX][dists->mapY] == 'X')
             dists->hit = 1;
     } else {
         return true;
@@ -60,7 +60,7 @@ static bool hit_detection(data_t *data, dist_info_t *dists)
     return false;
 }
 
-static void ray_casting(data_t *data, dist_info_t *dists, ray_t *rays)
+static void ray_casting(data_t *data, dist_info_t *dists, ray_t *rays, char **map)
 {
     while (dists->hit == 0) {
         if (dists->sideDistX < dists->sideDistY) {
@@ -72,7 +72,7 @@ static void ray_casting(data_t *data, dist_info_t *dists, ray_t *rays)
             dists->mapY += rays->stepY;
             dists->side = 1;
         }
-        if (hit_detection(data, dists))
+        if (hit_detection(data, dists, map))
             break;
     }
     if (dists->side == 0)
@@ -133,7 +133,7 @@ static float fill_draw(data_t *data, ray_t rays,
     return draw->wallX;
 }
 
-static void wall_render(data_t *data)
+static void wall_render(data_t *data, char **map)
 {
     ray_t rays = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     dist_info_t dists = create_dist_struct(data, 0, &rays);
@@ -144,7 +144,7 @@ static void wall_render(data_t *data)
         x += (data->screen_size.x / 800)) {
         dists = create_dist_struct(data, x, &rays);
         setup_raycasting(data, &rays, &dists);
-        ray_casting(data, &dists, &rays);
+        ray_casting(data, &dists, &rays, map);
         draw.wallX = fill_draw(data, rays, dists, &draw);
         finish_filling_distances(&dists, rays, draw);
         for (unsigned int y = draw.draw_start; y < draw.draw_end;
@@ -157,10 +157,10 @@ static void wall_render(data_t *data)
     }
 }
 
-void render_map(data_t *data)
+void render_map(data_t *data, char **map)
 {
     cast_floor_and_ceiling(data);
-    wall_render(data);
+    wall_render(data, map);
     sfRenderWindow_drawVertexArray(data->window, data->game_vertex, NULL);
     sfVertexArray_clear(data->game_vertex);
 }
