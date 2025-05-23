@@ -7,8 +7,7 @@
 
 LIBNAME = my
 
-SRC	= free_array.c\
-	  my_putchar.c\
+SRC	= my_putchar.c\
 	  my_putcharerr.c\
 	  my_putstr.c\
 	  my_putstrerr.c\
