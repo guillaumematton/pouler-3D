@@ -59,7 +59,7 @@ static bool set_new_map(data_t *data, char *name)
         return true;
     if (find_image(data, map_list->wall_texture_name, &data->map.walls_image))
         return true;
-    for (int y = 0; data->map.current_map->special[y] != NULL; y++) 
+    for (int y = 0; data->map.current_map->special[y] != NULL; y++)
         if (set_new_player_pos(data, y))
             return false;
     set_player(data, 3, 3);
@@ -73,8 +73,8 @@ static bool parsing_game_map(data_t *data)
             return true;
         return false;
     }
-    if (data->map.current_map->special[(int)floor(data->player.y)]
-        [(int)floor(data->player.x)] == 'T')
+    if (data->map.current_map->special[(int)floor(data->player.x)]
+        [(int)floor(data->player.y)] == 'T')
         if (set_new_map(data, data->map.current_map->next_map_name))
             return true;
     if (data->map.current_map->special[(int)floor(data->player.y)]
