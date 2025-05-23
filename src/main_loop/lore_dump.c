@@ -58,14 +58,14 @@ static void display_lore_part1(data_t *data)
     if (data->game_time > 17.0 && data->game_time < 21.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore2, NULL);
-    if (data->game_time > 21.0 && data->game_time < 24.0)
+    if (data->game_time > 21.0 && data->game_time < 30.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore3, NULL);
 }
 
 static void display_lore_part2(data_t *data)
 {
-    if (data->game_time > 24.0 && data->game_time < 43.0)
+    if (data->game_time > 30.0 && data->game_time < 43.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore4, NULL);
     if (data->game_time > 43.0 && data->game_time < 74.0)

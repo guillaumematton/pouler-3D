@@ -62,6 +62,28 @@ static void destroy_text(data_t *data)
         sfText_destroy(data->hud_text);
 }
 
+static void destroy_lore(data_t *data)
+{
+    if (data->sprites.menu.lore_sprites.lore1)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore1);
+    if (data->sprites.menu.lore_sprites.lore2)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore2);
+    if (data->sprites.menu.lore_sprites.lore3)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore3);
+    if (data->sprites.menu.lore_sprites.lore4)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore4);
+    if (data->sprites.menu.lore_sprites.lore5)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore5);
+    if (data->sprites.menu.lore_sprites.lore6)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore6);
+    if (data->sprites.menu.lore_sprites.lore7)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore7);
+    if (data->sprites.menu.lore_sprites.lore8)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore8);
+    if (data->sprites.menu.lore_sprites.lore9)
+        sfSprite_destroy(data->sprites.menu.lore_sprites.lore9);
+}
+
 void terminate_game(data_t *data)
 {
     if (data->arguments.debug)
@@ -72,4 +94,5 @@ void terminate_game(data_t *data)
     destroy_gui_sprites(data);
     destroy_miscellanous(data);
     destroy_text(data);
+    destroy_lore(data);
 }
