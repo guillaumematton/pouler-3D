@@ -68,8 +68,7 @@ static void destroy_maps(data_t *data)
         my_free(asset_struct->wall_texture_name);
         my_free(asset_struct->ceiling_texture_name);
         my_free(asset_struct->next_map_name);
-        my_freestrarray(asset_struct->walls);
-        my_freestrarray(asset_struct->special);
+        my_freestrarray(asset_struct->map);
         struct_to_free = asset_struct;
         asset_struct = asset_struct->next;
         free(struct_to_free);

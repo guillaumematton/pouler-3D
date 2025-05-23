@@ -12,10 +12,10 @@ static void handle_forward_input(data_t *data, char **map, float moveSpeed)
     if (!sfKeyboard_isKeyPressed(sfKeyZ))
         return;
     if (map[(int)(data->player.x + data->player.dirX * moveSpeed)]
-        [(int)data->player.y] == ' ')
+        [(int)data->player.y] != 'X')
         data->player.x += data->player.dirX * moveSpeed;
     if (map[(int)data->player.x]
-        [(int)(data->player.y + data->player.dirY * moveSpeed)] == ' ')
+        [(int)(data->player.y + data->player.dirY * moveSpeed)] != 'X')
         data->player.y += data->player.dirY * moveSpeed;
 }
 
@@ -25,10 +25,10 @@ static void handle_backward_input(data_t *data, char **map,
     if (!sfKeyboard_isKeyPressed(sfKeyS))
         return;
     if (map[(int)(data->player.x - data->player.dirX * moveSpeed)]
-        [(int)data->player.y] == ' ')
+        [(int)data->player.y] != 'X')
         data->player.x -= data->player.dirX * moveSpeed;
     if (map[(int)data->player.x]
-        [(int)(data->player.y - data->player.dirY * moveSpeed)] == ' ')
+        [(int)(data->player.y - data->player.dirY * moveSpeed)] != 'X')
         data->player.y -= data->player.dirY * moveSpeed;
 }
 
@@ -40,10 +40,10 @@ static void handle_right_input(data_t *data, char **map, float moveSpeed)
     if (!sfKeyboard_isKeyPressed(sfKeyD))
         return;
     if (map[(int)(data->player.x + strafeX * moveSpeed)]
-        [(int)data->player.y] == ' ')
+        [(int)data->player.y] != 'X')
         data->player.x += strafeX * moveSpeed;
     if (map[(int)data->player.x]
-        [(int)(data->player.y + strafeY * moveSpeed)] == ' ')
+        [(int)(data->player.y + strafeY * moveSpeed)] != 'X')
         data->player.y += strafeY * moveSpeed;
 }
 
@@ -55,10 +55,10 @@ static void handle_left_input(data_t *data, char **map, float moveSpeed)
     if (!sfKeyboard_isKeyPressed(sfKeyQ))
         return;
     if (map[(int)(data->player.x + strafeX * moveSpeed)]
-        [(int)data->player.y] == ' ')
+        [(int)data->player.y] != 'X')
         data->player.x += strafeX * moveSpeed;
     if (map[(int)data->player.x]
-        [(int)(data->player.y + strafeY * moveSpeed)] == ' ')
+        [(int)(data->player.y + strafeY * moveSpeed)] != 'X')
         data->player.y += strafeY * moveSpeed;
 }
 

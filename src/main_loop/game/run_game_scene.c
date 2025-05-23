@@ -34,8 +34,8 @@ static void set_player(data_t *data, int x, int y)
 
 static bool set_new_player_pos(data_t *data, int y)
 {
-    for (int x = 0; data->map.current_map->special[y][x] != '\0'; x++)
-        if (data->map.current_map->special[y][x] == 'S') {
+    for (int x = 0; data->map.current_map->map[y][x] != '\0'; x++)
+        if (data->map.current_map->map[y][x] == 'S') {
             set_player(data, x, y);
             return true;
         }
@@ -59,7 +59,7 @@ static bool set_new_map(data_t *data, char *name)
         return true;
     if (find_image(data, map_list->wall_texture_name, &data->map.walls_image))
         return true;
-    for (int y = 0; data->map.current_map->special[y] != NULL; y++)
+    for (int y = 0; data->map.current_map->map[y] != NULL; y++)
         if (set_new_player_pos(data, y))
             return false;
     set_player(data, 3, 3);
@@ -73,11 +73,11 @@ static bool parsing_game_map(data_t *data)
             return true;
         return false;
     }
-    if (data->map.current_map->special[(int)floor(data->player.x)]
+    if (data->map.current_map->map[(int)floor(data->player.x)]
         [(int)floor(data->player.y)] == 'T')
         if (set_new_map(data, data->map.current_map->next_map_name))
             return true;
-    if (data->map.current_map->special[(int)floor(data->player.y)]
+    if (data->map.current_map->map[(int)floor(data->player.y)]
         [(int)floor(data->player.x)] == 'W') {
         data->scene = MENU;
         return true;
@@ -94,7 +94,7 @@ void run_game_scene(data_t *data)
         return;
     }
     handle_firearms(data);
-    handle_movement(data->assets.maps->walls, data);
+    handle_movement(data->assets.maps->map, data);
     render_map(data);
     sfRenderWindow_drawSprite(data->window,
     data->current_weapon.current_sprite, NULL);

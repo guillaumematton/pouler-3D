@@ -52,7 +52,7 @@ static bool hit_detection(data_t *data, dist_info_t *dists)
 {
     if (dists->mapX < data->assets.maps->x_size &&
         dists->mapY < data->assets.maps->y_size) {
-        if (data->assets.maps->walls[dists->mapX][dists->mapY] != ' ')
+        if (data->assets.maps->map[dists->mapX][dists->mapY] == 'X')
             dists->hit = 1;
     } else {
         return true;
