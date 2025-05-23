@@ -7,15 +7,17 @@
 
 #include "wolf3d.h"
 
-static void set_fullscreen_pause(data_t *data)
+static void set_fullscreen_lore(data_t *data)
 {
-    sfVector2f scale = {5, 6};
-    sfVector2f position = {0, 0};
-
-    sfSprite_setPosition(data->sprites.menu.p_background, position);
-    sfSprite_setScale(data->sprites.menu.p_background, scale);
-    set_position_scale(1, 730, 100, data->sprites.menu.options);
-    set_position_scale(1, 760, 900, data->sprites.menu.exit_game);
+    set_position_scale(6.6, 100, 0, data->sprites.menu.lore_sprites.lore1);
+    set_position_scale(6, 0, 0, data->sprites.menu.lore_sprites.lore2);
+    set_position_scale(1.4, 100, 70, data->sprites.menu.lore_sprites.lore3);
+    set_position_scale(1.2, 200, 0, data->sprites.menu.lore_sprites.lore4);
+    set_position_scale(4, 0, 300, data->sprites.menu.lore_sprites.lore5);
+    set_position_scale(1.6, 0, 70, data->sprites.menu.lore_sprites.lore6);
+    set_position_scale(1.6, 0, 70, data->sprites.menu.lore_sprites.lore7);
+    set_position_scale(1.6, 0, 70, data->sprites.menu.lore_sprites.lore8);
+    set_position_scale(1.6, 0, 70, data->sprites.menu.lore_sprites.lore9);
 }
 
 static void set_sprite_positions_lore(data_t *data)
@@ -31,7 +33,7 @@ static void set_sprite_positions_lore(data_t *data)
         set_position_scale(0.8, 0, 70, data->sprites.menu.lore_sprites.lore8);
         set_position_scale(0.8, 0, 70, data->sprites.menu.lore_sprites.lore9);
     } else
-        set_fullscreen_pause(data);
+        set_fullscreen_lore(data);
     return;
 }
 
@@ -58,33 +60,33 @@ static void display_lore_part1(data_t *data)
     if (data->game_time > 17.0 && data->game_time < 21.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore2, NULL);
-    if (data->game_time > 21.0 && data->game_time < 30.0)
+    if (data->game_time > 24.0 && data->game_time < 34.5)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore3, NULL);
 }
 
 static void display_lore_part2(data_t *data)
 {
-    if (data->game_time > 30.0 && data->game_time < 43.0)
+    if (data->game_time > 34.5 && data->game_time < 50.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore4, NULL);
-    if (data->game_time > 43.0 && data->game_time < 74.0)
+    if (data->game_time > 50.0 && data->game_time < 85.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore5, NULL);
 }
 
 static void display_lore_part3(data_t *data)
 {
-    if (data->game_time > 74.0 && data->game_time < 82.0)
+    if (data->game_time > 85.0 && data->game_time < 93.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore6, NULL);
-    if (data->game_time > 82.0 && data->game_time < 90.0)
+    if (data->game_time > 93.0 && data->game_time < 100.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore7, NULL);
-    if (data->game_time > 90.0 && data->game_time < 96.0)
+    if (data->game_time > 100.0 && data->game_time < 108.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore8, NULL);
-    if (data->game_time > 96.0 && data->game_time < 109.0)
+    if (data->game_time > 108.0 && data->game_time < 117.0)
         sfRenderWindow_drawSprite(data->window,
     data->sprites.menu.lore_sprites.lore9, NULL);
 }
@@ -94,6 +96,6 @@ void display_lore_dump(data_t *data)
     display_lore_part1(data);
     display_lore_part2(data);
     display_lore_part3(data);
-    if (data->game_time == 109.0)
+    if (data->game_time >= 117.0)
         data->scene = MENU;
 }
