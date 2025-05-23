@@ -36,10 +36,16 @@ static void create_verteces(data_t *data, ray_t rays, int x, int y)
         floor(tx / 1.5f), ty);
     sfColor ceilColor = sfImage_getPixel(data->map.ceil_image,
         floor(tx / 1.5f), ty);
+    floorColor.b /= (1 + rays.rowDistance);
+    floorColor.r /= (1 + rays.rowDistance);
+    floorColor.g /= (1 + rays.rowDistance);
     sfVertex floorPixel = {
         .position = (sfVector2f) {x, y},
         .color = floorColor
     };
+    ceilColor.b /= (1 + rays.rowDistance);
+    ceilColor.r /= (1 + rays.rowDistance);
+    ceilColor.g /= (1 + rays.rowDistance);
     sfVertex ceilPixel = {
         .position = (sfVector2f){x, data->screen_size.y - y},
         .color = ceilColor

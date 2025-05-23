@@ -86,7 +86,7 @@ static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
 {
     sfColor color;
     sfVertex pixel = {0, 0};
-    int color_diming = 1 + floor(dists->perpWallDist / 10);
+    float color_diming = 1 + dists->perpWallDist / 10;
 
     if (dists->texY < 0)
         dists->texY = 0;

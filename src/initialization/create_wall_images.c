@@ -21,7 +21,7 @@ static bool create_env_images(data_t *data, const char *name,
     }
     node->name = (char *)name;
     node->next = *images_adress;
-    images_adress = &node;
+    *images_adress = node;
     return false;
 }
 
@@ -29,9 +29,10 @@ bool create_wall_images(data_t *data)
 {
     environment_texture_t *env = data->assets.environment_textures;
 
-    for (; env != NULL; env = env->next)
+    for (; env != NULL; env = env->next) {
         if (create_env_images(data, env->name,
             env->texture, &data->sprites.environment))
             return true;
+    }
     return false;
 }
