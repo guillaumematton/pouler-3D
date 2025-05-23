@@ -13,7 +13,8 @@
 //TODO: add char *name for all assets structs
 typedef struct sound_s {
     char *name;
-    sfSoundBuffer *sound;
+    sfSound *sound;
+    sfSoundBuffer *buffer;
     struct sound_s *next;
 } sound_t;
 

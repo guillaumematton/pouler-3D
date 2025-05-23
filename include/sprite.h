@@ -19,6 +19,18 @@ typedef struct option_s {
     sfSprite *back;
 } option_t;
 
+typedef struct lore_s {
+    sfSprite *lore1;
+    sfSprite *lore2;
+    sfSprite *lore3;
+    sfSprite *lore4;
+    sfSprite *lore5;
+    sfSprite *lore6;
+    sfSprite *lore7;
+    sfSprite *lore8;
+    sfSprite *lore9;
+} lore_t;
+
 typedef struct menu_s {
     sfSprite *title;
     sfSprite *background;
@@ -30,6 +42,7 @@ typedef struct menu_s {
     sfSprite *exit_game;
     sfSprite *lore;
     option_t options_sprites;
+    lore_t lore_sprites;
 } menu_t;
 
 typedef struct menu_infos_s {
