@@ -37,8 +37,7 @@ void run_main_loop(data_t *data)
         sfRenderWindow_clear(data->window, sfBlack);
         manage_music(data);
         manage_time(data);
-        while (sfRenderWindow_pollEvent(data->window, &data->event) == 0)
-            continue;
+        sfRenderWindow_pollEvent(data->window, &data->event);
         if (data->event.type == sfEvtClosed ||
             (sfKeyboard_isKeyPressed(sfKeyK) &&
                 sfKeyboard_isKeyPressed(sfKeyLControl)))
