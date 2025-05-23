@@ -63,7 +63,8 @@ static void change_weapon(data_t *data, int id)
     weapon_t *weapon_list = data->assets.weapons;
     sfIntRect rect = {0, 0, 0, 0};
 
-    for (int i = 1; weapon_list != NULL && i < id; i++);
+    for (int i = 1; weapon_list != NULL && i < id; i++)
+        weapon_list = weapon_list->next;
     if (weapon_list == NULL ||
         data->current_weapon.weapon == weapon_list)
         return;

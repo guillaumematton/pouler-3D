@@ -26,7 +26,7 @@ static void weapon_parser(char *asset_path, weapon_t *asset_struct)
     my_freestrarray(lines);
 }
 
-static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
+static void create_new_struct(data_t *data, char *asset_path, char *asset_name, weapon_t **adress)
 {
     weapon_t *new_struct = NULL;
 
@@ -37,10 +37,10 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     new_struct = malloc(sizeof(weapon_t));
     if (new_struct == NULL)
         return;
-    new_struct->next = data->assets.weapons;
+    new_struct->next = *adress;
     weapon_parser(asset_path, new_struct);
     new_struct->name = my_strdup(asset_name);
-    data->assets.weapons = new_struct;
+    *adress = new_struct;
 }
 
 static void overwrite_struct(data_t *data, char *asset_path,
@@ -70,5 +70,5 @@ void load_weapon(data_t *data, char *folder_path, char *asset_name)
         }
         asset_struct = asset_struct->next;
     }
-    create_new_struct(data, asset_path, asset_name);
+    create_new_struct(data, asset_path, asset_name, &data->assets.weapons);
 }

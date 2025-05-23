@@ -60,7 +60,8 @@ static bool hit_detection(data_t *data, dist_info_t *dists, char **map)
     return false;
 }
 
-static void ray_casting(data_t *data, dist_info_t *dists, ray_t *rays, char **map)
+static void ray_casting(data_t *data, dist_info_t *dists,
+    ray_t *rays, char **map)
 {
     while (dists->hit == 0) {
         if (dists->sideDistX < dists->sideDistY) {
