@@ -14,4 +14,6 @@ void render_pause(data_t *data)
     sfRenderWindow_drawSprite(data->window, data->sprites.menu.options, NULL);
     sfRenderWindow_drawSprite(data->window,
         data->sprites.menu.exit_game, NULL);
+    sfRenderWindow_drawSprite(data->window,
+        data->sprites.menu.options_sprites.save, NULL);
 }

@@ -15,11 +15,15 @@ static void detect_button_mouse_click(data_t *data, pause_infos_t *pause_infos)
     if (sfFloatRect_contains(&pause_infos->exit_infos,
     pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
         data->exit = true;
+    if (sfFloatRect_contains(&pause_infos->save_infos,
+    pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
+        save_data(data);
 }
 
 static void handle_button_clicks(data_t *data)
 {
-    pause_infos_t pause_infos = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0}};
+    pause_infos_t pause_infos = {{0, 0, 0, 0}, {0, 0, 0, 0},
+    {0, 0, 0, 0}, {0, 0}};
 
     pause_infos.mouse_pos =
     sfMouse_getPositionRenderWindow(data->window);
@@ -27,6 +31,8 @@ static void handle_button_clicks(data_t *data)
     sfSprite_getGlobalBounds(data->sprites.menu.options);
     pause_infos.exit_infos =
     sfSprite_getGlobalBounds(data->sprites.menu.exit_game);
+    pause_infos.save_infos =
+    sfSprite_getGlobalBounds(data->sprites.menu.options_sprites.save);
     detect_button_mouse_click(data, &pause_infos);
 }
 

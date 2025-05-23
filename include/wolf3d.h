@@ -187,4 +187,7 @@ void destroy_assets(data_t *data);
 void display_lore_dump(data_t *data);
 void browse_sounds(data_t *data);
 
+//save
+void save_data(data_t *data);
+
 #endif

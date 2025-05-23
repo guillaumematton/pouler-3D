@@ -66,12 +66,8 @@ static bool create_gui_sprite(data_t *data, const char *filename,
 
 bool create_options_sprites(data_t *data)
 {
-    if (create_gui_sprite(data, "empty_box.png",
-        &data->sprites.menu.options_sprites.empty_box) ||
-    create_gui_sprite(data, "full_screen.png",
+    if (create_gui_sprite(data, "full_screen.png",
         &data->sprites.menu.options_sprites.full_screen) ||
-    create_gui_sprite(data, "full_box.png",
-        &data->sprites.menu.options_sprites.full_box) ||
     create_gui_sprite(data, "back.png",
         &data->sprites.menu.options_sprites.back) ||
     create_gui_sprite(data, "pause_background.jpg",
@@ -83,7 +79,9 @@ bool create_options_sprites(data_t *data)
         create_gui_sprite(data, "volume_up.png",
     &data->sprites.menu.options_sprites.volume_up) ||
         create_gui_sprite(data, "volume_down.png",
-    &data->sprites.menu.options_sprites.volume_down))
+    &data->sprites.menu.options_sprites.volume_down) ||
+        create_gui_sprite(data, "save.png",
+    &data->sprites.menu.options_sprites.save))
         return true;
     return false;
 }

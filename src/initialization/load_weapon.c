@@ -26,7 +26,8 @@ static void weapon_parser(char *asset_path, weapon_t *asset_struct)
     my_freestrarray(lines);
 }
 
-static void create_new_struct(data_t *data, char *asset_path, char *asset_name, weapon_t **adress)
+static void create_new_struct(data_t *data, char *asset_path,
+    char *asset_name, weapon_t **adress)
 {
     weapon_t *new_struct = NULL;
 

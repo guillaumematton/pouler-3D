@@ -16,6 +16,8 @@ static void set_fullscreen_pause(data_t *data)
     sfSprite_setScale(data->sprites.menu.p_background, scale);
     set_position_scale(1, 730, 100, data->sprites.menu.options);
     set_position_scale(1, 760, 900, data->sprites.menu.exit_game);
+    set_position_scale(1, 1400, 400,
+    data->sprites.menu.options_sprites.save);
 }
 
 static void set_sprite_positions_pause(data_t *data)
@@ -28,6 +30,8 @@ static void set_sprite_positions_pause(data_t *data)
         sfSprite_setScale(data->sprites.menu.p_background, scale);
         set_position_scale(0.35, 330, 150, data->sprites.menu.options);
         set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
+        set_position_scale(0.3, 600, 300,
+    data->sprites.menu.options_sprites.save);
     } else
         set_fullscreen_pause(data);
     return;

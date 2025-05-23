@@ -11,12 +11,11 @@
 
 typedef struct option_s {
     sfSprite *full_screen;
-    sfSprite *empty_box;
-    sfSprite *full_box;
     sfSprite *volume_up;
     sfSprite *volume_down;
     sfSprite *volume;
     sfSprite *back;
+    sfSprite *save;
 } option_t;
 
 typedef struct lore_s {
@@ -57,6 +56,7 @@ typedef struct menu_infos_s {
 typedef struct pause_infos_s {
     sfFloatRect options_infos;
     sfFloatRect exit_infos;
+    sfFloatRect save_infos;
     sfVector2i mouse_pos;
 } pause_infos_t;
 

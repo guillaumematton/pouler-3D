@@ -30,10 +30,6 @@ static void destroy_gui_sprites(data_t *data)
     destroy_menu_sprites(data);
     if (data->sprites.menu.options_sprites.full_screen)
         sfSprite_destroy(data->sprites.menu.options_sprites.full_screen);
-    if (data->sprites.menu.options_sprites.empty_box)
-        sfSprite_destroy(data->sprites.menu.options_sprites.empty_box);
-    if (data->sprites.menu.options_sprites.full_box)
-        sfSprite_destroy(data->sprites.menu.options_sprites.full_box);
     if (data->sprites.menu.options_sprites.back)
         sfSprite_destroy(data->sprites.menu.options_sprites.back);
     if (data->sprites.menu.p_background)

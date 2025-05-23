@@ -20,12 +20,7 @@ static void set_fullscreen_pause(data_t *data)
 
 static void set_sprite_positions_lore(data_t *data)
 {
-    //sfVector2f scale = {1.9, 3};
-    //sfVector2f position = {0, 0};
-
     if (!data->arguments.full_screen) {
-        //sfSprite_setPosition(data->sprites.menu.lore_sprites.lore1, position);
-        //sfSprite_setScale(data->sprites.menu.lore_sprites.lore1, scale);
         set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore1);
         set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore2);
         set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore3);
@@ -55,35 +50,50 @@ void browse_sounds(data_t *data)
     sfSound_play(temp->sound);
 }
 
-void display_lore_dump(data_t *data)
+static void display_lore_part1(data_t *data)
 {
     if (data->game_time > 0.0 && data->game_time < 17.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore1, NULL);
+    data->sprites.menu.lore_sprites.lore1, NULL);
     if (data->game_time > 17.0 && data->game_time < 21.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore2, NULL);
+    data->sprites.menu.lore_sprites.lore2, NULL);
     if (data->game_time > 21.0 && data->game_time < 24.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore3, NULL);
+    data->sprites.menu.lore_sprites.lore3, NULL);
+}
+
+static void display_lore_part2(data_t *data)
+{
     if (data->game_time > 24.0 && data->game_time < 43.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore4, NULL);
+    data->sprites.menu.lore_sprites.lore4, NULL);
     if (data->game_time > 43.0 && data->game_time < 74.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore5, NULL);
+    data->sprites.menu.lore_sprites.lore5, NULL);
+}
+
+static void display_lore_part3(data_t *data)
+{
     if (data->game_time > 74.0 && data->game_time < 82.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore6, NULL);
+    data->sprites.menu.lore_sprites.lore6, NULL);
     if (data->game_time > 82.0 && data->game_time < 90.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore7, NULL);
+    data->sprites.menu.lore_sprites.lore7, NULL);
     if (data->game_time > 90.0 && data->game_time < 96.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore8, NULL);
+    data->sprites.menu.lore_sprites.lore8, NULL);
     if (data->game_time > 96.0 && data->game_time < 109.0)
         sfRenderWindow_drawSprite(data->window,
-                                  data->sprites.menu.lore_sprites.lore9, NULL);
+    data->sprites.menu.lore_sprites.lore9, NULL);
+}
+
+void display_lore_dump(data_t *data)
+{
+    display_lore_part1(data);
+    display_lore_part2(data);
+    display_lore_part3(data);
     if (data->game_time == 109.0)
         data->scene = MENU;
 }
