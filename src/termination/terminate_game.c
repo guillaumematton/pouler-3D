@@ -34,6 +34,16 @@ static void destroy_gui_sprites(data_t *data)
         sfSprite_destroy(data->sprites.menu.options_sprites.back);
     if (data->sprites.menu.p_background)
         sfSprite_destroy(data->sprites.menu.p_background);
+    if (data->sprites.menu.p_background)
+        sfSprite_destroy(data->sprites.menu.o_background);
+    if (data->sprites.menu.p_background)
+        sfSprite_destroy(data->sprites.menu.options_sprites.volume);
+    if (data->sprites.menu.p_background)
+        sfSprite_destroy(data->sprites.menu.options_sprites.volume_up);
+    if (data->sprites.menu.p_background)
+        sfSprite_destroy(data->sprites.menu.options_sprites.volume_down);
+    if (data->sprites.menu.p_background)
+        sfSprite_destroy(data->sprites.menu.options_sprites.save);
 }
 
 static void destroy_wall_images(data_t *data)
