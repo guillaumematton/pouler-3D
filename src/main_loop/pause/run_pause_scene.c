@@ -7,15 +7,29 @@
 
 #include "wolf3d.h"
 
+static void set_fullscreen_pause(data_t *data)
+{
+    sfVector2f scale = {5, 6};
+    sfVector2f position = {0, 0};
+
+    sfSprite_setPosition(data->sprites.menu.p_background, position);
+    sfSprite_setScale(data->sprites.menu.p_background, scale);
+    set_position_scale(1, 730, 100, data->sprites.menu.options);
+    set_position_scale(1, 760, 900, data->sprites.menu.exit_game);
+}
+
 static void set_sprite_positions_pause(data_t *data)
 {
     sfVector2f scale = {1.9, 3};
     sfVector2f position = {0, 0};
 
-    sfSprite_setPosition(data->sprites.menu.p_background, position);
-    sfSprite_setScale(data->sprites.menu.p_background, scale);
-    set_position_scale(0.35, 330, 150, data->sprites.menu.options);
-    set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
+    if (!data->arguments.full_screen) {
+        sfSprite_setPosition(data->sprites.menu.p_background, position);
+        sfSprite_setScale(data->sprites.menu.p_background, scale);
+        set_position_scale(0.35, 330, 150, data->sprites.menu.options);
+        set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
+    } else
+        set_fullscreen_pause(data);
     return;
 }
 
