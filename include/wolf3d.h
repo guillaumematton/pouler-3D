@@ -53,6 +53,7 @@ typedef struct Player_s {
 typedef struct current_weapon_s {
     weapon_t *weapon;
     sfSprite *current_sprite;
+    int ammo;
     float time_to_wait;
     sfVector2i sprite_size;
 } current_weapon_t;

@@ -26,26 +26,30 @@ static ray_t create_ray_struct(data_t *data, int y)
     return rays;
 }
 
+static sfColor get_color(sfImage *image, ray_t rays, int tx, int ty)
+{
+    int dimming = 1 + rays.rowDistance / 2;
+    sfColor Color = sfImage_getPixel(image,
+        floor(tx / 1.5f), ty);
+
+    Color.b /= dimming;
+    Color.r /= (1 + rays.rowDistance / 2);
+    Color.g /= (1 + rays.rowDistance / 2);
+    return Color;
+}
+
 static void create_verteces(data_t *data, ray_t rays, int x, int y)
 {
     int cellX = (int)(rays.floorX);
     int cellY = (int)(rays.floorY);
     int tx = (int)(TEX_SIZE * (rays.floorX - cellX)) & (TEX_SIZE - 1);
     int ty = (int)(TEX_SIZE * (rays.floorY - cellY)) & (TEX_SIZE - 1);
-    sfColor floorColor = sfImage_getPixel(data->map.floor_image,
-        floor(tx / 1.5f), ty);
-    sfColor ceilColor = sfImage_getPixel(data->map.ceil_image,
-        floor(tx / 1.5f), ty);
-    floorColor.b /= (1 + rays.rowDistance);
-    floorColor.r /= (1 + rays.rowDistance);
-    floorColor.g /= (1 + rays.rowDistance);
+    sfColor floorColor = get_color(data->map.floor_image, rays, tx, ty);
+    sfColor ceilColor = get_color(data->map.ceil_image, rays, tx, ty);
     sfVertex floorPixel = {
         .position = (sfVector2f) {x, y},
         .color = floorColor
     };
-    ceilColor.b /= (1 + rays.rowDistance);
-    ceilColor.r /= (1 + rays.rowDistance);
-    ceilColor.g /= (1 + rays.rowDistance);
     sfVertex ceilPixel = {
         .position = (sfVector2f){x, data->screen_size.y - y},
         .color = ceilColor
@@ -59,7 +63,8 @@ void cast_floor_and_ceiling(data_t *data)
 {
     ray_t rays = create_ray_struct(data, 0);
 
-    for (int y = data->screen_size.y / 2 + 1; y < data->screen_size.y; y += (data->screen_size.y / 200)) {
+    for (int y = data->screen_size.y / 2 + 1; y <
+        data->screen_size.y; y += (data->screen_size.y / 200)) {
         rays = create_ray_struct(data, y);
         for (int x = 0; x < data->screen_size.x; x++) {
             create_verteces(data, rays, x, y);
