@@ -59,7 +59,7 @@ void cast_floor_and_ceiling(data_t *data)
 {
     ray_t rays = create_ray_struct(data, 0);
 
-    for (int y = data->screen_size.y / 2 + 1; y < data->screen_size.y; y++) {
+    for (int y = data->screen_size.y / 2 + 1; y < data->screen_size.y; y += (data->screen_size.y / 200)) {
         rays = create_ray_struct(data, y);
         for (int x = 0; x < data->screen_size.x; x++) {
             create_verteces(data, rays, x, y);

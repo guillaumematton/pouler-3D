@@ -141,13 +141,13 @@ static void wall_render(data_t *data)
     draw_info_t draw = {0, 0, 0, 0};
     int d = 0;
 
-    for (int x = 0; x < data->screen_size.x; x++) {
+    for (int x = 0; x < data->screen_size.x; x += (data->screen_size.x / 800)) {
         dists = create_dist_struct(data, x, &rays);
         setup_raycasting(data, &rays, &dists);
         ray_casting(data, &dists, &rays);
         draw.wallX = fill_draw(data, rays, dists, &draw);
         finish_filling_distances(&dists, rays, draw);
-        for (int y = draw.draw_start; y < draw.draw_end; y++) {
+        for (int y = draw.draw_start; y < draw.draw_end; y += (data->screen_size.y / 600)) {
             d = y * 256 - data->screen_size.y * 128 + draw.line_height * 128;
             dists.texY = (((d * TEX_SIZE) /
             draw.line_height) / 256) % TEX_SIZE;
