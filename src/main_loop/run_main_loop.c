@@ -18,8 +18,10 @@ static void run_scenes(data_t *data)
     last_scene = data->scene;
     if (data->scene == MENU)
         run_menu_scene(data);
-    if (data->scene == OPTIONS)
+    if (data->scene == MOPTIONS)
         run_moptions_scene(data);
+    if (data->scene == GOPTIONS)
+        run_goptions_scene(data);
     if (data->scene == GAME)
         run_game_scene(data);
     if (data->scene == PAUSE)

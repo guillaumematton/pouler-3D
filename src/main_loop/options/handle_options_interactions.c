@@ -26,8 +26,8 @@ static void disable_fullscreen(data_t *data)
     sfVideoMode mode = {0};
     int arg = 0;
 
-    mode.width = 600;
-    mode.height = 800;
+    mode.width = 800;
+    mode.height = 600;
     mode.bitsPerPixel = 32;
     arg = sfClose;
     sfRenderWindow_destroy(data->window);
@@ -72,7 +72,7 @@ static void handle_button_clicks(data_t *data)
     detect_button_mouse_click(data, &options_infos);
 }
 
-void handle_moptions_interactions(data_t *data)
+void handle_options_interactions(data_t *data)
 {
     if (data->event.mouseButton.button == sfMouseLeft)
         handle_button_clicks(data);

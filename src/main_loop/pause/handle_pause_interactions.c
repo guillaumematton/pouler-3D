@@ -11,7 +11,7 @@ static void detect_button_mouse_click(data_t *data, pause_infos_t *pause_infos)
 {
     if (sfFloatRect_contains(&pause_infos->options_infos,
     pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
-        printf("options\n");
+        data->scene = GOPTIONS;
     if (sfFloatRect_contains(&pause_infos->exit_infos,
     pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
         data->exit = true;

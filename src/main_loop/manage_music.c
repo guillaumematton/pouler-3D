@@ -67,7 +67,7 @@ void manage_music(data_t *data)
 {
     if (data->current_music)
         sfMusic_setVolume(data->current_music, data->volume);
-    if (data->scene == MENU || data->scene == OPTIONS) {
+    if (data->scene == MENU || data->scene == MOPTIONS) {
         run_menu_music(data);
         return;
     }

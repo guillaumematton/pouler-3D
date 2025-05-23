@@ -34,7 +34,8 @@ typedef struct argument_s {
 
 enum scene {
     MENU,
-    OPTIONS,
+    MOPTIONS,
+    GOPTIONS,
     GAME,
     PAUSE
 };
@@ -150,8 +151,9 @@ void handle_menu_interactions(data_t *data);
 
 //options
 void run_moptions_scene(data_t *data);
-void render_moptions(data_t *data);
-void handle_moptions_interactions(data_t *data);
+void render_options(data_t *data);
+void handle_options_interactions(data_t *data);
+void run_goptions_scene(data_t *data);
 
 //game
 void run_game_scene(data_t *data);

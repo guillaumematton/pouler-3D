@@ -7,7 +7,7 @@
 
 #include "wolf3d.h"
 
-void render_moptions(data_t *data)
+void render_options(data_t *data)
 {
     sfRenderWindow_drawSprite(data->window,
         data->sprites.menu.o_background, NULL);
