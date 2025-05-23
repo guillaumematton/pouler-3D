@@ -19,6 +19,7 @@
     #include <SFML/Audio.h>
     #include <math.h>
     #include <time.h>
+    #include <string.h>
 
     #include "my.h"
     #include "sprite.h"
@@ -189,5 +190,6 @@ void browse_sounds(data_t *data);
 
 //save
 void save_data(data_t *data);
+void load_data(data_t *data);
 
 #endif
