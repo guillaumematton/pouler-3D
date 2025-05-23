@@ -1,37 +1,54 @@
 # Le jeu de le pouler 3(D)
 
+## Keybinds:
+
+LCtrl + K : close the game  
+
+Z/S : move forward/backward  
+Q/D : strafe left/right
+A/E : rotate left/right    
+mouse : rotate left/right  
+Left click : attack
+1/2/3/4/5 : weapon selection  
+Lshift : sprint  
+escape : pause (in game)  
+enter : resume (in options and pause menu)  
+
+(this layout was made for AZERTY keyboards)  
 ## Modding support
 
-### keybindings :  
-Lshift : sprint  
-LCtrl + K : emergency close  
-escape : pause (in game)  
-enter : resume (in pause menu)  
+The game supports asset modding, this means that all assets used by the game can be overriden via mods.  
+When starting, the game will first load the /assets/core/ folder then, any other folder in the assets/folder. Any asset loaded by the core module can be overriden by giving an asset of the same type in another module the same name.
 
-### Correct map format :
-file ending with .lvl  
-first line : int int -> define the width and the height  
-then:  
+### Correct map format :  
+size_x size_y (as integers)   
+floor_texture_name  
+walls_tetxure_name  
+ceiling_texture_name  
+(empty line)  
+```
+XXXXXX  
+XS   X  
+X XX X 
+X XX X
+X   TX
+XXXXXX
+```
+ (the map itself)  
 #### all map characters:  
-    - A = solid wall  
-    - C = contact (A.K.A poulers)
-    - 1 = loot, weapons group
-    - 2 = solid wall, destructible group
-    - 3 = standard door or destructible wall
-    - L = locked door
-    - K = key for the door
-    - M = magazines (A.K.A ammunitions)
-    - D = destructible walls
-    - P = player
-    - N = next floor trigger (stairway)
+    - X = solid wall  
+    - S = level's spawn point
+    - T = teleporter to next level
+    - W = win
+    any other character is a empty space
 
 ### Correct weapon file format:
-damage : float  
-ammo : int  
-max_ammo : int >= ammo  
-firerate : float (delay in seconds between each shot)  
-explosive : 0 or 1 (not explosive or explosive)  
-melee : 0 or 1 (not melee or melee)
+damage (decimal number)  
+ammo (integer)  
+max_ammo (integer)  
+firerate (delay in seconds between each shot, decimal number)  
+explosive (0 or 1, not explosive or explosive)  
+melee (0 or 1, not melee or melee)
 
 ___
 ## Subjet's Features
@@ -53,7 +70,7 @@ ___
 - [x] Textures and sprites : Use of textures and sprites for objects.
 - [x] Light (flashlight).
 - [x] A basic weapon (knife or pistol): possibility to hit the walls without enemies, enemies are NOT a MUST feature.
-- [ ] Save system.
+- [x] Save system.
 ### Environment
 - [x] Environment display (floor, ceiling and walls).
 - [x] Collision system.
@@ -78,8 +95,8 @@ ___
 - [ ] Various enemies: Different types of enemies with distinct behaviors.
 - [ ] Inventory: Interface to manage the collected items.
 - [ ] Localized Damage System: Different damage based on the affected areas on enemies.
-- [ ] Health system: Player’s health indicator.
-- [ ] Ammunition: Ammunition management for each weapon.
+- [x] Health system: Player’s health indicator.
+- [x] Ammunition: Ammunition management for each weapon.
 - [ ] Doors and secrets: Locked doors requiring keys, hidden walls with secrets.
 - [ ] Collectibles: Treasures, keys and other collectibles.
 - [ ] Environmental Interactions: For example, firing on explosive barrels or triggering traps
