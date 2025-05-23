@@ -88,6 +88,30 @@ bool create_options_sprites(data_t *data)
     return false;
 }
 
+bool create_lore_sprites(data_t *data)
+{
+    if (create_gui_sprite(data, "lore1.png",
+        &data->sprites.menu.lore_sprites.lore1) ||
+    create_gui_sprite(data, "lore2.png",
+        &data->sprites.menu.lore_sprites.lore2) ||
+    create_gui_sprite(data, "lore3.png",
+        &data->sprites.menu.lore_sprites.lore3) ||
+    create_gui_sprite(data, "lore4.png",
+        &data->sprites.menu.lore_sprites.lore4) ||
+    create_gui_sprite(data, "lore5.png",
+    &data->sprites.menu.lore_sprites.lore5) ||
+    create_gui_sprite(data, "lore6.png",
+    &data->sprites.menu.lore_sprites.lore6) ||
+        create_gui_sprite(data, "lore7.png",
+    &data->sprites.menu.lore_sprites.lore7) ||
+        create_gui_sprite(data, "lore8.png",
+    &data->sprites.menu.lore_sprites.lore8) ||
+        create_gui_sprite(data, "lore9.png",
+    &data->sprites.menu.lore_sprites.lore9))
+        return true;
+    return false;
+}
+
 bool create_menu_sprites(data_t *data)
 {
     if (create_gui_sprite(data, "menu_background.png",
@@ -99,7 +123,7 @@ bool create_menu_sprites(data_t *data)
     create_gui_sprite(data, "exit.png", &data->sprites.menu.exit_game) ||
     create_gui_sprite(data, "options.png", &data->sprites.menu.options) ||
     create_gui_sprite(data, "title.png", &data->sprites.menu.title) ||
-        create_options_sprites(data))
+        create_options_sprites(data) || create_lore_sprites(data))
         return true;
     set_sprite_positions(data);
     return false;

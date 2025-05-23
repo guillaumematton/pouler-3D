@@ -79,7 +79,6 @@ typedef struct enemy_sprite_s {
 } enemy_sprite_t;
 
 typedef struct sprite_s {
-    bool in_full_screen;
     menu_t menu;
     env_t *environment;
     enemy_sprite_t *enemies;

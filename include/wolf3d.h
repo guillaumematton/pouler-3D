@@ -36,6 +36,7 @@ enum scene {
     MENU,
     MOPTIONS,
     GOPTIONS,
+    LORE,
     GAME,
     PAUSE
 };
@@ -181,5 +182,9 @@ void handle_pause_interactions(data_t *data);
 //term
 void terminate_game(data_t *data);
 void destroy_assets(data_t *data);
+
+//lore
+void display_lore_dump(data_t *data);
+void browse_sounds(data_t *data);
 
 #endif

@@ -19,7 +19,9 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     if (new_struct == NULL)
         return;
     new_struct->next = data->assets.sounds;
-    new_struct->sound = sfSoundBuffer_createFromFile(asset_path);
+    new_struct->buffer = sfSoundBuffer_createFromFile(asset_path);
+    new_struct->sound = sfSound_create();
+    sfSound_setBuffer(new_struct->sound, new_struct->buffer);
     new_struct->name = my_strdup(asset_name);
     data->assets.sounds = new_struct;
 }
@@ -31,8 +33,9 @@ static void overwrite_struct(data_t *data, char *asset_path,
         mini_printf(
         "\tloading %s by overwriting the previous sound.\n",
         asset_path);
-    sfSoundBuffer_destroy(asset_struct->sound);
-    asset_struct->sound = sfSoundBuffer_createFromFile(asset_path);
+    sfSound_destroy(asset_struct->sound);
+    sfSoundBuffer_destroy(asset_struct->buffer);
+    asset_struct->buffer = sfSoundBuffer_createFromFile(asset_path);
 }
 
 //loads the asset by first checking for an asset with

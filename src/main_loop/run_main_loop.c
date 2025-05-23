@@ -26,6 +26,8 @@ static void run_scenes(data_t *data)
         run_game_scene(data);
     if (data->scene == PAUSE)
         run_pause_scene(data);
+    if (data->scene == LORE)
+        display_lore_dump(data);
 }
 
 void run_main_loop(data_t *data)

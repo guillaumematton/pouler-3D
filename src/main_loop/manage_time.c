@@ -16,6 +16,6 @@ void manage_time(data_t *data)
     }
     sfClock_restart(data->clock);
     data->tick_duration = sfTime_asSeconds(elapsed);
-    if (data->scene == GAME)
+    if (data->scene == GAME || data->scene == LORE)
         data->game_time += data->tick_duration;
 }

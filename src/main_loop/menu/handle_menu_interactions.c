@@ -19,8 +19,10 @@ static void detect_button_mouse_click(data_t *data, menu_infos_t *menu_infos)
     menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
         data->scene = MOPTIONS;
     if (sfFloatRect_contains(&menu_infos->lore_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        printf("lore\n");
+    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
+        browse_sounds(data);
+        data->scene = LORE;
+    }
     if (sfFloatRect_contains(&menu_infos->exit_infos,
     menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
         data->exit = true;

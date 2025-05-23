@@ -42,7 +42,7 @@ static void find_weapon_sound(data_t *data, weapon_t *weapon)
     for (; sound != NULL; sound = sound->next) {
         if (my_strncmp(weapon->name, sound->name,
             my_strlen(weapon->name) - 4) == 0) {
-            weapon->sound = sound->sound;
+            weapon->sound = sound->buffer;
             break;
         }
     }

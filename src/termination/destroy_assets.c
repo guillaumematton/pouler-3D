@@ -15,7 +15,8 @@ static void destroy_sounds(data_t *data)
     while (asset_struct != NULL) {
         if (data->arguments.debug)
             mini_printf("    destroying %s.\n", asset_struct->name);
-        sfSoundBuffer_destroy(asset_struct->sound);
+        sfSound_destroy(asset_struct->sound);
+        sfSoundBuffer_destroy(asset_struct->buffer);
         my_free(asset_struct->name);
         struct_to_free = asset_struct;
         asset_struct = asset_struct->next;
