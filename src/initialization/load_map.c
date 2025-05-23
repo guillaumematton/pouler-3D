@@ -34,12 +34,16 @@ static char *copy_line(char *trg, unsigned int len)
 
 static void parse_array(char **lines, char ***array, map_t *asset_struct)
 {
+    bool failed = false;
+
     *array = malloc(sizeof(char *) * (asset_struct->y_size + 1));
     if (*array == NULL)
         return;
     (*array)[asset_struct->x_size] = NULL;
     for (unsigned int i = 0; i < asset_struct->y_size; i++) {
-        if (lines[i] == NULL) {
+        if (failed == false && lines[i] == NULL)
+            failed = true;
+        if (failed) {
             (*array)[i] = create_empty_line(asset_struct->x_size);
         } else
             (*array)[i] = copy_line(lines[i], asset_struct->x_size);
@@ -66,6 +70,7 @@ static void map_parser(char *asset_path, map_t *asset_struct)
         my_ptrarraylen((void **) lines) < 6) {
         my_free(buffer);
         my_freestrarray(lines);
+        my_putstr("\t  failed to load the map.\n");
         return;
     }
     parse_size(lines[0], asset_struct);
