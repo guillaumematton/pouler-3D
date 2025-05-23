@@ -62,16 +62,19 @@ static void map_parser(char *asset_path, map_t *asset_struct)
     char *buffer = my_readfile(asset_path);
     char **lines = my_strsplit(buffer, "\n", false);
 
-    if (buffer == NULL || lines == NULL)
+    if (buffer == NULL || lines == NULL || my_ptrarraylen((void **) lines) < 6) {
+        my_free(buffer);
+        my_freestrarray(lines);
         return;
-    parse_size(lines[1], asset_struct);
-    parse_array(lines + 2, &asset_struct->walls, asset_struct);
-    parse_array(lines + 2 + asset_struct->y_size,
-                &asset_struct->floor, asset_struct);
-    parse_array(lines + 2 + asset_struct->y_size * 2,
-                &asset_struct->ceiling, asset_struct);
-    parse_array(lines + 2 + asset_struct->y_size * 3,
-                &asset_struct->special, asset_struct);
+    }
+    parse_size(lines[0], asset_struct);
+    asset_struct->floor_texture_name = my_strdup(lines[1]);
+    asset_struct->wall_texture_name = my_strdup(lines[2]);
+    asset_struct->ceiling_texture_name = my_strdup(lines[3]);
+    asset_struct->next_map_name = my_strdup(lines[4]);
+    parse_array(lines + 5, &asset_struct->walls, asset_struct);
+    parse_array(lines + 5 + asset_struct->y_size,
+        &asset_struct->special, asset_struct);
     free(buffer);
     my_freestrarray(lines);
 }
@@ -100,9 +103,12 @@ static void overwrite_struct(data_t *data, char *asset_path,
         mini_printf(
         "\tloading %s by overwriting the previous map.\n",
         asset_path);
+    my_free(asset_struct->floor_texture_name);
+    my_free(asset_struct->wall_texture_name);
+    my_free(asset_struct->ceiling_texture_name);
+    my_free(asset_struct->next_map_name);
     my_freestrarray(asset_struct->walls);
-    my_freestrarray(asset_struct->floor);
-    my_freestrarray(asset_struct->ceiling);
+    my_freestrarray(asset_struct->special);
     map_parser(asset_path, asset_struct);
 }
 

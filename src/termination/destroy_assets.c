@@ -64,9 +64,11 @@ static void destroy_maps(data_t *data)
         if (data->arguments.debug)
             mini_printf("    destroying %s.\n", asset_struct->name);
         my_free(asset_struct->name);
+        my_free(asset_struct->floor_texture_name);
+        my_free(asset_struct->wall_texture_name);
+        my_free(asset_struct->ceiling_texture_name);
+        my_free(asset_struct->next_map_name);
         my_freestrarray(asset_struct->walls);
-        my_freestrarray(asset_struct->floor);
-        my_freestrarray(asset_struct->ceiling);
         my_freestrarray(asset_struct->special);
         struct_to_free = asset_struct;
         asset_struct = asset_struct->next;

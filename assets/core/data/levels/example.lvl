@@ -1,7 +1,10 @@
-EXAMPLE MAP NAME
-16 16 //will use the two first space separated words (in this case 8 and 8) for map size definiton
+16 16 //will use the two first space separated words (in this case 16 and 16) for map size definiton
+A
+B
+C
+level1
 
-AAAAAAAAAAAAAAAA //will copy the first 8 chars,
+AAAAAAAAAAAAAAAA //will copy the first 16 chars,
 A      AA      A //meaning you can write comments here
 A              A //the '//' are useless and only used 
 A  AA      AA  A //for comment marking clarity
@@ -16,56 +19,21 @@ A  AA      AA  A
 A  AA      AA  A
 A              A
 A      AA      A
-AAAAAAAAAAAAAAAA //wall map, spaces are empty
+AAAAAAAAAAAAAAAA //wall map, spaces are empty, everything else is a wall
 
-
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB
-BCBCBCBCBCBCBCBC
-CBCBCBCBCBCBCBCB //floor map
-
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD
-DDDDDDDDDDDDDDDD //ceiling map, spaces are empty (you see the sky box/ a default color)
-
-                
-                
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-               
-                //special map (ex spawn and enemy)
+................ 
+................ 
+................
+................
+................
+................
+................
+................
+................
+................
+................
+................
+................
+................
+................
+................ //special map, point is empty, everything else has (hopefully) an effect (ex spawn and enemy)

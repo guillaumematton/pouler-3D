@@ -37,9 +37,11 @@ typedef struct map_s {
     char *name;
     unsigned int x_size;
     unsigned int y_size;
+    char *floor_texture_name;
+    char *wall_texture_name;
+    char *ceiling_texture_name;
+    char *next_map_name;
     char **walls;
-    char **floor;
-    char **ceiling;
     char **special;
     struct map_s *next;
 } map_t;
