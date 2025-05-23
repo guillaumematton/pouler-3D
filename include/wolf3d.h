@@ -111,7 +111,6 @@ typedef struct draw_info_s {
     float wallX;
 } draw_info_t;
 
-    #define TILE_SIZE 64
     #define TEX_SIZE 48
 
 //init
