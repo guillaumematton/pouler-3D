@@ -1,3 +1,4 @@
+
 # Le jeu de le pouler 3(D)
 
 ## Keybinds:
@@ -25,6 +26,7 @@ size_x size_y (as integers)
 floor_texture_name  
 walls_tetxure_name  
 ceiling_texture_name  
+next_level_name  
 (empty line)  
 ```
 XXXXXX  
