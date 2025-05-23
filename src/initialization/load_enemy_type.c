@@ -19,7 +19,6 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     if (new_struct == NULL)
         return;
     new_struct->next = data->assets.enemy_types;
-    //TODO parser
     new_struct->name = my_strdup(asset_name);
     data->assets.enemy_types = new_struct;
 }
@@ -31,7 +30,6 @@ static void overwrite_struct(data_t *data, char *asset_path,
         mini_printf(
             "\tloading %s by overwriting the previous enemy type.\n",
             asset_path);
-    //TODO parser
 }
 
 //loads the asset by first checking for an asset with

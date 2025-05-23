@@ -37,7 +37,7 @@ static void create_verteces(data_t *data, ray_t rays, int x, int y)
     sfColor ceilColor = sfImage_getPixel(data->map.ceil_image,
         floor(tx / 1.5f), ty);
     sfVertex floorPixel = {
-        .position = (sfVector2f){x , y},
+        .position = (sfVector2f) {x, y},
         .color = floorColor
     };
     sfVertex ceilPixel = {

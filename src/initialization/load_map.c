@@ -62,7 +62,8 @@ static void map_parser(char *asset_path, map_t *asset_struct)
     char *buffer = my_readfile(asset_path);
     char **lines = my_strsplit(buffer, "\n", false);
 
-    if (buffer == NULL || lines == NULL || my_ptrarraylen((void **) lines) < 6) {
+    if (buffer == NULL || lines == NULL ||
+        my_ptrarraylen((void **) lines) < 6) {
         my_free(buffer);
         my_freestrarray(lines);
         return;

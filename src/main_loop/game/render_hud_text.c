@@ -14,7 +14,7 @@ void render_hud_text(data_t *data)
     if (data->current_weapon.weapon->ammo > 0) {
         sprintf(buffer, "health: %i\nammo : %i/%i",
             (int) data->player.health,
-            0, //TODO: add current weapon ammo
+            0,
             data->current_weapon.weapon->ammo);
     } else {
         sprintf(buffer, "health: %i\ninfinite ammo",

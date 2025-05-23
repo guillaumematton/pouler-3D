@@ -42,8 +42,7 @@ static void change_weapon(data_t *data, int id)
     sfIntRect rect = {0, 0, 0, 0};
     sfIntRect reference = {0, 0, 0, 0};
 
-    for (int i = 1; weapon_list != NULL &&
-        i < id; i++)
+    for (int i = 1; weapon_list != NULL && i < id; i++)
     if (weapon_list == NULL)
         return;
     data->current_weapon.weapon = weapon_list;

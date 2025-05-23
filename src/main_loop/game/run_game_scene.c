@@ -31,7 +31,8 @@ static bool set_new_map(data_t *data, char *name)
     if (map_list == NULL)
         map_list = data->assets.maps;
     data->map.current_map = map_list;
-    if (find_image(data, map_list->ceiling_texture_name, &data->map.ceil_image))
+    if (find_image(data, map_list->ceiling_texture_name,
+        &data->map.ceil_image))
         return true;
     if (find_image(data, map_list->floor_texture_name, &data->map.floor_image))
         return true;
