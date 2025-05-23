@@ -9,6 +9,7 @@
 
 void run_menu_scene(data_t *data)
 {
+    set_sprite_positions(data);
     render_menu(data);
     handle_menu_interactions(data);
 }

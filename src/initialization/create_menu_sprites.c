@@ -20,13 +20,23 @@ void set_position_scale(float scale_value, float positionx,
 
 void set_sprite_positions(data_t *data)
 {
-    set_position_scale(1.38, 0, 0, data->sprites.menu.background);
-    set_position_scale(0.5, 285, 255, data->sprites.menu.new_game);
-    set_position_scale(0.375, 300, 320, data->sprites.menu.continue_game);
-    set_position_scale(0.35, 325, 375, data->sprites.menu.options);
-    set_position_scale(0.425, 340, 435, data->sprites.menu.lore);
-    set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
-    set_position_scale(0.8, 0, 0, data->sprites.menu.title);
+    if (!data->arguments.full_screen) {
+        set_position_scale(1.38, 0, 0, data->sprites.menu.background);
+        set_position_scale(0.5, 285, 255, data->sprites.menu.new_game);
+        set_position_scale(0.375, 300, 320, data->sprites.menu.continue_game);
+        set_position_scale(0.35, 325, 375, data->sprites.menu.options);
+        set_position_scale(0.425, 340, 435, data->sprites.menu.lore);
+        set_position_scale(0.3, 347, 500, data->sprites.menu.exit_game);
+        set_position_scale(0.8, 0, 0, data->sprites.menu.title);
+    } else {
+        set_position_scale(3.5, 0, 0, data->sprites.menu.background);
+        set_position_scale(1, 800, 450, data->sprites.menu.new_game);
+        set_position_scale(0.7, 850, 570, data->sprites.menu.continue_game);
+        set_position_scale(0.7, 875, 675, data->sprites.menu.options);
+        set_position_scale(0.85, 900, 825, data->sprites.menu.lore);
+        set_position_scale(0.6, 915, 950, data->sprites.menu.exit_game);
+        set_position_scale(1.6, 150, 0, data->sprites.menu.title);
+    }
     return;
 }
 
