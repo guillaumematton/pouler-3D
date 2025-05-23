@@ -74,6 +74,8 @@ void manage_music(data_t *data)
     if (data->current_music_name &&
         my_strcmp(data->current_music_name, "menu.ogg") == 0)
         sfMusic_stop(data->current_music);
+    if (data->scene == LORE)
+        return;
     if (data->current_music == NULL ||
         data->current_music_name == NULL ||
         sfMusic_getStatus(data->current_music) == sfStopped ||
