@@ -92,7 +92,7 @@ static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
         dists->texY = 0;
     if (dists->texY >= TEX_SIZE)
         dists->texY = TEX_SIZE - 1;
-    color = sfImage_getPixel(data->sprites.environment.G,
+    color = sfImage_getPixel(data->map.walls_image,
         dists->texX, dists->texY);
     color.r /= color_diming;
     color.g /= color_diming;

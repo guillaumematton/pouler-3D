@@ -32,14 +32,17 @@ static void create_verteces(data_t *data, ray_t rays, int x, int y)
     int cellY = (int)(rays.floorY);
     int tx = (int)(TEX_SIZE * (rays.floorX - cellX)) & (TEX_SIZE - 1);
     int ty = (int)(TEX_SIZE * (rays.floorY - cellY)) & (TEX_SIZE - 1);
-    sfColor floorColor = sfImage_getPixel(data->sprites.environment.B, floor(tx / 1.5f), ty);
+    sfColor floorColor = sfImage_getPixel(data->map.floor_image,
+        floor(tx / 1.5f), ty);
+    sfColor ceilColor = sfImage_getPixel(data->map.ceil_image,
+        floor(tx / 1.5f), ty);
     sfVertex floorPixel = {
         .position = (sfVector2f){x , y},
         .color = floorColor
     };
     sfVertex ceilPixel = {
         .position = (sfVector2f){x, data->screen_size.y - y},
-        .color = floorColor
+        .color = ceilColor
     };
 
     sfVertexArray_append(data->game_vertex, floorPixel);

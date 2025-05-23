@@ -55,15 +55,9 @@ typedef struct options_infos_s {
 } options_infos_t;
 
 typedef struct env_s {
-    sfImage *A;
-    sfImage *B;
-    sfImage *C;
-    sfImage *D;
-    sfImage *E;
-    sfImage *F;
-    sfImage *G;
-    sfImage *H;
-    sfImage *I;
+    sfImage *image;
+    char *name;
+    struct env_s *next;
 } env_t;
 
 typedef struct enemy_sprite_s {
@@ -74,7 +68,7 @@ typedef struct enemy_sprite_s {
 typedef struct sprite_s {
     bool in_full_screen;
     menu_t menu;
-    env_t environment;
+    env_t *environment;
     enemy_sprite_t *enemies;
 } sprite_t;
 

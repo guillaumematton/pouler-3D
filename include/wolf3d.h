@@ -57,6 +57,13 @@ typedef struct current_weapon_s {
     sfVector2i sprite_size;
 } current_weapon_t;
 
+typedef struct current_map_s {
+    map_t *current_map;
+    sfImage *walls_image;
+    sfImage *ceil_image;
+    sfImage *floor_image;
+} current_map_t;
+
 typedef struct data {
     arguments_t arguments;
     Player_t player;
@@ -70,6 +77,7 @@ typedef struct data {
     sfVertexArray *game_vertex;
     sfVector2u screen_size;
     current_weapon_t current_weapon;
+    current_map_t map;
     bool exit;
     sfEvent event;
     double game_time;

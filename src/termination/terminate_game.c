@@ -42,24 +42,14 @@ static void destroy_gui_sprites(data_t *data)
 
 static void destroy_wall_images(data_t *data)
 {
-    if (data->sprites.environment.A)
-        sfImage_destroy(data->sprites.environment.A);
-    if (data->sprites.environment.B)
-        sfImage_destroy(data->sprites.environment.B);
-    if (data->sprites.environment.C)
-        sfImage_destroy(data->sprites.environment.C);
-    if (data->sprites.environment.D)
-        sfImage_destroy(data->sprites.environment.D);
-    if (data->sprites.environment.E)
-        sfImage_destroy(data->sprites.environment.E);
-    if (data->sprites.environment.F)
-        sfImage_destroy(data->sprites.environment.F);
-    if (data->sprites.environment.G)
-        sfImage_destroy(data->sprites.environment.G);
-    if (data->sprites.environment.H)
-        sfImage_destroy(data->sprites.environment.H);
-    if (data->sprites.environment.I)
-        sfImage_destroy(data->sprites.environment.I);
+    env_t *list = data->sprites.environment;
+    env_t *next_list = NULL;
+
+    for (; list != NULL; list = next_list) {
+        next_list = list->next;
+        sfImage_destroy(list->image);
+        free(list);
+    }
 }
 
 static void destroy_miscellanous(data_t *data)
