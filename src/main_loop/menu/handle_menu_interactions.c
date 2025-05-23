@@ -13,8 +13,7 @@ static void detect_button_mouse_click(data_t *data, menu_infos_t *menu_infos)
     menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
         data->scene = GAME;
     if (sfFloatRect_contains(&menu_infos->continuegame_infos,
-                             menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
-        load_data(data);
+        menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
         data->scene = GAME;
     }
     if (sfFloatRect_contains(&menu_infos->options_infos,
