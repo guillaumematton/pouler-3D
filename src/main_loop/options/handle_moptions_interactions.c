@@ -49,7 +49,7 @@ static void detect_button_mouse_click(data_t *data,
     }
     if (sfFloatRect_contains(&options_infos->volume_up_infos,
     options_infos->mouse_pos.x, options_infos->mouse_pos.y) &&
-    data->volume + 5 < 255)
+    data->volume + 5 < 100)
         data->volume += 5;
     if (sfFloatRect_contains(&options_infos->volume_down_infos,
     options_infos->mouse_pos.x, options_infos->mouse_pos.y) &&
