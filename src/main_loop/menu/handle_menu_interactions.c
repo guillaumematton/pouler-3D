@@ -28,7 +28,8 @@ static void detect_button_mouse_click(data_t *data, menu_infos_t *menu_infos)
 
 static void handle_button_clicks(data_t *data)
 {
-    menu_infos_t menu_infos = {{0}, {0}, {0}, {0}, {0}, {0}};
+    menu_infos_t menu_infos = {{0, 0, 0, 0}, {0, 0, 0, 0},
+        {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0}};
 
     menu_infos.mouse_pos =
     sfMouse_getPositionRenderWindow(data->window);

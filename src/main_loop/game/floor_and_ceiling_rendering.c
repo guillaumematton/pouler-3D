@@ -9,7 +9,7 @@
 
 static ray_t create_ray_struct(data_t *data, int y)
 {
-    ray_t rays = {0, 0, 0, 0, 0};
+    ray_t rays = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     rays.rayDirX0 = data->player.dirX - data->player.planeX;
     rays.rayDirY0 = data->player.dirY - data->player.planeY;
@@ -65,10 +65,10 @@ void cast_floor_and_ceiling(data_t *data)
 
     if (data->screen_size.y == 600)
         step = 1;
-    for (int y = data->screen_size.y / 2 + 1; y <
+    for (unsigned int y = data->screen_size.y / 2 + 1; y <
         data->screen_size.y; y += step) {
         rays = create_ray_struct(data, y);
-        for (int x = 0; x < data->screen_size.x; x++) {
+        for (unsigned int x = 0; x < data->screen_size.x; x++) {
             create_verteces(data, rays, x, y);
             rays.floorX += rays.stepX;
             rays.floorY += rays.stepY;

@@ -49,7 +49,6 @@ static void handle_right_input(data_t *data, char **map, float moveSpeed)
 
 static void handle_left_input(data_t *data, char **map, float moveSpeed)
 {
-    float rotSpeed = 2.0f;
     float strafeX = data->player.dirY;
     float strafeY = -data->player.dirX;
 

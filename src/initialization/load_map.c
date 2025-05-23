@@ -13,7 +13,7 @@ static char *create_empty_line(unsigned int len)
 
     if (str == NULL)
         return NULL;
-    for (int i = 0; i < len; i++)
+    for (unsigned int i = 0; i < len; i++)
         str[i] = ' ';
     str[len] = '\0';
     return str;
@@ -25,7 +25,7 @@ static char *copy_line(char *trg, unsigned int len)
 
     if (str == NULL)
         return NULL;
-    for (int i = 0; i < len; i++)
+    for (unsigned int i = 0; i < len; i++)
         str[i] = ' ';
     str[len] = '\0';
     my_strncpy(str, trg, len);
@@ -38,7 +38,7 @@ static void parse_array(char **lines, char ***array, map_t *asset_struct)
     if (*array == NULL)
         return;
     (*array)[asset_struct->x_size] = NULL;
-    for (int i = 0; i < asset_struct->y_size; i++) {
+    for (unsigned int i = 0; i < asset_struct->y_size; i++) {
         if (lines[i] == NULL) {
             (*array)[i] = create_empty_line(asset_struct->x_size);
         } else

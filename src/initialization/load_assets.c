@@ -41,9 +41,8 @@ static bool load_modules(data_t *data)
     struct dirent *file = NULL;
     bool status = false;
 
-    if (dir == NULL) {
-        return 84;
-    }
+    if (dir == NULL)
+        return true;
     file = readdir(dir);
     while (file != NULL) {
         if (status == true)
@@ -56,6 +55,7 @@ static bool load_modules(data_t *data)
         file = readdir(dir);
     }
     closedir(dir);
+    return false;
 }
 
 //load all the assets, staring by the "core" module

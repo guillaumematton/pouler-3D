@@ -85,6 +85,7 @@ bool create_options_sprites(data_t *data)
         create_gui_sprite(data, "volume_down.png",
     &data->sprites.menu.options_sprites.volume_down))
         return true;
+    return false;
 }
 
 bool create_menu_sprites(data_t *data)

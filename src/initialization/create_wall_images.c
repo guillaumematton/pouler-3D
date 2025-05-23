@@ -7,7 +7,7 @@
 
 #include "wolf3d.h"
 
-static bool create_env_images(data_t *data, const char *name,
+static bool create_env_images(const char *name,
     sfTexture *texture, env_t **images_adress)
 {
     env_t *node = malloc(sizeof(env_t));
@@ -30,7 +30,7 @@ bool create_wall_images(data_t *data)
     environment_texture_t *env = data->assets.environment_textures;
 
     for (; env != NULL; env = env->next) {
-        if (create_env_images(data, env->name,
+        if (create_env_images(env->name,
             env->texture, &data->sprites.environment))
             return true;
     }

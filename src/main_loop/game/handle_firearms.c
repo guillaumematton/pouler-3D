@@ -34,6 +34,8 @@ static void modify_sprite_for_firing(data_t *data)
     sfSprite_setTextureRect(data->current_weapon.current_sprite, rect);
     data->current_weapon.time_to_wait = data->current_weapon.weapon->firerate;
     set_position_scale(0.8, 350, 120, data->current_weapon.current_sprite);
+    if (data->current_weapon.weapon->ammo > 0)
+        data->current_weapon.weapon->ammo--;
 }
 
 static void change_weapon(data_t *data, int id)
@@ -93,7 +95,9 @@ void handle_firearms(data_t *data)
         return;
     }
     handle_firearms_switch(data);
-    if (sfMouse_isButtonPressed(sfMouseLeft)) {
+    if (sfMouse_isButtonPressed(sfMouseLeft) &&
+        (data->current_weapon.weapon->ammo != 0 ||
+        data->current_weapon.weapon->max_ammo == 0)) {
         is_firing = true;
         modify_sprite_for_firing(data);
     }

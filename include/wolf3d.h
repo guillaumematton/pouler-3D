@@ -53,7 +53,6 @@ typedef struct Player_s {
 typedef struct current_weapon_s {
     weapon_t *weapon;
     sfSprite *current_sprite;
-    int ammo;
     float time_to_wait;
     sfVector2i sprite_size;
 } current_weapon_t;
@@ -100,8 +99,8 @@ typedef struct ray_s {
 } ray_t;
 
 typedef struct dist_info_s {
-    int mapX;
-    int mapY;
+    unsigned int mapX;
+    unsigned int mapY;
     int texX;
     int texY;
     float deltaDistX;
@@ -117,7 +116,7 @@ typedef struct draw_info_s {
     int texX;
     int line_height;
     int draw_start;
-    int draw_end;
+    unsigned int draw_end;
     float wallX;
 } draw_info_t;
 

@@ -23,8 +23,8 @@ static void create_new_struct(data_t *data, char *asset_path, char *asset_name)
     data->assets.enemy_types = new_struct;
 }
 
-static void overwrite_struct(data_t *data, char *asset_path,
-    enemy_type_t *asset_struct)
+static void overwrite_struct(data_t *data, UNUSED char *asset_path,
+    UNUSED enemy_type_t *asset_struct)
 {
     if (data->arguments.debug)
         mini_printf(

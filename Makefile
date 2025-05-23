@@ -74,8 +74,8 @@ $(NAME): $(LIB) $(OBJ)
 debug: CFLAGS += -g
 debug: $(NAME)_debug
 
-$(NAME)_debug: $(LIB) $(OBJ)
-	$(CC) -o $(NAME)_debug $(OBJ) $(CFLAGS) $(WFLAGS)
+$(NAME)_debug: fclean $(LIB) $(OBJ)
+	$(CC) -o $(NAME)_debug $(SRC) $(CFLAGS) $(WFLAGS)
 
 $(LIB):
 	@$(MAKE) -sC lib/my

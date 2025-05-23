@@ -43,9 +43,6 @@ static void set_options_sprites_window(data_t *data)
 
 static void set_sprite_positions_options(data_t *data)
 {
-    sfVector2f scale = {1.9, 3};
-    sfVector2f position = {0, 0};
-
     if (!data->arguments.full_screen)
         set_options_sprites_window(data);
     else

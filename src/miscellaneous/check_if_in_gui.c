@@ -9,10 +9,7 @@
 
 bool check_if_in_gui(char **env)
 {
-    int len;
-
     for (int i = 0; env[i] != NULL; i++) {
-        len = my_strlen(env[i]);
         if (my_strlen(env[i]) > 8 &&
             my_strncmp(env[i], "DISPLAY=", 8) == 0) {
             return (true);

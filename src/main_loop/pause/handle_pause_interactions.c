@@ -19,7 +19,7 @@ static void detect_button_mouse_click(data_t *data, pause_infos_t *pause_infos)
 
 static void handle_button_clicks(data_t *data)
 {
-    pause_infos_t pause_infos = {{0}, {0}, {0}};
+    pause_infos_t pause_infos = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0}};
 
     pause_infos.mouse_pos =
     sfMouse_getPositionRenderWindow(data->window);
