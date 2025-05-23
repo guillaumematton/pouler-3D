@@ -21,7 +21,7 @@ static bool set_window(data_t *data)
         mode.width = 1920;
         mode.height = 1080;
     }
-    data->window = sfRenderWindow_create(mode, "wolf3D",
+    data->window = sfRenderWindow_create(mode, "P.O.U.L.E.R 3.D",
         arg, NULL);
     if (!data->window)
         return true;
