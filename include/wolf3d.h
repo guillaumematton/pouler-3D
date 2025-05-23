@@ -166,7 +166,7 @@ void run_goptions_scene(data_t *data);
 
 //game
 void run_game_scene(data_t *data);
-void render_map(data_t *data, char **map);
+void render_map(data_t *data, map_t *map);
 void handle_movement(char **map, data_t *data);
 bool create_wall_images(data_t *data);
 void set_sprite_positions(data_t *data);

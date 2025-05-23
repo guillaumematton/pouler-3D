@@ -48,11 +48,11 @@ static void setup_raycasting(data_t *data, ray_t *rays, dist_info_t *dists)
     }
 }
 
-static bool hit_detection(data_t *data, dist_info_t *dists, char **map)
+static bool hit_detection(data_t *data, dist_info_t *dists, map_t *map)
 {
-    if (dists->mapX < data->assets.maps->x_size &&
-        dists->mapY < data->assets.maps->y_size) {
-        if (map[dists->mapX][dists->mapY] == 'X')
+    if (dists->mapX < map->x_size &&
+        dists->mapY < map->y_size) {
+        if (map->map[dists->mapX][dists->mapY] == 'X')
             dists->hit = 1;
     } else {
         return true;
@@ -61,7 +61,7 @@ static bool hit_detection(data_t *data, dist_info_t *dists, char **map)
 }
 
 static void ray_casting(data_t *data, dist_info_t *dists,
-    ray_t *rays, char **map)
+    ray_t *rays, map_t *map)
 {
     while (dists->hit == 0) {
         if (dists->sideDistX < dists->sideDistY) {
@@ -134,7 +134,7 @@ static float fill_draw(data_t *data, ray_t rays,
     return draw->wallX;
 }
 
-static void wall_render(data_t *data, char **map)
+static void wall_render(data_t *data, map_t *map)
 {
     ray_t rays = {0, 0, 0, 0, 0, 0, 0, 0, 0};
     dist_info_t dists = create_dist_struct(data, 0, &rays);
@@ -158,7 +158,7 @@ static void wall_render(data_t *data, char **map)
     }
 }
 
-void render_map(data_t *data, char **map)
+void render_map(data_t *data, map_t *map)
 {
     cast_floor_and_ceiling(data);
     wall_render(data, map);
