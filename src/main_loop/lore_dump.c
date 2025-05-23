@@ -21,15 +21,15 @@ static void set_fullscreen_pause(data_t *data)
 static void set_sprite_positions_lore(data_t *data)
 {
     if (!data->arguments.full_screen) {
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore1);
+        set_position_scale(3.3, 0, 0, data->sprites.menu.lore_sprites.lore1);
         set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore2);
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore3);
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore4);
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore5);
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore6);
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore7);
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore8);
-        set_position_scale(3, 0, 0, data->sprites.menu.lore_sprites.lore9);
+        set_position_scale(0.7, 0, 70, data->sprites.menu.lore_sprites.lore3);
+        set_position_scale(0.6, 100, 0, data->sprites.menu.lore_sprites.lore4);
+        set_position_scale(2, 0, 180, data->sprites.menu.lore_sprites.lore5);
+        set_position_scale(0.8, 0, 70, data->sprites.menu.lore_sprites.lore6);
+        set_position_scale(0.8, 0, 70, data->sprites.menu.lore_sprites.lore7);
+        set_position_scale(0.8, 0, 70, data->sprites.menu.lore_sprites.lore8);
+        set_position_scale(0.8, 0, 70, data->sprites.menu.lore_sprites.lore9);
     } else
         set_fullscreen_pause(data);
     return;
