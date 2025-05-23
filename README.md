@@ -62,14 +62,14 @@ ___
 - [x] Sound effects and music: Sounds and music to enhance the gaming experience.
 - [ ] Particle effects: Use particles for explosions, shots, etc
 ### User interface
-- [ ] HUD: Interface displaying essential information such as health, ammunition, etc.
-- [ ] Options and Settings
-- [ ] The main menu must contain:
+- [x] HUD: Interface displaying essential information such as health, ammunition, etc.
+- [x] Options and Settings
+- [x] The main menu must contain:
   - Start the game
   - Settings : volumes and windows
 - [x] Leave the game
-- [ ] Volume options: for sound and music.
-- [ ] Window resolution options: for sound and music.
+- [x] Volume options: for sound and music.
+- [x] Window resolution options: for sound and music.
 
 ## Should  
 - [ ] Weapons: Several weapons ranging from knife to missile launcher, through machine guns.

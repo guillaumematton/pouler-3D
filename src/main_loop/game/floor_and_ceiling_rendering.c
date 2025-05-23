@@ -28,11 +28,10 @@ static ray_t create_ray_struct(data_t *data, int y)
 
 static sfColor get_color(sfImage *image, ray_t rays, int tx, int ty)
 {
-    int dimming = 1 + rays.rowDistance / 2;
     sfColor Color = sfImage_getPixel(image,
         floor(tx / 1.5f), ty);
 
-    Color.b /= dimming;
+    Color.b /= (1 + rays.rowDistance / 2);
     Color.r /= (1 + rays.rowDistance / 2);
     Color.g /= (1 + rays.rowDistance / 2);
     return Color;

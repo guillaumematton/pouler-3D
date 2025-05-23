@@ -21,6 +21,22 @@ static bool find_image(data_t *data, char *name, sfImage **adress)
     return false;
 }
 
+static bool set_new_player_pos(data_t *data, int y)
+{
+    for (int x = 0; data->map.current_map->special[y][x] != '\0'; x++)
+        if (data->map.current_map->special[y][x] == 'S') {
+            data->player.health = 100;
+            data->player.x = x;
+            data->player.y = y;
+            data->player.dirX = 1;
+            data->player.dirY = 0;
+            data->player.planeX = 0;
+            data->player.planeY = 0.9;
+            return true;
+        }
+    return false;
+}
+
 static bool set_new_map(data_t *data, char *name)
 {
     map_t *map_list = data->assets.maps;
@@ -38,6 +54,9 @@ static bool set_new_map(data_t *data, char *name)
         return true;
     if (find_image(data, map_list->wall_texture_name, &data->map.walls_image))
         return true;
+    for (int y = 0; data->map.current_map->special[y] != NULL; y++) 
+        if (set_new_player_pos(data, y))
+            return false;
     return false;
 }
 
