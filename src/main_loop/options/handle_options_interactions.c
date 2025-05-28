@@ -35,6 +35,22 @@ static void disable_fullscreen(data_t *data)
     data->arguments.full_screen = false;
 }
 
+static void detect_volume_click(data_t *data, options_infos_t *options_infos)
+{
+    if (sfFloatRect_contains(&options_infos->volume_up_infos,
+    options_infos->mouse_pos.x, options_infos->mouse_pos.y) &&
+        data->volume + 5 < 100) {
+        data->volume += 5;
+        sfSleep(sfSeconds(0.5f));
+    }
+    if (sfFloatRect_contains(&options_infos->volume_down_infos,
+    options_infos->mouse_pos.x, options_infos->mouse_pos.y) &&
+    data->volume - 5 > 0) {
+        data->volume -= 5;
+        sfSleep(sfSeconds(0.5f));
+    }
+}
+
 static void detect_button_mouse_click(data_t *data,
     options_infos_t *options_infos)
 {
@@ -47,14 +63,7 @@ static void detect_button_mouse_click(data_t *data,
         sfRenderWindow_setFramerateLimit(data->window, GAME_FPS);
         data->screen_size = sfRenderWindow_getSize(data->window);
     }
-    if (sfFloatRect_contains(&options_infos->volume_up_infos,
-    options_infos->mouse_pos.x, options_infos->mouse_pos.y) &&
-    data->volume + 5 < 100)
-        data->volume += 5;
-    if (sfFloatRect_contains(&options_infos->volume_down_infos,
-    options_infos->mouse_pos.x, options_infos->mouse_pos.y) &&
-    data->volume - 5 > 0)
-        data->volume -= 5;
+    detect_volume_click(data, options_infos);
 }
 
 static void handle_button_clicks(data_t *data)
