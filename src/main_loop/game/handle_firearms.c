@@ -50,7 +50,8 @@ static sfIntRect get_sprite_rect(data_t *data, weapon_t *weapon_list)
     sfIntRect rect = {0, 0, 0, 0};
 
     reference = sfSprite_getTextureRect(weapon_list->sprite);
-    data->current_weapon.sprite_size = sfIntRect_getSize(&reference);
+    data->current_weapon.sprite_size.x = reference.width;
+    data->current_weapon.sprite_size.y = reference.height;
     rect.left = 0;
     rect.top = 0;
     rect.width = data->current_weapon.sprite_size.x / 2;
