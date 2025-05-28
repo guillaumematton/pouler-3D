@@ -89,6 +89,7 @@ jobs:
   push_to_mirror:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    needs: [check_coding_style, check_program_compilation]
     if: ${{ github.event_name == 'push' }}
     steps:
       - name: getting_latest_changes
