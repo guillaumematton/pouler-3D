@@ -35,7 +35,7 @@ static void set_player(data_t *data, int x, int y)
 static bool set_new_player_pos(data_t *data, int y)
 {
     for (int x = 0; data->map.current_map->map[y][x] != '\0'; x++)
-        if (data->map.current_map->map[y][x] == 'S') {
+        if (data->map.current_map->map[x][y] == 'S') {
             set_player(data, x, y);
             return true;
         }
