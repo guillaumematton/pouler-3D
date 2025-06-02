@@ -44,6 +44,12 @@ XXXXXX
     - W = win
     any other character is a empty space
 
+#### How to read the minimap
+    - blue square = player's position (has priority over everything else)  
+    - green square = spawn  
+    - red square = teleporter to another map  
+    - yellow square = win  
+
 ### Correct weapon file format:
 damage (decimal number)  
 ammo (integer)  
@@ -92,7 +98,7 @@ ___
 
 ## Should  
 - [ ] Weapons: Several weapons ranging from knife to missile launcher, through machine guns.
-- [ ] Map or mini map: Display of the level map to help navigation.
+- [x] Map or mini map: Display of the level map to help navigation.
 - [ ] Procedural Labyrinthine Levels: Procedural generation of levels with walls, doors, floor, ceiling.
 - [ ] Various enemies: Different types of enemies with distinct behaviors.
 - [ ] Inventory: Interface to manage the collected items.
@@ -104,7 +110,7 @@ ___
 - [ ] Environmental Interactions: For example, firing on explosive barrels or triggering traps
 
 ## Could  
-- [ ] Ladder management for different floors: Mechanical to move between different levels.
+- [x] Ladder management for different floors: Mechanical to move between different levels.
 - [ ] Advanced health system: Understand health effects such as bleeding or bandages.
 - [ ] Special weapons: Unique weapons with special effects.
 - [ ] Dynamic Weather: Integrate changing weather conditions affecting visibility and gameplay.
