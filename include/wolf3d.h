@@ -56,7 +56,6 @@ typedef struct current_weapon_s {
     weapon_t *weapon;
     sfSprite *current_sprite;
     float time_to_wait;
-    sfVector2i sprite_size;
 } current_weapon_t;
 
 typedef struct current_map_s {
@@ -143,8 +142,8 @@ void load_entity_texture(data_t *data, char *folder_path, char *asset_name);
 void load_font(data_t *data, char *folder_path, char *asset_name);
 void load_environment_texture(data_t *data, char *folder_path,
     char *asset_name);
-void bind_assets(data_t *data);
-void bind_weapon_assets(data_t *data);
+bool bind_assets(data_t *data);
+bool bind_weapon_assets(data_t *data);
 void load_gui_texture(data_t *data, char *folder_path, char *asset_name);
 void set_position_scale(float scale_value, float positionx,
     float positiony, sfSprite *sprite);

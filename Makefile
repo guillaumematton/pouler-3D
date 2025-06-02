@@ -26,8 +26,8 @@ SRC	= src/main.c\
 	  src/initialization/load_environment_texture.c\
 	  src/initialization/load_gui_texture.c\
 	  src/initialization/load_font.c\
-          src/initialization/bind_assets.c\
-          src/initialization/bind_weapon_assets.c\
+      src/initialization/bind_assets.c\
+      src/initialization/bind_weapon_assets.c\
 	  src/initialization/create_menu_sprites.c\
 	  src/main_loop/run_main_loop.c\
 	  src/main_loop/manage_music.c\
@@ -35,6 +35,7 @@ SRC	= src/main.c\
 	  src/main_loop/menu/run_menu_scene.c\
 	  src/main_loop/menu/render_menu.c\
 	  src/main_loop/menu/handle_menu_interactions.c\
+	  src/main_loop/menu/lore_dump.c\
 	  src/main_loop/options/run_options_scene.c\
 	  src/main_loop/options/render_options.c\
 	  src/main_loop/options/handle_options_interactions.c\
@@ -47,7 +48,6 @@ SRC	= src/main.c\
 	  src/main_loop/pause/run_pause_scene.c\
 	  src/main_loop/pause/render_pause.c\
 	  src/main_loop/pause/handle_pause_interactions.c\
-	  src/main_loop/lore_dump.c\
 	  src/save_data.c\
 	  src/termination/terminate_game.c\
 	  src/termination/destroy_assets.c\
@@ -76,7 +76,7 @@ $(NAME): $(LIB) $(OBJ)
 debug: CFLAGS += -g
 debug: $(NAME)_debug
 
-$(NAME)_debug: fclean $(LIB) $(OBJ)
+$(NAME)_debug: fclean $(LIB)
 	$(CC) -o $(NAME)_debug $(SRC) $(CFLAGS) $(WFLAGS)
 
 $(LIB):
@@ -114,8 +114,5 @@ run: all
 
 test: debug
 	valgrind \
---track-origins=yes \
---leak-check=full \
---show-leak-kinds=all \
 --suppressions=valgrind_suppression \
 ./$(NAME)_debug -d

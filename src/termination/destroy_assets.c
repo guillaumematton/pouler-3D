@@ -84,8 +84,10 @@ static void destroy_weapons(data_t *data)
         if (data->arguments.debug)
             mini_printf("    destroying %s.\n", asset_struct->name);
         my_free(asset_struct->name);
-        if (asset_struct->sprite != NULL)
-            sfSprite_destroy(asset_struct->sprite);
+        if (asset_struct->default_sprite != NULL)
+            sfSprite_destroy(asset_struct->default_sprite);
+        if (asset_struct->fire_sprite != NULL)
+            sfSprite_destroy(asset_struct->fire_sprite);
         struct_to_free = asset_struct;
         asset_struct = asset_struct->next;
         free(struct_to_free);

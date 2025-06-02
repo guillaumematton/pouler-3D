@@ -76,9 +76,8 @@ bool initialize_game(data_t *data)
     initialize_player(data);
     if (load_assets(data))
         return true;
-    if (set_text(data))
+    if (set_text(data) || bind_assets(data))
         return true;
-    bind_assets(data);
     if (create_menu_sprites(data) || create_wall_images(data))
         return true;
     set_sprite_positions(data);

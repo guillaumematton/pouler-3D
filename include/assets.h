@@ -49,8 +49,9 @@ typedef struct map_s {
 typedef struct weapon_s {
     char *name;
     sfTexture *texture;
-    sfSprite *sprite;
-    sfSoundBuffer *sound;
+    sfSprite *default_sprite;
+    sfSprite *fire_sprite;
+    sound_t *sound;
     float damage;
     int ammo;
     int max_ammo;

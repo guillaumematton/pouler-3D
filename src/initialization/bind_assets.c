@@ -7,9 +7,11 @@
 
 #include "wolf3d.h"
 
-void bind_assets(data_t *data)
+bool bind_assets(data_t *data)
 {
     if (data->arguments.debug)
         my_putstr("  binding assets.\n");
-    bind_weapon_assets(data);
+    if (bind_weapon_assets(data))
+        return true;
+    return false;
 }
