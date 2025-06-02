@@ -45,6 +45,7 @@ SRC	= src/main.c\
 	  src/main_loop/game/renderer.c\
 	  src/main_loop/game/player_movement.c\
 	  src/main_loop/game/render_hud_text.c\
+	  src/main_loop/game/draw_minimap.c\
 	  src/main_loop/pause/run_pause_scene.c\
 	  src/main_loop/pause/render_pause.c\
 	  src/main_loop/pause/handle_pause_interactions.c\

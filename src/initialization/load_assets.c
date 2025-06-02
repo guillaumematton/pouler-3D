@@ -63,6 +63,12 @@ static bool load_modules(data_t *data)
 //returns true if error
 bool load_assets(data_t *data)
 {
+    data->tile = sfRectangleShape_create();
+    if (!data->tile) {
+        my_putstr("Error: could not create tile rectangle shape"
+            " for minimap. Aborting...\n");
+        return true;
+    }
     if (data->arguments.debug)
         mini_printf("  loading assets.\n");
     load_module(data, "core");

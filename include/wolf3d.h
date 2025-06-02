@@ -79,6 +79,7 @@ typedef struct data {
     sfVector2u screen_size;
     current_weapon_t current_weapon;
     current_map_t map;
+    sfRectangleShape *tile;
     bool exit;
     sfEvent event;
     double game_time;
@@ -173,6 +174,7 @@ void set_sprite_positions(data_t *data);
 void cast_floor_and_ceiling(data_t *data);
 void handle_firearms(data_t *data);
 void render_hud_text(data_t *data);
+void draw_minimap(data_t *data);
 
 //pause
 void run_pause_scene(data_t *data);

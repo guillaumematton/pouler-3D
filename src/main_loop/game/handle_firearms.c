@@ -9,7 +9,8 @@
 
 static void modify_sprite_for_idle(data_t *data)
 {
-    data->current_weapon.current_sprite = data->current_weapon.weapon->default_sprite;
+    data->current_weapon.current_sprite =
+        data->current_weapon.weapon->default_sprite;
     if (!data->current_weapon.current_sprite)
         return;
     if (!data->arguments.full_screen)
@@ -20,7 +21,8 @@ static void modify_sprite_for_idle(data_t *data)
 
 static void modify_sprite_for_firing(data_t *data)
 {
-    data->current_weapon.current_sprite = data->current_weapon.weapon->fire_sprite;
+    data->current_weapon.current_sprite =
+        data->current_weapon.weapon->fire_sprite;
     data->current_weapon.time_to_wait = data->current_weapon.weapon->firerate;
     if (!data->arguments.full_screen)
         set_position_scale(0.8, 250, 150, data->current_weapon.current_sprite);
