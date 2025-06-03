@@ -26,8 +26,8 @@ SRC	= src/main.c\
 	  src/initialization/load_environment_texture.c\
 	  src/initialization/load_gui_texture.c\
 	  src/initialization/load_font.c\
-      src/initialization/bind_assets.c\
-      src/initialization/bind_weapon_assets.c\
+	  src/initialization/bind_assets.c\
+	  src/initialization/bind_weapon_assets.c\
 	  src/initialization/create_menu_sprites.c\
 	  src/main_loop/run_main_loop.c\
 	  src/main_loop/manage_music.c\
@@ -63,7 +63,7 @@ LIB	= lib/libmy.a\
 
 CC	= gcc
 
-WFLAGS  = -Wall -Wextra -fanalyzer
+WFLAGS	= -Wall -Wextra -fanalyzer
 
 CFLAGS	= -I include -L lib -l my -lm -l csfml-graphics\
 	-l csfml-audio -l csfml-system -l csfml-window
@@ -110,7 +110,6 @@ tests_run: clean_tests unit_tests
 	gcovr --exclude tests/ --txt-metric branch
 
 run: all
-	gsettings set org.gnome.mutter check-alive-timeout 0
 	./$(NAME) -d
 
 test: debug
