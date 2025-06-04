@@ -31,8 +31,8 @@ void draw_minimap(data_t *data)
     sfVector2f pos = {0, 0};
     sfVector2f size = {5, 5};
 
-    for (int y = 0; y < data->map.current_map->y_size; y++) {
-        for (int x = 0; x < data->map.current_map->x_size; x++) {
+    for (unsigned int y = 0; y < data->map.current_map->y_size; y++) {
+        for (unsigned int x = 0; x < data->map.current_map->x_size; x++) {
             pos.x = data->screen_size.x -
                 data->map.current_map->x_size * 6 - 5 + x * 6;
             pos.y = 5 + y * 6;

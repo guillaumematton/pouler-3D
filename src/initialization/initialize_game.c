@@ -60,6 +60,26 @@ static bool set_text(data_t *data)
     return true;
 }
 
+bool initialize_rendering_tools(data_t *data)
+{
+    data->game_screen_text = sfTexture_create(INTERNAL_WIDTH, INTERNAL_HEIGHT);
+    if (!data->game_screen_text) {
+        printf("Error: Could not create game screen texture. Aborting...\n");
+        return true;
+    }
+    data->game_screen = sfSprite_create();
+    if (!data->game_screen) {
+        printf("Error: Could not create game screen sprite. Aborting...\n");
+        return true;
+    }
+    data->game_screen_image = sfImage_create(INTERNAL_WIDTH, INTERNAL_HEIGHT);
+    if (!data->game_screen_image) {
+        printf("Error: Could not create game screen image. Aborting...\n");
+        return true;
+    }
+    return false;
+}
+
 //does all the neccessary work to start the game (which you just lost)
 //returns true if error
 bool initialize_game(data_t *data)
@@ -67,10 +87,8 @@ bool initialize_game(data_t *data)
     if (data->arguments.debug)
         mini_printf("starting game initialization.\n");
     srand(time(NULL));
-    data->game_vertex = sfVertexArray_create();
-    if (!data->game_vertex)
+    if (initialize_rendering_tools(data))
         return true;
-    sfVertexArray_setPrimitiveType(data->game_vertex, sfPoints);
     if (set_window(data))
         return true;
     initialize_player(data);

@@ -73,6 +73,8 @@ static bool basic_check_for_firearms(data_t *data)
     static bool old_fscreen = false;
 
     if (old_fscreen != data->arguments.full_screen) {
+        if (!data->current_weapon.current_sprite)
+            return false;
         set_position_scale(1.6, 600, 200, data->current_weapon.current_sprite);
         old_fscreen = data->arguments.full_screen;
     }

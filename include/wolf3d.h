@@ -26,6 +26,8 @@
     #include "assets.h"
 
     #define GAME_FPS 60
+    #define INTERNAL_WIDTH 800
+    #define INTERNAL_HEIGHT 600
 
 typedef struct argument_s {
     bool help;
@@ -75,7 +77,9 @@ typedef struct data {
     sfMusic *current_music;
     char *current_music_name;
     enum scene scene;
-    sfVertexArray *game_vertex;
+    sfImage *game_screen_image;
+    sfTexture *game_screen_text;
+    sfSprite *game_screen;
     sfVector2u screen_size;
     current_weapon_t current_weapon;
     current_map_t map;

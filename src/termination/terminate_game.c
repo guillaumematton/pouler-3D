@@ -62,8 +62,14 @@ static void destroy_miscellanous(data_t *data)
 {
     if (data->clock)
         sfClock_destroy(data->clock);
-    if (data->game_vertex)
-        sfVertexArray_destroy(data->game_vertex);
+    if (data->game_screen)
+        sfSprite_destroy(data->game_screen);
+    if (data->game_screen_text)
+        sfTexture_destroy(data->game_screen_text);
+    if (data->game_screen_image)
+        sfImage_destroy(data->game_screen_image);
+    if (data->tile)
+        sfRectangleShape_destroy(data->tile);
 }
 
 static void destroy_text(data_t *data)

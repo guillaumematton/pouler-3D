@@ -10,7 +10,7 @@
 static dist_info_t create_dist_struct(data_t *data, int x, ray_t *rays)
 {
     dist_info_t temp;
-    float cameraX = 2.0f * x / (float)data->screen_size.x - 1.0f;
+    float cameraX = 2.0f * x / (float)INTERNAL_WIDTH - 1.0f;
 
     rays->rayDirX0 = data->player.dirX + data->player.planeX * cameraX;
     rays->rayDirY0 = data->player.dirY + data->player.planeY * cameraX;
@@ -48,7 +48,7 @@ static void setup_raycasting(data_t *data, ray_t *rays, dist_info_t *dists)
     }
 }
 
-static bool hit_detection(data_t *data, dist_info_t *dists, map_t *map)
+static bool hit_detection(dist_info_t *dists, map_t *map)
 {
     if (dists->mapX < map->x_size &&
         dists->mapY < map->y_size) {
@@ -60,7 +60,7 @@ static bool hit_detection(data_t *data, dist_info_t *dists, map_t *map)
     return false;
 }
 
-static void ray_casting(data_t *data, dist_info_t *dists,
+static void ray_casting(dist_info_t *dists,
     ray_t *rays, map_t *map)
 {
     while (dists->hit == 0) {
@@ -73,7 +73,7 @@ static void ray_casting(data_t *data, dist_info_t *dists,
             dists->mapY += rays->stepY;
             dists->side = 1;
         }
-        if (hit_detection(data, dists, map))
+        if (hit_detection(dists, map))
             break;
     }
     if (dists->side == 0)
@@ -84,8 +84,7 @@ static void ray_casting(data_t *data, dist_info_t *dists,
 
 static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
 {
-    sfColor color;
-    sfVertex pixel = {{0, 0}, {0, 0, 0, 0}, {0, 0}};
+    sfColor color = {0, 0, 0, 0};
     float color_diming = 1 + dists->perpWallDist / 10;
 
     if (dists->texY < 0)
@@ -97,9 +96,7 @@ static void draw_pixel(data_t *data, dist_info_t *dists, int x, int y)
     color.r /= color_diming;
     color.g /= color_diming;
     color.b /= color_diming;
-    pixel.position = (sfVector2f){x, y};
-    pixel.color = color;
-    sfVertexArray_append(data->game_vertex, pixel);
+    sfImage_setPixel(data->game_screen_image, x, y, color);
 }
 
 static void finish_filling_distances(dist_info_t *dists,
@@ -119,13 +116,13 @@ static void finish_filling_distances(dist_info_t *dists,
 static float fill_draw(data_t *data, ray_t rays,
     dist_info_t dists, draw_info_t *draw)
 {
-    draw->line_height = (int)(data->screen_size.y / dists.perpWallDist);
-    draw->draw_start = -draw->line_height / 2 + data->screen_size.y / 2;
+    draw->line_height = (int)(INTERNAL_HEIGHT / dists.perpWallDist);
+    draw->draw_start = -draw->line_height / 2 + INTERNAL_HEIGHT / 2;
     if (draw->draw_start < 0)
         draw->draw_start = 0;
-    draw->draw_end = draw->line_height / 2 + data->screen_size.y / 2;
-    if (draw->draw_end >= data->screen_size.y)
-        draw->draw_end = data->screen_size.y - 1;
+    draw->draw_end = draw->line_height / 2 + INTERNAL_HEIGHT / 2;
+    if (draw->draw_end >= INTERNAL_HEIGHT)
+        draw->draw_end = INTERNAL_HEIGHT - 1;
     if (dists.side == 0)
         draw->wallX = data->player.y + dists.perpWallDist * rays.rayDirY0;
     else
@@ -141,16 +138,16 @@ static void wall_render(data_t *data, map_t *map)
     draw_info_t draw = {0, 0, 0, 0, 0};
     int d = 0;
 
-    for (unsigned int x = 0; x < data->screen_size.x;
-        x += (data->screen_size.x / 800)) {
+    for (unsigned int x = 0; x < INTERNAL_WIDTH;
+        x++) {
         dists = create_dist_struct(data, x, &rays);
         setup_raycasting(data, &rays, &dists);
-        ray_casting(data, &dists, &rays, map);
+        ray_casting(&dists, &rays, map);
         draw.wallX = fill_draw(data, rays, dists, &draw);
         finish_filling_distances(&dists, rays, draw);
         for (unsigned int y = draw.draw_start; y < draw.draw_end;
-            y += (data->screen_size.y / 600)) {
-            d = y * 256 - data->screen_size.y * 128 + draw.line_height * 128;
+            y++) {
+            d = y * 256 - INTERNAL_HEIGHT * 128 + draw.line_height * 128;
             dists.texY = (((d * TEX_SIZE) /
             draw.line_height) / 256) % TEX_SIZE;
             draw_pixel(data, &dists, x, y);
@@ -162,6 +159,12 @@ void render_map(data_t *data, map_t *map)
 {
     cast_floor_and_ceiling(data);
     wall_render(data, map);
-    sfRenderWindow_drawVertexArray(data->window, data->game_vertex, NULL);
-    sfVertexArray_clear(data->game_vertex);
+    sfTexture_updateFromImage(data->game_screen_text,
+        data->game_screen_image, 0, 0);
+    sfSprite_setTexture(data->game_screen, data->game_screen_text, sfTrue);
+    if (data->arguments.full_screen)
+        sfSprite_setScale(data->game_screen,
+            (sfVector2f){(float)data->screen_size.x / INTERNAL_WIDTH,
+            (float)data->screen_size.y / INTERNAL_HEIGHT});
+    sfRenderWindow_drawSprite(data->window, data->game_screen, NULL);
 }

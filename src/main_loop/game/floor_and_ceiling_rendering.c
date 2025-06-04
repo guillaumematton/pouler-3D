@@ -15,12 +15,12 @@ static ray_t create_ray_struct(data_t *data, int y)
     rays.rayDirY0 = data->player.dirY - data->player.planeY;
     rays.rayDirX1 = data->player.dirX + data->player.planeX;
     rays.rayDirY1 = data->player.dirY + data->player.planeY;
-    rays.rowDistance = (0.5f * data->screen_size.y)
-        / (y - data->screen_size.y / 2);
+    rays.rowDistance = (0.5f * INTERNAL_HEIGHT)
+        / (y - INTERNAL_HEIGHT / 2);
     rays.stepX = rays.rowDistance * (rays.rayDirX1 -
-        rays.rayDirX0) / data->screen_size.x;
+        rays.rayDirX0) / INTERNAL_WIDTH;
     rays.stepY = rays.rowDistance * (rays.rayDirY1 -
-        rays.rayDirY0) / data->screen_size.x;
+        rays.rayDirY0) / INTERNAL_WIDTH;
     rays.floorX = data->player.x + rays.rowDistance * rays.rayDirX0;
     rays.floorY = data->player.y + rays.rowDistance * rays.rayDirY0;
     return rays;
@@ -45,30 +45,19 @@ static void create_verteces(data_t *data, ray_t rays, int x, int y)
     int ty = (int)(TEX_SIZE * (rays.floorY - cellY)) & (TEX_SIZE - 1);
     sfColor floorColor = get_color(data->map.floor_image, rays, tx, ty);
     sfColor ceilColor = get_color(data->map.ceil_image, rays, tx, ty);
-    sfVertex floorPixel = {
-        .position = (sfVector2f) {x, y},
-        .color = floorColor
-    };
-    sfVertex ceilPixel = {
-        .position = (sfVector2f){x, data->screen_size.y - y},
-        .color = ceilColor
-    };
 
-    sfVertexArray_append(data->game_vertex, floorPixel);
-    sfVertexArray_append(data->game_vertex, ceilPixel);
+    sfImage_setPixel(data->game_screen_image, x, y, floorColor);
+    sfImage_setPixel(data->game_screen_image, x, INTERNAL_HEIGHT - y, ceilColor);
 }
 
 void cast_floor_and_ceiling(data_t *data)
 {
     ray_t rays = create_ray_struct(data, 0);
-    int step = data->screen_size.y / 200;
 
-    if (data->screen_size.y == 600)
-        step = 1;
-    for (unsigned int y = data->screen_size.y / 2 + 1; y <
-        data->screen_size.y; y += step) {
+    for (unsigned int y = INTERNAL_HEIGHT / 2 + 1; y <
+        INTERNAL_HEIGHT; y++) {
         rays = create_ray_struct(data, y);
-        for (unsigned int x = 0; x < data->screen_size.x; x++) {
+        for (unsigned int x = 0; x < INTERNAL_WIDTH; x++) {
             create_verteces(data, rays, x, y);
             rays.floorX += rays.stepX;
             rays.floorY += rays.stepY;
