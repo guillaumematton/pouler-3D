@@ -47,7 +47,8 @@ static void create_verteces(data_t *data, ray_t rays, int x, int y)
     sfColor ceilColor = get_color(data->map.ceil_image, rays, tx, ty);
 
     sfImage_setPixel(data->game_screen_image, x, y, floorColor);
-    sfImage_setPixel(data->game_screen_image, x, INTERNAL_HEIGHT - y, ceilColor);
+    sfImage_setPixel(data->game_screen_image, x,
+        INTERNAL_HEIGHT - y, ceilColor);
 }
 
 void cast_floor_and_ceiling(data_t *data)
