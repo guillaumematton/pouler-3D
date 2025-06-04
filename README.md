@@ -6,10 +6,10 @@
 LCtrl + K : close the game  
 
 Z/S : move forward/backward  
-Q/D : strafe left/right
-A/E : rotate left/right    
+Q/D : strafe left/right  
+A/E : rotate left/right  
 mouse : rotate left/right  
-Left click : attack
+Left click : attack  
 1/2/3/4/5 : weapon selection  
 Lshift : sprint  
 escape : pause (in game)  
@@ -42,7 +42,7 @@ XXXXXX
     - S = level's spawn point
     - T = teleporter to next level
     - W = win
-    any other character is a empty space
+    - space = empty space
 
 #### How to read the minimap
     - blue square = player's position (has priority over everything else)  
@@ -119,3 +119,7 @@ ___
 - [ ] Destructible environment: Elements of the decor that can be destroyed or modified.
 - [ ] More complex shapes: display and manage shapes other than squares.
 - [ ] Have a map editor.
+
+## Bonus  
+- [x] Jukebox : random music player in levels  
+- [x] Mod support : ability to overwrite assets and to create other easily  
