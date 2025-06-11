@@ -16,6 +16,13 @@ escape : pause (in game)
 enter : resume (in options and pause menu)  
 
 (this layout was made for AZERTY keyboards)  
+
+#### How to read the minimap
+    - blue square = player's position (has priority over everything else)  
+    - green square = spawn  
+    - red square = teleporter to another map  
+    - yellow square = win  
+
 ## Modding support
 
 The game supports asset modding, this means that all assets used by the game can be overriden via mods.  
@@ -43,12 +50,6 @@ XXXXXX
     - T = teleporter to next level
     - W = win
     - space = empty space
-
-#### How to read the minimap
-    - blue square = player's position (has priority over everything else)  
-    - green square = spawn  
-    - red square = teleporter to another map  
-    - yellow square = win  
 
 ### Correct weapon file format:
 damage (decimal number)  
