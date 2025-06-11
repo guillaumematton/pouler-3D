@@ -23,7 +23,7 @@ static void detect_button_mouse_click(data_t *data, pause_infos_t *pause_infos)
     }
     if (sfFloatRect_contains(&pause_infos->save_infos,
     pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
-        save_data(data);
+        save_game(data);
 }
 
 static void handle_button_clicks(data_t *data)

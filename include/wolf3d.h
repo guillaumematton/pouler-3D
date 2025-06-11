@@ -171,6 +171,7 @@ void handle_options_interactions(data_t *data);
 
 //game
 void run_game_scene(data_t *data);
+bool set_new_map(data_t *data, char *name);
 void render_map(data_t *data, map_t *map);
 void handle_movement(char **map, data_t *data);
 bool create_wall_images(data_t *data);
@@ -194,7 +195,7 @@ void display_lore_dump(data_t *data);
 void browse_sounds(data_t *data);
 
 //save
-void save_data(data_t *data);
-void load_data(data_t *data);
+void save_game(data_t *data);
+void load_game(data_t *data);
 
 #endif

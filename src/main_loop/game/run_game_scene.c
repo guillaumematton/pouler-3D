@@ -42,7 +42,7 @@ static bool set_new_player_pos(data_t *data, int y)
     return false;
 }
 
-static bool set_new_map(data_t *data, char *name)
+bool set_new_map(data_t *data, char *name)
 {
     map_t *map_list = data->assets.maps;
 

@@ -18,6 +18,7 @@ static void detect_button_mouse_click_new_game_continue(data_t *data,
     }
     if (sfFloatRect_contains(&menu_infos->continuegame_infos,
         menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
+        load_game(data);
         data->scene = GAME;
         if (data->arguments.debug)
             my_putstr("switching to game scene.\n");

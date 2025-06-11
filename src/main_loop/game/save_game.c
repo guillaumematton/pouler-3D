@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2025
-** save_data
+** save_game
 ** File description:
-** save the data
+** save the game
 */
 
 #include "wolf3d.h"
@@ -36,12 +36,12 @@ static void save_player_data(data_t *data, FILE *file)
     data->map.current_map->name : "NULL");
 }
 
-void save_data(data_t *data)
+void save_game(data_t *data)
 {
     FILE *file = fopen("save.dat", "w");
 
     if (data->arguments.debug)
-        my_putstr("saving.\n");
+        my_putstr("saving the game.\n");
     if (!file) {
         if (data->arguments.debug)
             my_putstr("  failed to save.\n");
