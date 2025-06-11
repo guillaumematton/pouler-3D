@@ -9,25 +9,24 @@
 
 static void run_scenes(data_t *data)
 {
-    static int last_scene = MENU;
+    enum scene last_scene = data->scene;
 
-    if (data->scene == GAME && last_scene != GAME)
-        sfRenderWindow_setMouseCursorVisible(data->window, sfFalse);
-    if (data->scene != GAME && last_scene == GAME)
-        sfRenderWindow_setMouseCursorVisible(data->window, sfTrue);
-    last_scene = data->scene;
     if (data->scene == MENU)
         run_menu_scene(data);
-    if (data->scene == MOPTIONS)
-        run_moptions_scene(data);
-    if (data->scene == GOPTIONS)
-        run_goptions_scene(data);
+    if (data->scene == MENU_OPTIONS)
+        run_menu_options_scene(data);
+    if (data->scene == GAME_OPTIONS)
+        run_game_options_scene(data);
     if (data->scene == GAME)
         run_game_scene(data);
     if (data->scene == PAUSE)
         run_pause_scene(data);
     if (data->scene == LORE)
         display_lore_dump(data);
+    if (data->scene == GAME && last_scene != GAME)
+        sfRenderWindow_setMouseCursorVisible(data->window, sfFalse);
+    if (data->scene != GAME && last_scene == GAME)
+        sfRenderWindow_setMouseCursorVisible(data->window, sfTrue);
 }
 
 void run_main_loop(data_t *data)

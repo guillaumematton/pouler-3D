@@ -44,6 +44,8 @@ void run_pause_scene(data_t *data)
     handle_pause_interactions(data);
     if (sfKeyboard_isKeyPressed(sfKeyEnter)) {
         data->scene = GAME;
+        if (data->arguments.debug)
+            mini_printf("swithcing to game scene.\n");
         return;
     }
 }

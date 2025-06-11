@@ -96,6 +96,9 @@ void display_lore_dump(data_t *data)
     display_lore_part1(data);
     display_lore_part2(data);
     display_lore_part3(data);
-    if (data->game_time >= 117.0)
+    if (data->game_time >= 117.0) {
         data->scene = MENU;
+        if (data->arguments.debug)
+            mini_printf("switching to menu scene.\n");
+    }
 }

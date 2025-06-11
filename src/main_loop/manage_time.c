@@ -3,6 +3,7 @@
 ** wolf3d
 ** File description:
 ** manage_time
+** printf("%.2f\n", 1.0 / sfTime_asSeconds(elapsed));
 */
 
 #include "wolf3d.h"

@@ -50,25 +50,28 @@ static void set_sprite_positions_options(data_t *data)
     return;
 }
 
-void run_moptions_scene(data_t *data)
+void run_menu_options_scene(data_t *data)
 {
     set_sprite_positions_options(data);
     render_options(data);
     handle_options_interactions(data);
     if (sfKeyboard_isKeyPressed(sfKeyEnter)) {
         data->scene = MENU;
+        if (data->arguments.debug)
+            my_putstr("switching to menu scene.\n");
         return;
     }
 }
 
-void run_goptions_scene(data_t *data)
+void run_game_options_scene(data_t *data)
 {
     set_sprite_positions_options(data);
     handle_options_interactions(data);
     render_options(data);
     if (sfKeyboard_isKeyPressed(sfKeyEnter)) {
         data->scene = PAUSE;
-        sfSleep(sfSeconds(0.1f));
+        if (data->arguments.debug)
+            my_putstr("switching to pause scene.\n");
         return;
     }
 }

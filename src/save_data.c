@@ -23,12 +23,8 @@ static void save_weapons(data_t *data, FILE *file)
     }
 }
 
-void save_data(data_t *data)
+static void save_player_data(data_t *data, FILE *file)
 {
-    FILE *file = fopen("save.dat", "w");
-
-    if (!file)
-        return;
     fprintf(file, "%f\n", data->player.health);
     fprintf(file, "%f\n", data->player.x);
     fprintf(file, "%f\n", data->player.y);
@@ -38,6 +34,22 @@ void save_data(data_t *data)
     fprintf(file, "%f\n", data->player.planeY);
     fprintf(file, "%s\n", data->map.current_map->name ?
     data->map.current_map->name : "NULL");
+}
+
+void save_data(data_t *data)
+{
+    FILE *file = fopen("save.dat", "w");
+
+    if (data->arguments.debug)
+        my_putstr("saving.\n");
+    if (!file) {
+        if (data->arguments.debug)
+            my_putstr("  failed to save.\n");
+        return;
+    }
+    save_player_data(data, file);
     save_weapons(data, file);
     fclose(file);
+    if (data->arguments.debug)
+        my_putstr("  succesfully saved.\n");
 }

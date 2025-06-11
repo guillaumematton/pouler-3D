@@ -91,6 +91,8 @@ void run_game_scene(data_t *data)
         return;
     if (sfKeyboard_isKeyPressed(sfKeyEscape)) {
         data->scene = PAUSE;
+        if (data->arguments.debug)
+            printf("switching to pause scene.\n");
         return;
     }
     handle_firearms(data);

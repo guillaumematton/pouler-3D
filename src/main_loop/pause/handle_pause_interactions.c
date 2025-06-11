@@ -10,11 +10,17 @@
 static void detect_button_mouse_click(data_t *data, pause_infos_t *pause_infos)
 {
     if (sfFloatRect_contains(&pause_infos->options_infos,
-    pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
-        data->scene = GOPTIONS;
+        pause_infos->mouse_pos.x, pause_infos->mouse_pos.y)) {
+        data->scene = GAME_OPTIONS;
+        if (data->arguments.debug)
+            my_putstr("switching to game options scene.\n");
+    }
     if (sfFloatRect_contains(&pause_infos->exit_infos,
-    pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
+        pause_infos->mouse_pos.x, pause_infos->mouse_pos.y)) {
         data->exit = true;
+        if (data->arguments.debug)
+            my_putstr("exiting game.\n");
+    }
     if (sfFloatRect_contains(&pause_infos->save_infos,
     pause_infos->mouse_pos.x, pause_infos->mouse_pos.y))
         save_data(data);

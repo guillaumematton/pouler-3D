@@ -7,26 +7,45 @@
 
 #include "wolf3d.h"
 
-static void detect_button_mouse_click(data_t *data, menu_infos_t *menu_infos)
+static void detect_button_mouse_click_new_game_continue(data_t *data,
+    menu_infos_t *menu_infos)
 {
     if (sfFloatRect_contains(&menu_infos->newgame_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
+        menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
         data->scene = GAME;
+        if (data->arguments.debug)
+            my_putstr("switching to game scene.\n");
+    }
     if (sfFloatRect_contains(&menu_infos->continuegame_infos,
         menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
         data->scene = GAME;
+        if (data->arguments.debug)
+            my_putstr("switching to game scene.\n");
     }
+}
+
+static void detect_button_mouse_click_options_lore_exit(data_t *data,
+    menu_infos_t *menu_infos)
+{
     if (sfFloatRect_contains(&menu_infos->options_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
-        data->scene = MOPTIONS;
+        menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
+        data->scene = MENU_OPTIONS;
+        if (data->arguments.debug)
+            my_putstr("switching to menu options scene.\n");
+    }
     if (sfFloatRect_contains(&menu_infos->lore_infos,
     menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
         browse_sounds(data);
         data->scene = LORE;
+        if (data->arguments.debug)
+            my_putstr("switching to lore scene.\n");
     }
     if (sfFloatRect_contains(&menu_infos->exit_infos,
-    menu_infos->mouse_pos.x, menu_infos->mouse_pos.y))
+        menu_infos->mouse_pos.x, menu_infos->mouse_pos.y)) {
         data->exit = true;
+        if (data->arguments.debug)
+            my_putstr("exiting game.\n");
+    }
 }
 
 static void handle_button_clicks(data_t *data)
@@ -45,7 +64,8 @@ static void handle_button_clicks(data_t *data)
     menu_infos.lore_infos = sfSprite_getGlobalBounds(data->sprites.menu.lore);
     menu_infos.exit_infos =
     sfSprite_getGlobalBounds(data->sprites.menu.exit_game);
-    detect_button_mouse_click(data, &menu_infos);
+    detect_button_mouse_click_new_game_continue(data, &menu_infos);
+    detect_button_mouse_click_options_lore_exit(data, &menu_infos);
 }
 
 void handle_menu_interactions(data_t *data)
