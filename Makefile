@@ -108,7 +108,7 @@ unit_tests: $(LIB)
 tests_run: clean_tests unit_tests
 	./$(NAME)_test || true
 	gcovr --exclude tests/
-	gcovr --exclude tests/ --txt-metric=branch
+	gcovr --exclude tests/ --txt-metric=branch || true
 
 run: all
 	./$(NAME) -d
