@@ -29,8 +29,7 @@ static bool load_module(data_t *data, char *name)
         &load_environment_texture);
     load_assets_folder(data, module_path, "/textures/gui/",
         &load_gui_texture);
-    load_assets_folder(data, module_path, "/fonts/",
-        &load_font);
+    load_assets_folder(data, module_path, "/fonts/", &load_font);
     return false;
 }
 
