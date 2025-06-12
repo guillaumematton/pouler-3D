@@ -9,16 +9,20 @@
 #include <criterion/redirect.h>
 #include "wolf3d.h"
 
+extern char **environ;
+
 void redirect_all_std(void)
 {
     cr_redirect_stdout();
     cr_redirect_stderr();
 }
 
-Test(wolf3d, initialize_data)
+Test(wolf3d, initialize_data, .init=redirect_all_std)
 {
     data_t data = initialize_data();
-    data.arguments.debug = true;
+
+    if (check_if_in_gui(environ) == false)
+        return; 
     
     cr_assert(initialize_game(&data) == false);
     terminate_game(&data);
