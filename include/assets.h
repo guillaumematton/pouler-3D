@@ -10,7 +10,6 @@
 
     #include "wolf3d.h"
 
-//TODO: add char *name for all assets structs
 typedef struct sound_s {
     char *name;
     sfSound *sound;
