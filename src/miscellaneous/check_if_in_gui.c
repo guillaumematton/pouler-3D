@@ -15,6 +15,6 @@ bool check_if_in_gui(char **env)
             return (true);
         }
     }
-    my_putstr("TODO invlaid display err msg\n");
+    my_putstr("wolf3d: error: no display\n");
     return (false);
 }
