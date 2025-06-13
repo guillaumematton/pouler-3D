@@ -1,8 +1,8 @@
 16 16 //will use the two first space separated words (in this case 16 and 16) for map size definiton
-cobble
-stone_bricks
-cobble
-level_1
+cobble.png
+stone_bricks.png
+cobble.png
+level_1.lvl
 
 XXXXXXXXXXXXXXXX //will copy the first 16 chars,
 X              X //meaning you can write comments here
