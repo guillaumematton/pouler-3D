@@ -34,6 +34,7 @@ static void save_player_data(data_t *data, FILE *file)
     fprintf(file, "%f\n", data->player.planeY);
     fprintf(file, "%s\n", data->map.current_map->name ?
     data->map.current_map->name : "NULL");
+    fprintf(file, "%i\n", data->score);
 }
 
 void save_game(data_t *data)
