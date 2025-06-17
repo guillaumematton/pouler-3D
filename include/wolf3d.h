@@ -41,7 +41,8 @@ enum scene {
     GAME_OPTIONS,
     LORE,
     GAME,
-    PAUSE
+    PAUSE,
+    WIN_SCREEN
 };
 
 typedef struct Player_s {
@@ -90,6 +91,7 @@ typedef struct data {
     float tick_duration;
     sfText *hud_text;
     float volume;
+    int score;
 } data_t;
 
 typedef struct ray_s {
@@ -185,6 +187,10 @@ void draw_minimap(data_t *data);
 void run_pause_scene(data_t *data);
 void render_pause(data_t *data);
 void handle_pause_interactions(data_t *data);
+
+//win screen
+void run_win_screen_scene(data_t *data);
+void render_stats_text(data_t *data);
 
 //term
 void terminate_game(data_t *data);

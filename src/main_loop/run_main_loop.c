@@ -19,6 +19,8 @@ static void run_scenes(data_t *data)
         run_game_options_scene(data);
     if (data->scene == GAME)
         run_game_scene(data);
+    if (data->scene == WIN_SCREEN)
+        run_win_screen_scene(data);
     if (data->scene == PAUSE)
         run_pause_scene(data);
     if (data->scene == LORE)

@@ -74,12 +74,16 @@ static bool parsing_game_map(data_t *data)
         return false;
     }
     if (data->map.current_map->map[(int)floor(data->player.x)]
-        [(int)floor(data->player.y)] == 'T')
+        [(int)floor(data->player.y)] == 'T') {
+        data->score += 1000;
         if (set_new_map(data, data->map.current_map->next_map_name))
             return true;
+    }
     if (data->map.current_map->map[(int)floor(data->player.y)]
         [(int)floor(data->player.x)] == 'W') {
-        data->scene = MENU;
+        if (data->arguments.debug)
+            printf("switching to win screen scene.\n");
+        data->scene = WIN_SCREEN;
         return true;
     }
     return false;
