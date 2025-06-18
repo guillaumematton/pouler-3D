@@ -164,6 +164,7 @@ void manage_time(data_t *data);
 void run_menu_scene(data_t *data);
 void render_menu(data_t *data);
 void handle_menu_interactions(data_t *data);
+void start_new_game(data_t *data);
 
 //options
 void run_menu_options_scene(data_t *data);

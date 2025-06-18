@@ -35,6 +35,7 @@ SRC	= src/main.c\
 	  src/main_loop/menu/run_menu_scene.c\
 	  src/main_loop/menu/render_menu.c\
 	  src/main_loop/menu/handle_menu_interactions.c\
+	  src/main_loop/menu/start_new_game.c\
 	  src/main_loop/lore/lore_dump.c\
 	  src/main_loop/options/run_options_scene.c\
 	  src/main_loop/options/render_options.c\

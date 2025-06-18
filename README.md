@@ -116,7 +116,7 @@ ___
 - [ ] Special weapons: Unique weapons with special effects.
 - [ ] Dynamic Weather: Integrate changing weather conditions affecting visibility and gameplay.
 - [ ] Difficulty levels: Different difficulty levels adjusting the game settings.
-- [ ] Score and time: Scoring and timing system to measure player performance.
+- [x] Score and time: Scoring and timing system to measure player performance.
 - [ ] Destructible environment: Elements of the decor that can be destroyed or modified.
 - [ ] More complex shapes: display and manage shapes other than squares.
 - [ ] Have a map editor.

@@ -19,6 +19,7 @@ static void load_player_data(data_t *data, char **lines)
     data->player.planeX = atof(lines[5]);
     data->player.planeY = atof(lines[6]);
     data->score = atoi(lines[8]);
+    data->game_time = atof(lines[9]);
 }
 
 static void set_weapon_ammo(data_t *data, char *name, char *ammo_str)
@@ -50,7 +51,7 @@ void load_game(data_t *data)
     if (data->arguments.debug)
         my_putstr("loading a save.\n");
     if (buffer == NULL || lines == NULL ||
-        my_ptrarraylen((void **) lines) < 9) {
+        my_ptrarraylen((void **) lines) < 10) {
         my_free(buffer);
         my_freestrarray(lines);
         if (data->arguments.debug)
