@@ -104,6 +104,9 @@ void terminate_game(data_t *data)
 {
     if (data->arguments.debug)
         mini_printf("starting game termination.\n");
+    if (data->arguments.debug)
+        mini_printf("  destroying window.\n");
+    sfRenderWindow_close(data->window);
     sfRenderWindow_destroy(data->window);
     destroy_assets(data);
     destroy_wall_images(data);

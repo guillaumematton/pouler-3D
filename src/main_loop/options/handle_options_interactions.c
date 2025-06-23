@@ -16,6 +16,7 @@ static void toggle_fullscreen(data_t *data)
     mode.height = 1080;
     mode.bitsPerPixel = 32;
     arg = sfClose | sfFullscreen;
+    sfRenderWindow_close(data->window);
     sfRenderWindow_destroy(data->window);
     data->window = sfRenderWindow_create(mode, "wolf3D", arg, NULL);
     data->arguments.full_screen = true;
@@ -30,6 +31,7 @@ static void disable_fullscreen(data_t *data)
     mode.height = 600;
     mode.bitsPerPixel = 32;
     arg = sfClose;
+    sfRenderWindow_close(data->window);
     sfRenderWindow_destroy(data->window);
     data->window = sfRenderWindow_create(mode, "wolf3D", arg, NULL);
     data->arguments.full_screen = false;
