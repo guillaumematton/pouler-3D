@@ -39,7 +39,7 @@ static void render_dust_particule(data_t *data, uint i)
         color);
 }
 
-void render_particules(data_t *data)
+void render_dust_particules(data_t *data)
 {
     for (uint i = 0; i < DUST_PARTICULES_COUNT; i++) {
         move_dust_particule(data, i);
