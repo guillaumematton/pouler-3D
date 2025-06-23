@@ -22,7 +22,8 @@ data_t initialize_data(void)
         {NULL, NULL, 0},
         {NULL, NULL, NULL, NULL},
         NULL, false, {0}, 0, 0, NULL, 50,
-        0
+        0,
+        {0}
     };
 
     return data;

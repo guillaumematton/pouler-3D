@@ -155,10 +155,11 @@ static void wall_render(data_t *data, map_t *map)
     }
 }
 
-void render_map(data_t *data, map_t *map)
+void render_game(data_t *data, map_t *map)
 {
     cast_floor_and_ceiling(data);
     wall_render(data, map);
+    render_dust_particules(data);
     sfTexture_updateFromImage(data->game_screen_text,
         data->game_screen_image, 0, 0);
     sfSprite_setTexture(data->game_screen, data->game_screen_text, sfTrue);
