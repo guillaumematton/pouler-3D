@@ -86,7 +86,7 @@ ___
 ### Sounds and Graphics
 - [x] At least one animation: Movement, shots, enemies etc.
 - [x] Sound effects and music: Sounds and music to enhance the gaming experience.
-- [ ] Particle effects: Use particles for explosions, shots, etc
+- [x] Particle effects: Use particles for explosions, shots, etc
 ### User interface
 - [x] HUD: Interface displaying essential information such as health, ammunition, etc.
 - [x] Options and Settings
