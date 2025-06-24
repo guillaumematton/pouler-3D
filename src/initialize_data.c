@@ -14,16 +14,16 @@ data_t initialize_data(void)
         {0, 0, 0, 0, 0, 0, 0},
         NULL,
         {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL},
-        {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
+        {{NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL,
         {NULL, NULL, NULL, NULL, NULL, NULL},
-        {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}, NULL, NULL},
+        {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL}}, NULL, NULL},
         NULL, NULL, NULL, MENU, NULL, NULL, NULL,
         {0, 0},
         {NULL, NULL, 0},
         {NULL, NULL, NULL, NULL},
         NULL, false, {0}, 0, 0, NULL, 50,
         0,
-        {0}
+        {{0, 0, 0, 0}}
     };
 
     return data;
