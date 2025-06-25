@@ -121,7 +121,9 @@ bool create_menu_sprites(data_t *data)
     create_gui_sprite(data, "exit.png", &data->sprites.menu.exit_game) ||
     create_gui_sprite(data, "options.png", &data->sprites.menu.options) ||
     create_gui_sprite(data, "title.png", &data->sprites.menu.title) ||
-        create_options_sprites(data) || create_lore_sprites(data))
+        create_options_sprites(data) || create_lore_sprites(data) ||
+    create_gui_sprite(data, "win_screen_background.png",
+        &data->sprites.win_screen.background))
         return true;
     set_sprite_positions(data);
     return false;

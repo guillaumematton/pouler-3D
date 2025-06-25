@@ -15,5 +15,5 @@ void run_win_screen_scene(data_t *data)
             printf("switching to menu scene.\n");
         return;
     }
-    render_stats_text(data);
+    render_win_screen(data);
 }

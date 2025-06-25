@@ -13,7 +13,7 @@ Left click : attack
 1/2/3/4/5 : weapon selection  
 Lshift : sprint  
 escape : pause (in game)  
-enter : resume (in options and pause menu)  
+enter : resume (in options and pause menu), go back to the main menu (in the win screen)  
 
 (this layout was made for AZERTY keyboards)  
 

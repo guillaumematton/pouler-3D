@@ -202,7 +202,7 @@ void handle_pause_interactions(data_t *data);
 
 //win screen
 void run_win_screen_scene(data_t *data);
-void render_stats_text(data_t *data);
+void render_win_screen(data_t *data);
 
 //term
 void terminate_game(data_t *data);

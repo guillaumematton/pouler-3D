@@ -44,6 +44,10 @@ typedef struct menu_s {
     lore_t lore_sprites;
 } menu_t;
 
+typedef struct win_screen_s {
+    sfSprite *background;
+} win_screen_t;
+
 typedef struct menu_infos_s {
     sfFloatRect newgame_infos;
     sfFloatRect continuegame_infos;
@@ -80,6 +84,7 @@ typedef struct enemy_sprite_s {
 
 typedef struct sprite_s {
     menu_t menu;
+    win_screen_t win_screen;
     env_t *environment;
     enemy_sprite_t *enemies;
 } sprite_t;

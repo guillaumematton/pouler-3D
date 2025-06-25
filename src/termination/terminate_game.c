@@ -70,6 +70,8 @@ static void destroy_miscellanous(data_t *data)
         sfImage_destroy(data->game_screen_image);
     if (data->tile)
         sfRectangleShape_destroy(data->tile);
+    if (data->sprites.win_screen.background)
+        sfSprite_destroy(data->sprites.win_screen.background);
 }
 
 static void destroy_text(data_t *data)
