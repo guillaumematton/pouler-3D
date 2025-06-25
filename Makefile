@@ -82,7 +82,8 @@ $(NAME): $(LIB) $(OBJ)
 debug: CFLAGS += -g
 debug: $(NAME)_debug
 
-$(NAME)_debug: fclean $(LIB)
+$(NAME)_debug: fclean
+	make $(LIB)
 	$(CC) -o $(NAME)_debug $(SRC) $(CFLAGS) $(WFLAGS)
 
 $(LIB):
